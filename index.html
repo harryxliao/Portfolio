@@ -18,6 +18,7 @@
     <link rel="preload" as="image" href="images/YB.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="assets/js/navbar.js" defer></script>
+    <script src="assets/js/about.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/feature.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -26,16 +27,28 @@
   </head>
   <body>
 
+    <script>
+      // If the URL has an SPA fragment, hide the main content immediately
+      // to avoid flashing the index content before the SPA fragment loads.
+      try {
+        const hash = location.hash || '';
+        if (hash === '#about' || hash === '#work' || hash === '#contact') {
+          document.documentElement.classList.add('spa-loading');
+          document.body.classList.add('spa-loading');
+        }
+      } catch (e) {}
+    </script>
+
     <nav class="top-nav">
       <div class="nav-left">
-        <a href="/home" class="main-menu-link active">• HOME</a>
-        <a href="/about" class="main-menu-link">ABOUT</a>
-        <a href="/work" class="main-menu-link">WORK</a>
-        <a href="/contact" class="main-menu-link">CONTACT</a>
+        <a href="/#" class="main-menu-link active">• HOME</a>
+        <a href="/#about" class="main-menu-link">ABOUT</a>
+        <a href="/#work" class="main-menu-link">WORK</a>
+        <a href="/#contact" class="main-menu-link">CONTACT</a>
       </div>
 
       <div class="nav-center">
-        <a href="/home" class="logo-link">HARRY LIAO</a>
+        <a href="/" class="logo-link">HARRY LIAO</a>
       </div>
 
       <div class="nav-right">
@@ -49,17 +62,17 @@
     </nav>
     <div class="mobile-menu-overlay" id="mobileMenu">
       <div class="menu-header">
-        <a href="/home" class="logo-link">HARRY LIAO</a>
+        <a href="/#" class="logo-link">HARRY LIAO</a>
         <button class="close-btn" id="closeMenuBtn">♦ CLOSE ♦</button>
       </div>
 
       <div class="menu-divider"></div>
 
       <nav class="mobile-nav-links">
-        <a href="/home" class="mobile-link active"><span class="bullet">▪</span> HOME</a>
-        <a href="/about" class="mobile-link"><span class="bullet">▪</span> ABOUT</a>
-        <a href="/work" class="mobile-link"><span class="bullet">▪</span> WORK</a>
-        <a href="/contact" class="mobile-link"><span class="bullet">▪</span> CONTACT</a>
+        <a href="/#" class="mobile-link active"><span class="bullet">▪</span> HOME</a>
+        <a href="/#about" class="mobile-link"><span class="bullet">▪</span> ABOUT</a>
+        <a href="/#work" class="mobile-link"><span class="bullet">▪</span> WORK</a>
+        <a href="/#contact" class="mobile-link"><span class="bullet">▪</span> CONTACT</a>
       </nav>
 
       <div class="menu-divider"></div>
@@ -78,6 +91,7 @@
       <div class="mobile-footer-text">// Designing the next reality.</div>
     </div>
 
+<div id="mainContent">
 <section class="hero-section">
       <div class="video-container">
         <video id="hero-video" autoplay loop muted playsinline>
@@ -104,10 +118,10 @@
   <video autoplay muted loop playsinline class="parallax-video">
     <source src="videos/Gate Travel.mp4" type="video/mp4">
   </video>
-  <div class="absolute-content project-info">
+    <div class="absolute-content project-info">
     <h2 class="project-title">GATE</h2>
     <p class="project-desc">GATE TRAVEL IS A NEW GATE PRODUCT LAUNCHED IN 2025, BUILT FOR FAST, SEAMLESS BOOKINGS WITH A CRYPTO-FIRST PAYMENT EXPERIENCE.</p>
-    <a href="https://www.behance.net/xianhaoliao-design" target="_blank" rel="noopener noreferrer" class="view-project">VIEW PROJECT</a>
+    <a href="https://www.behance.net/gallery/240939305/Gatecom-Motion-Graphics" target="_blank" rel="noopener noreferrer" class="view-project">VIEW PROJECT</a>
   </div>
 </div>
 
@@ -115,10 +129,10 @@
   <video autoplay muted loop playsinline class="parallax-video">
     <source src="videos/Cocooks-demo.mp4" type="video/mp4">
   </video>
-  <div class="absolute-content project-info">
+    <div class="absolute-content project-info">
     <h2 class="project-title">COCOOK</h2>
     <p class="project-desc">COCOOK IS A MOBILE APP THAT HELPS YOUNG ADULTS BUILD HEALTHIER EATING HABITS THROUGH ACCESSIBLE NUTRITION EDUCATION, RECIPES WITH FACTS, STEP-BY-STEP GUIDANCE, AND SHAREABLE COOKING SPACES.</p>
-    <a href="https://www.behance.net/xianhaoliao-design" target="_blank" rel="noopener noreferrer" class="view-project">VIEW PROJECT</a>
+    <a href="https://www.behance.net/gallery/200280613/Cocook-App-Design" target="_blank" rel="noopener noreferrer" class="view-project">VIEW PROJECT</a>
   </div>
 </div>
 
@@ -126,10 +140,10 @@
   <video autoplay muted loop playsinline class="parallax-video">
     <source src="videos/Reno_Gordon_For-U_S.mp4" type="video/mp4">
   </video>
-  <div class="absolute-content project-info">
+    <div class="absolute-content project-info">
     <h2 class="project-title">FOR-U</h2>
     <p class="project-desc">FOR-U is a house single created by Harry Liao in collaboration with rising singer Luna. The story explores a young girl's inner world and aims to deliver an energetic listening experience.</p>
-    <a href="https://www.behance.net/xianhaoliao-design" target="_blank" rel="noopener noreferrer" class="view-project">VIEW PROJECT</a>
+    <a href="https://www.behance.net/gallery/80108693/Reno-Gordon-For-U-MV" target="_blank" rel="noopener noreferrer" class="view-project">VIEW PROJECT</a>
   </div>
 </div>
     
@@ -692,6 +706,8 @@
     </div>
 </section>
 
+    </div>
+
     <footer class="site-footer">
       <div class="tech-divider bottom-divider"></div>
 
@@ -706,6 +722,8 @@
         </div>
       </div>
   </footer>
+
+    </div>
 
   </body>
 </html>
