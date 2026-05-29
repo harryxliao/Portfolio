@@ -106,7 +106,8 @@
 .projects-invite { margin: 30px 0; }
 .invite-inner { display: flex; gap: 20px; align-items: center; justify-content: space-between; background: #0f0f10; padding: 24px; border-radius: 16px; }
 .invite-media img { width: 420px; height: auto; border-radius: 12px; opacity: 0.95; }
-.invite-cta h3 { margin: 0 0 10px 0; font-size: 18px; color: #fff; font-family: 'League Spartan', sans-serif; }
+.invite-cta h3 { margin: 0 0 12px 0; font-size: 22px; color: #fff; font-family: 'League Spartan', sans-serif; }
+.invite-cta p { margin: 0 0 12px 0; color: #cfcfcf; font-family: 'Space Mono', monospace; }
 
 .about-back-wrap { text-align: center; margin-top: 10px; }
 .about-back-wrap { margin-top: 36px; }
