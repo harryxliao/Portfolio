@@ -19,10 +19,10 @@
 .thesis-right { flex: 0 0 520px; }
 
 @media (max-width: 900px) {
-  .about-hero { flex-direction: column-reverse; }
+  .about-hero { flex-direction: column; }
   .about-hero-right { width: 100%; }
   .about-skills { flex-direction: column; }
-  .about-thesis { flex-direction: column-reverse; }
+  .about-thesis { flex-direction: column; }
 }
 
 /* --- Styles to closely mirror referenced about design --- */
@@ -179,13 +179,16 @@
 
 @media (max-width: 1000px) {
   .about-hero { grid-template-columns: 1fr; }
-  .about-right { order: -1; }
+  .about-right { order: 0; }
   .moments-row { flex-direction: column; align-items: center; }
   .skill-row { flex-direction: column; align-items: stretch; }
   .skill-block { width: 100%; min-height: auto; }
   .moment-card { width: min(86%, 420px); }
+  .thesis-cta .thesis-card { flex-direction: column-reverse; align-items: stretch; }
   .thesis-image img { width: 100%; }
-  .invite-inner { flex-direction: column; }
+  .invite-inner { flex-direction: column; align-items: stretch; padding: 36px; }
+  .invite-media { width: 100%; }
+  .invite-media img { width: 100%; }
   .about-container { padding: calc(56px + env(safe-area-inset-top)) 20px 28px; }
   /* on small screens, keep lines within small viewport padding */
   .about-container > header::before,

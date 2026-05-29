@@ -397,14 +397,105 @@
     min-height: 420px;
   }
 
-  .work-table-row {
-    grid-template-columns: 48px 1fr;
-    font-size: 10px;
+  .work-index-section {
+    margin-top: 22px;
+    padding-top: 26px;
   }
 
-  .work-table-row span:nth-child(3),
-  .work-table-row span:nth-child(4) {
+  .work-index-head {
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .work-kicker {
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .work-index-head h2 {
+    display: inline-block;
+    padding: 4px 8px 3px;
+    background: #fff;
+    color: #000;
+    font-size: clamp(30px, 10vw, 44px);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .work-table {
+    gap: 0;
+  }
+
+  .work-table-row {
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "index title title"
+      "type type icon";
+    gap: 10px 12px;
+    padding: 14px 0 18px;
+    align-items: center;
+  }
+
+  .work-table-row--head {
+    display: flex;
+    gap: 18px;
+    padding: 0 0 8px;
+    border-bottom: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .work-table-row--head span:nth-child(3),
+  .work-table-row--head span:nth-child(4) {
     display: none;
+  }
+
+  .work-table-link > span {
+    padding: 8px 10px;
+  }
+
+  .work-table-link > span:nth-child(1) {
+    grid-area: index;
+    width: fit-content;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .work-table-link > span:nth-child(2) {
+    grid-area: title;
+    width: fit-content;
+    max-width: 100%;
+    justify-self: start;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .work-table-link > span:nth-child(3) {
+    grid-area: type;
+    width: fit-content;
+    max-width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .work-table-link > span:nth-child(4) {
+    display: none;
+  }
+
+  .work-table-icon {
+    grid-area: icon;
+    opacity: 1;
+    transform: none;
+    justify-self: end;
+    font-size: 16px;
   }
 
   .work-signoff-top {
