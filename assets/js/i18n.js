@@ -221,7 +221,7 @@
     const root = scope || document;
     localizeText(root, '.hero-bottom-info .bottom-left', '設計下一個未來。');
     localizeText(root, '.hero-bottom-info .bottom-right', '▼ 向下探索');
-    localizeText(root, '.description-content p', '♦ Harry Liao 擅長結合創意策略與科技敘事，具備 UX、視覺設計、3D、動態與網頁開發經驗。 ♦');
+    localizeText(root, '.description-content p', '♦ 廖先皓擅長結合創意策略與科技敘事，具備 UX、視覺設計、3D、動態與網頁開發經驗。 ♦');
     localizeList(root, '.project-desc', homeProjectZh);
     localizeText(root, '.view-project', '查看專案');
     localizeText(root, '.portfolio-button-label', '看完整作品集');
