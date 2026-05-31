@@ -93,11 +93,11 @@
     thesisTitle: '論文書',
     thesisBody: '《Dream Reality》：探索夢境與夢的視覺表現。',
     thesisBtn: '論文書 PDF',
-    inviteTitle: '歡迎看我的作品集 PDF',
+    inviteTitle: '我想邀請您查看我的作品集PDF',
     inviteBody: '裡面收集了所有我的作品。',
-    inviteBtn: '查看 PDF',
+    inviteBtn: '另外開啟PDF',
     workTitle: '繼續觀看我的線上作品',
-    workBtn: '前往 Work',
+    workBtn: '前往作品頁面',
     skill1Title: '設計工具',
     skill1Body: 'Photoshop, Illustrator, InDesign, Premiere, After Effects, Cinema 4D, Blender, Figma.',
     skill2Title: '數位能力',
@@ -221,7 +221,7 @@
     const root = scope || document;
     localizeText(root, '.hero-bottom-info .bottom-left', '設計下一個未來。');
     localizeText(root, '.hero-bottom-info .bottom-right', '▼ 向下探索');
-    localizeText(root, '.description-content p', '♦ 廖先皓擅長結合創意策略與科技敘事，具備 UX、視覺設計、3D、動態與網頁開發經驗。 ♦');
+    localizeText(root, '.description-content p', '♦ 廖先皓擅長結合創意策略與科技敘事，具備介面設計、視覺設計、動態與網頁開發經驗。 ♦');
     localizeList(root, '.project-desc', homeProjectZh);
     localizeText(root, '.view-project', '查看專案');
     localizeText(root, '.portfolio-button-label', '看完整作品集');
@@ -255,7 +255,7 @@
     localizeText(root, '.contact-send', '');
     // Learn more section on home
     localizeText(root, '.learn-more-title', '進一步了解 Harry');
-    localizeText(root, '.learn-more-btn span:first-child', '點此');
+    localizeText(root, '.learn-more-btn span:first-child', '進入關於頁面');
   }
 
   function applyAbout(scope) {
@@ -291,6 +291,8 @@
     localizeText(root, '.work-featured .work-overlay p', workCardZh.featured[1]);
     localizeList(root, '.work-grid .work-overlay h2', workCardZh.grid.map((item) => item[0]));
     localizeList(root, '.work-grid .work-overlay p', workCardZh.grid.map((item) => item[1]));
+    localizeText(root, '.learn-more-title', '聯絡廖先皓');
+    localizeText(root, '.learn-more-btn span:first-child', '點這邊');
   }
 
   function applyContact(scope) {
