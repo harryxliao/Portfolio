@@ -700,9 +700,9 @@ html.spa-loading .site-footer {
 
 .featured-clients-section,
 .featured-clients-section * {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+  user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
 }
 
 .featured-clients-section::before,
@@ -988,8 +988,8 @@ body {
   font-weight: 800;
   margin: -20px 0 0 0;
   letter-spacing: 10px;
-  color: transparent;
-  -webkit-text-stroke: 1px #a7a7a7;
+  color: #ffffff;
+  -webkit-text-stroke: 0;
   font-family: sans-serif;
   text-transform: uppercase;
   line-height: 1.2;
@@ -1400,8 +1400,8 @@ body {
   }
 
   .title-outline {
-    margin-top: -8px;
-    -webkit-text-stroke: 1px #a7a7a7;
+    margin-top: 0;
+    -webkit-text-stroke: 0;
   }
 
   .career-content {
@@ -1508,7 +1508,7 @@ body {
   }
 
   .clients-header {
-    margin-bottom: 22px;
+    margin-bottom: 30px;
     letter-spacing: 1px;
   }
 
@@ -1518,8 +1518,13 @@ body {
     letter-spacing: 3px;
   }
 
+  .title-solid {
+    margin-bottom: 14px;
+  }
+
   .title-outline {
-    margin-top: -6px;
+    margin-top: 2px;
+    -webkit-text-stroke: 0;
   }
 }
 
@@ -1538,13 +1543,13 @@ body {
 }
 
 /* 整合你提供的 Header 樣式 */
-.clients-header {
-  margin-bottom: 42px;
+.impact-section .clients-header {
+  margin-bottom: 72px;
   text-align: center; /* 讓標題置中，若你想靠左對齊可移除這行 */
 }
 
-.title-solid,
-.title-outline {
+.impact-section .title-solid,
+.impact-section .title-outline {
   font-size: 3.5rem; /* 設定一個夠具衝擊力的字級 */
   font-weight: 800; /* 粗體字更能展現氣勢 */
   letter-spacing: 6px; /* 來自你的設定 */
@@ -1552,18 +1557,44 @@ body {
   line-height: 1.1;
 }
 
-.title-solid {
+.impact-section .title-solid {
   margin-top: 0;
-  margin-bottom: 12px; /* 來自你的設定 */
+  margin-bottom: 26px; /* 來自你的設定 */
   color: #ffffff;
 }
 
-.title-outline {
-  margin-top: 0;
+.impact-section .title-outline {
+  margin-top: 10px;
   margin-bottom: 0;
   /* Use solid white text instead of outlined/transparent */
   color: #ffffff;
   -webkit-text-stroke: 0;
+}
+
+@media (min-width: 901px) {
+  .featured-clients-section .clients-header {
+    margin-bottom: 72px;
+  }
+
+  .featured-clients-section .title-solid {
+    margin-bottom: 18px;
+  }
+
+  .featured-clients-section .title-outline {
+    margin-top: 10px;
+  }
+
+  .career-section .clients-header {
+    margin-bottom: 78px;
+  }
+
+  .career-section .title-solid {
+    margin-bottom: 22px;
+  }
+
+  .career-section .title-outline {
+    margin-top: 12px;
+  }
 }
 
 /* 網格系統：桌面端 4 欄，平板 2 欄，手機 1 欄 */

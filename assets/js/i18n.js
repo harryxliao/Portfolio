@@ -237,7 +237,7 @@
     localizeList(root, '.accordion-item .preview-text', homeAccordionZh.map((item) => item[1]));
     localizeList(root, '.accordion-item .full-text', homeAccordionZh.map((item) => item[1]));
     localizeText(root, '.impact-section .title-solid', '廖先皓');
-    localizeText(root, '.impact-section .title-outline', '影響的人事物');
+    localizeText(root, '.impact-section .title-outline', '影響世界');
 
     // Impact cards (translated and shortened)
     localizeText(root, '.impact-card:nth-child(1) .card-title', '<span class="bullet">◾</span> 全球專案', { html: true });
