@@ -105,7 +105,7 @@
   };
 
   const contactZh = {
-    kicker: '聯絡我',
+    kicker: '快來聯絡我',
     send: '寄信',
     caption: '// 有合作、提案或想打聲招呼，歡迎聯絡。',
   };
