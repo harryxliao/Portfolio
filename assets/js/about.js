@@ -69,7 +69,7 @@
     const scriptSrc = scriptEl ? scriptEl.getAttribute('src') : '';
     const match = scriptSrc.match(/^(.*)assets\/js\/about\.js/);
     const prefix = match ? match[1] : '';
-    return fetch(`${prefix}${pageName}.html`, { cache: 'no-store' })
+    return fetch(`${prefix}${pageName}-content.html`, { cache: 'no-store' })
       .then(r => r.text())
       .then(html => {
         if (loadPage._token !== token) return;
