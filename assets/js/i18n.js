@@ -97,7 +97,7 @@
     inviteTitle: '邀請您查看Harry的作品集PDF',
     inviteBody: '裡面收集了所有Harry的作品。',
     inviteBtn: '另外開啟PDF',
-    workTitle: '看看廖先皓 Harry線上作品',
+    workTitle: '看看 廖先皓 Harry線上作品',
     workBtn: '前往作品頁面',
     skill1Title: '設計工具',
     skill1Body: 'Photoshop, Illustrator, InDesign, Premiere, After Effects, Cinema 4D, Blender, Figma.',
