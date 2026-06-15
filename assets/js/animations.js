@@ -518,7 +518,7 @@
     if (aboutSub) {
       gsap.fromTo(aboutSub,
         { opacity: 0, y: 30, filter: 'blur(6px)' },
-        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out', delay: 0.6 }
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out', delay: 0.4 }
       );
     }
 
@@ -527,7 +527,7 @@
     if (resumeBtn) {
       gsap.fromTo(resumeBtn,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', delay: 0.9 }
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', delay: 0.45 }
       );
     }
 
@@ -535,8 +535,29 @@
     const portrait = document.querySelector('.about-page .portrait-frame');
     if (portrait) {
       gsap.fromTo(portrait,
-        { opacity: 0, scale: 0.9, x: mobile() ? 0 : 60 },
-        { opacity: 1, scale: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.4 }
+        {
+          opacity: 0,
+          scale: 1.1,
+          filter: 'blur(12px)',
+          rotationY: -20,
+          rotationX: 5,
+          x: -40,
+          y: 20,
+          transformPerspective: 1000,
+          transformOrigin: 'center left'
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          filter: 'blur(0px)',
+          rotationY: 0,
+          rotationX: 0,
+          x: 0,
+          y: 0,
+          duration: 1.5,
+          ease: 'power3.out',
+          delay: 1.2
+        }
       );
     }
 
