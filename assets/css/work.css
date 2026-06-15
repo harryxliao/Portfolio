@@ -88,7 +88,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 220ms ease;
 }
 
@@ -102,6 +102,11 @@
 .work-featured-card.media-ready .work-media-fallback,
 .work-card.media-ready .work-media-fallback {
   opacity: 0;
+}
+
+.work-featured-card.media-failed .work-media-fallback,
+.work-card.media-failed .work-media-fallback {
+  opacity: 1;
 }
 
 .work-featured-card.media-failed video,

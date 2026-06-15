@@ -1,6 +1,9 @@
 // about.js
 // Shared SPA loader for About and Work fragments with matching slide animation.
 (function () {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
   const root = document.getElementById('mainContent');
   if (!root) {
     window.openAbout = function () { window.location.href = '/about'; };
@@ -135,9 +138,20 @@
         document.body.classList.add(`spa-${pageName}`);
 
         requestAnimationFrame(() => root.classList.add('page-enter'));
-        if (pushState) {
-          // only jump to top when this navigation originated from an SPA action
-          window.scrollTo({ top: 0 });
+        // Reset scroll position to top when switching pages
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        requestAnimationFrame(() => {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        });
+
+        // Trigger GSAP text transition animations synchronously before paint
+        // to prevent flash (GSAP sets initial opacity:0 before browser renders)
+        if (typeof window.initSpaPageAnimations === 'function') {
+          window.initSpaPageAnimations(pageName);
         }
         currentPage = pageName;
 
@@ -222,6 +236,11 @@
       }
       window.scrollTo({ top: originalScroll });
       try { document.documentElement.classList.remove('spa-loading'); document.body.classList.remove('spa-loading'); } catch (e) { }
+
+      // Re-initialize home page GSAP animations after restoring DOM
+      if (typeof window.initHomeAnimations === 'function') {
+        requestAnimationFrame(() => window.initHomeAnimations());
+      }
       currentPage = null;
     });
 
