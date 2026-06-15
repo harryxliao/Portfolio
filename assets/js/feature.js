@@ -16,7 +16,7 @@ function resizeAllWorkIframes() {
         iframe.style.height = cardHeight + 'px';
         iframe.style.width = Math.ceil(cardHeight * videoRatio) + 'px';
       }
-    } catch(e) { console.error('resizeVimeoIframe error', e); }
+    } catch (e) { console.error('resizeVimeoIframe error', e); }
   });
 }
 
@@ -35,17 +35,18 @@ function initWorkMediaFallback(scope = document) {
     if (!media) return;
 
     const fallbackSrc = media.getAttribute('data-fallback') || media.getAttribute('poster');
-    if (!fallbackSrc) return;
 
     card.dataset.mediaFallbackInit = '1';
     card.classList.add('media-pending');
 
-    const fallbackImage = document.createElement('img');
-    fallbackImage.className = 'work-media-fallback';
-    fallbackImage.src = fallbackSrc;
-    fallbackImage.alt = '';
-    fallbackImage.setAttribute('aria-hidden', 'true');
-    card.insertBefore(fallbackImage, media);
+    if (fallbackSrc) {
+      const fallbackImage = document.createElement('img');
+      fallbackImage.className = 'work-media-fallback';
+      fallbackImage.src = fallbackSrc;
+      fallbackImage.alt = '';
+      fallbackImage.setAttribute('aria-hidden', 'true');
+      card.insertBefore(fallbackImage, media);
+    }
 
     if (media.tagName === 'VIDEO' && !media.hasAttribute('preload')) {
       media.setAttribute('preload', 'metadata');
@@ -54,7 +55,7 @@ function initWorkMediaFallback(scope = document) {
     if (typeof media.load === 'function' && media.readyState === 0) {
       try {
         media.load();
-      } catch (e) {}
+      } catch (e) { }
     }
 
     let settled = false;
@@ -86,7 +87,7 @@ function initWorkMediaFallback(scope = document) {
       resizeAllWorkIframes();
       media.addEventListener('load', () => {
         resizeAllWorkIframes();
-        resolveReady();
+        setTimeout(resolveReady, 500); // Wait for Vimeo player to start playing before fading in
       }, { once: true });
       media.addEventListener('error', resolveFailed, { once: true });
       return;
@@ -106,7 +107,7 @@ function initWorkMediaFallback(scope = document) {
 window.initWorkMediaFallback = initWorkMediaFallback;
 
 // FEATURES CAROUSEL
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   initWorkMediaFallback(document);
 
   const track = document.getElementById('clientTrack');
@@ -114,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const nextBtn = document.getElementById('clientNextBtn');
   const trackViewport = track ? track.parentElement : null;
   if (!track || !prevBtn || !nextBtn) return;
-  
+
   // 1. 備份原始項目並取得總寬度
   const originalItems = Array.from(track.children);
   const getItemWidth = () => {
@@ -125,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 2. 【核心修正：保證順序的複製法】
   // 先清空軌道，然後強制依序放入 3 組一模一樣的內容：[前緩衝] [主畫面] [後緩衝]
-  track.innerHTML = ''; 
+  track.innerHTML = '';
   for (let i = 0; i < 3; i++) {
     originalItems.forEach(item => {
       track.appendChild(item.cloneNode(true));
@@ -141,11 +142,11 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   let centeringOffset = getCenteringOffset();
-  
+
   // 4. 初始化位置：我們直接把畫面推到「第二組（主畫面）」的第一個 Logo
   let targetTranslate = centeringOffset - totalOriginalWidth;
   let currentTranslate = targetTranslate;
-  
+
   let isHovered = false;
   let isDragging = false;
   let hasDragged = false;
@@ -236,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (targetTranslate <= (centeringOffset - totalOriginalWidth * 2)) {
       targetTranslate += totalOriginalWidth;
       currentTranslate += totalOriginalWidth;
-    } 
+    }
     // 當向右滾動，碰到第一組的開頭時，瞬間拉回第二組開頭
     else if (targetTranslate >= centeringOffset) {
       targetTranslate -= totalOriginalWidth;
@@ -334,11 +335,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // CAREER HIGHLIGHTS
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const accordionItems = document.querySelectorAll('.accordion-item');
 
   accordionItems.forEach(item => {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function () {
       // 1. 先紀錄當前點擊的這個項目，原本是否為「已展開」狀態
       const isActive = this.classList.contains('active');
 
@@ -370,9 +371,9 @@ const portfolioItems = [
   },
   {
     edition: "/ arXiv:2506.08872",
-    title: "YOUR BRAIN ON CHATGPT (MIT)", 
+    title: "YOUR BRAIN ON CHATGPT (MIT)",
     projectUrl: "https://arxiv.org/abs/2506.08872",
-    image: "images/YB.webp", 
+    image: "images/YB.webp",
     description: "This study examines the neural and behavioral impact of LLM-assisted essay writing across LLM, Search Engine, and Brain-only groups. EEG and essay analysis showed the strongest brain connectivity in Brain-only participants and the weakest in LLM users, with lower ownership of writing in the LLM condition. The findings suggest that while LLMs improve convenience, long-term reliance may reduce cognitive engagement in learning.",
     zhDescription: "本研究檢視大型語言模型（LLM）輔助寫作對神經與行為的影響，將受試者分為 LLM、搜尋引擎與僅用大腦三組。腦電圖與作文分析顯示，僅用大腦組的腦網路連結最強，LLM 使用者最弱，且 LLM 組對作品的擁有感較低。研究顯示，雖然 LLM 提升了便利性，但長期依賴可能降低學習時的認知投入。",
     dimensions: "LETTER SIZE",
@@ -418,7 +419,7 @@ function preloadPortfolioImages() {
     portfolioImageCache.set(fullSrc, image);
 
     if (image.decode) {
-      image.decode().catch(() => {});
+      image.decode().catch(() => { });
     }
   });
 }
@@ -438,9 +439,9 @@ function initIndicators() {
 }
 
 function updateUIWithAnimation() {
-  els.desc.style.opacity = 0; 
+  els.desc.style.opacity = 0;
   els.title.style.opacity = 0;
-  
+
   const item = portfolioItems[currentIndex];
   const swapToken = ++imageSwapToken;
   const applyContent = () => {
@@ -573,7 +574,7 @@ updateUIWithAnimation();
 
 // Refresh portfolio UI when language changes elsewhere
 window.addEventListener('site-language-changed', () => {
-  try { updateUIWithAnimation(); } catch (e) {}
+  try { updateUIWithAnimation(); } catch (e) { }
 });
 
 
@@ -581,31 +582,31 @@ window.addEventListener('site-language-changed', () => {
 
 // 初始化 Swiper 輪播
 const swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1.5,      
-    centeredSlides: true,
-    spaceBetween: 5,        // 極小的圖片間距，營造連貫感
-    
-    loop: true,             // 開啟無限輪播
-    allowTouchMove: true,
-    simulateTouch: true,
-    touchRatio: 1,
-    
-    grabCursor: true,       
-    speed: 1000,            // 配合 CSS Ease 特效的速度
-    
-    navigation: {
-        nextEl: ".custom-nav-next",
-        prevEl: ".custom-nav-prev",
+  slidesPerView: 1.5,
+  centeredSlides: true,
+  spaceBetween: 5,        // 極小的圖片間距，營造連貫感
+
+  loop: true,             // 開啟無限輪播
+  allowTouchMove: true,
+  simulateTouch: true,
+  touchRatio: 1,
+
+  grabCursor: true,
+  speed: 1000,            // 配合 CSS Ease 特效的速度
+
+  navigation: {
+    nextEl: ".custom-nav-next",
+    prevEl: ".custom-nav-prev",
+  },
+
+  breakpoints: {
+    768: {
+      slidesPerView: 1.8,
+      spaceBetween: 8
     },
-    
-    breakpoints: {
-        768: {
-            slidesPerView: 1.8, 
-            spaceBetween: 8     
-        },
-        1200: {
-            slidesPerView: 2.2, 
-            spaceBetween: 10
-        }
+    1200: {
+      slidesPerView: 2.2,
+      spaceBetween: 10
     }
+  }
 });

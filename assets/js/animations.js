@@ -673,13 +673,13 @@
     if (featuredCard) {
       const overlay = featuredCard.querySelector('.work-overlay');
       gsap.fromTo(featuredCard,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 }
+        { opacity: 0, y: 50, filter: 'blur(6px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.6, ease: 'power2.out', delay: 0.6 }
       );
       if (overlay) {
         gsap.fromTo(overlay,
           { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.5 }
+          { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', delay: 1.2 }
         );
       }
     }
