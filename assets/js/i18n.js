@@ -106,7 +106,7 @@
   };
 
   const contactZh = {
-    kicker: '快來聯絡 廖先皓 Harry',
+    kicker: '點一下就能聯絡 廖先皓 Harry',
     send: '寄信',
     caption: '// 有合作、提案或想打聲招呼，歡迎聯絡。',
   };
@@ -274,7 +274,7 @@
       const scriptSrc = scriptEl ? scriptEl.getAttribute('src') : '';
       const match = scriptSrc.match(/^(.*)assets\/js\/about\.js/);
       const prefix = match ? match[1] : '';
-      
+
       if (getCurrentLang() === 'zh') {
         resumeBtn.setAttribute('href', prefix + 'upload/廖先皓_中文簡歷.pdf');
       } else {
@@ -370,7 +370,7 @@
     const path = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '');
     const isZh = path.startsWith('zh');
     const page = isZh ? path.replace(/^zh\/?/, '') : path;
-    
+
     if (isZh) {
       // Go to English
       window.location.href = '/' + page;
