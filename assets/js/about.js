@@ -60,6 +60,27 @@
     } catch (e) { }
   });
 
+  // Wait for all <link rel="stylesheet"> elements inside a container to finish loading.
+  // Resolves immediately if none are found or all are already loaded.
+  function waitForFragmentStyles(container, timeout) {
+    timeout = timeout || 3000;
+    var links = Array.from(container.querySelectorAll('link[rel="stylesheet"]'));
+    if (!links.length) return Promise.resolve();
+    var promises = links.map(function (link) {
+      // Already loaded (sheet is available)
+      if (link.sheet) return Promise.resolve();
+      return new Promise(function (resolve) {
+        var done = false;
+        function finish() { if (!done) { done = true; resolve(); } }
+        link.addEventListener('load', finish);
+        link.addEventListener('error', finish);
+        // Safety timeout so we never block indefinitely
+        setTimeout(finish, timeout);
+      });
+    });
+    return Promise.all(promises);
+  }
+
   function loadPage(pageName, pushState = true) {
     if (currentPage === pageName) return Promise.resolve();
 
@@ -161,13 +182,16 @@
         }
         currentPage = pageName;
 
-        // Reveal page after the fragment has rendered.
+        // Reveal page only after injected stylesheets (e.g. gate-mg.css) are parsed,
+        // to prevent a flash of unstyled content.
         if (pushState) {
-          requestAnimationFrame(() => {
-            try {
-              document.documentElement.classList.remove('spa-loading');
-              document.body.classList.remove('spa-loading');
-            } catch (e) { }
+          waitForFragmentStyles(root, 3000).then(function () {
+            requestAnimationFrame(function () {
+              try {
+                document.documentElement.classList.remove('spa-loading');
+                document.body.classList.remove('spa-loading');
+              } catch (e) { }
+            });
           });
         }
 
