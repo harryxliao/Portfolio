@@ -1326,6 +1326,11 @@ body {
   animation: pageSlideUp 800ms cubic-bezier(.22, .98, .28, 1) forwards;
 }
 
+body.spa-gate-mg #mainContent.page-enter,
+body.spa-gate_mg #mainContent.page-enter {
+  animation: pageSlideUp 3s cubic-bezier(.22, .98, .28, 1) forwards;
+}
+
 #mainContent.page-exit {
   animation: pageSlideDown 600ms cubic-bezier(.4, 0, .2, 1) forwards;
 }
