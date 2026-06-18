@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const path = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '');
     const isZh = path.startsWith('zh');
     const page = isZh ? path.replace(/^zh\/?/, '') : path;
-    if (page === 'about' || page === 'work' || page === 'contact') {
+    if (page === 'about' || page === 'work' || page === 'contact' || page === 'gate-mg' || page === 'gate_mg') {
       return page;
     }
     return (document.body && document.body.dataset.sitePage) || 'home';
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (page === 'about' && window.openAbout) { window.openAbout(); return; }
       if (page === 'work' && window.openWork) { window.openWork(); return; }
       if (page === 'contact' && window.openContact) { window.openContact(); return; }
+      if ((page === 'gate-mg' || page === 'gate_mg') && window.openGateMg) { window.openGateMg(); return; }
       // If desktop Home clicked, navigate to the real index page
       if (page === '') { window.location.href = href; return; }
       // 其他路由仍保留預設行為（可自行改為 client-side 路由）
@@ -135,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (page === 'about' && window.openAbout) { window.openAbout(); mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
       if (page === 'work' && window.openWork) { window.openWork(); mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
       if (page === 'contact' && window.openContact) { window.openContact(); mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
+      if ((page === 'gate-mg' || page === 'gate_mg') && window.openGateMg) { window.openGateMg(); mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
       // If mobile Home is clicked, always navigate to the real index page
       if (page === '') { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; window.location.href = href; return; }
 

@@ -9,10 +9,12 @@
     window.openAbout = function () { window.location.href = '/about'; };
     window.openWork = function () { window.location.href = '/work'; };
     window.openContact = function () { window.location.href = '/contact'; };
+    window.openGateMg = function () { window.location.href = '/gate-mg'; };
     window.closeSpaPage = function () { window.history.back(); };
     window.closeAbout = window.closeSpaPage;
     window.closeWork = window.closeSpaPage;
     window.closeContact = window.closeSpaPage;
+    window.closeGateMg = window.closeSpaPage;
     return;
   }
 
@@ -23,7 +25,7 @@
 
   function bindSpaTargetLinks(scope) {
     if (!scope) return;
-    const links = scope.querySelectorAll('a[data-spa-target]');
+    const links = scope.querySelectorAll('[data-spa-target]');
     links.forEach((link) => {
       if (link.dataset.spaBound === '1') return;
       link.dataset.spaBound = '1';
@@ -41,6 +43,10 @@
         }
         if (target === 'contact') {
           loadPage('contact', true);
+          return;
+        }
+        if (target === 'gate-mg' || target === 'gate_mg') {
+          loadPage(target, true);
         }
       });
     });
@@ -61,7 +67,7 @@
     loadPage._token = token;
 
     // Prevent FOUC on SPA-triggered page navigation.
-    if (pushState && (pageName === 'about' || pageName === 'work' || pageName === 'contact')) {
+    if (pushState && (pageName === 'about' || pageName === 'work' || pageName === 'contact' || pageName === 'gate-mg' || pageName === 'gate_mg')) {
       try {
         document.documentElement.classList.add('spa-loading');
         document.body.classList.add('spa-loading');
@@ -134,7 +140,7 @@
           window.initWorkMediaFallback(root);
         }
 
-        document.body.classList.remove('spa-about', 'spa-work', 'spa-contact');
+        document.body.classList.remove('spa-about', 'spa-work', 'spa-contact', 'spa-gate-mg', 'spa-gate_mg');
         document.body.classList.add(`spa-${pageName}`);
 
         requestAnimationFrame(() => root.classList.add('page-enter'));
@@ -227,7 +233,7 @@
       root.removeEventListener('animationend', handler);
       root.classList.remove('page-exit');
       root.innerHTML = originalHTML;
-      document.body.classList.remove('spa-about', 'spa-work', 'spa-contact');
+      document.body.classList.remove('spa-about', 'spa-work', 'spa-contact', 'spa-gate-mg', 'spa-gate_mg');
       if (document.body) {
         document.body.dataset.sitePage = 'home';
       }
@@ -256,7 +262,7 @@
     }
 
     const state = e.state || {};
-    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact') {
+    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact' || state.spa === 'gate-mg' || state.spa === 'gate_mg') {
       loadPage(state.spa, false);
     } else if (currentPage) {
       closePage(false);
@@ -266,10 +272,12 @@
   window.openAbout = function () { return loadPage('about', true); };
   window.openWork = function () { return loadPage('work', true); };
   window.openContact = function () { return loadPage('contact', true); };
+  window.openGateMg = function () { return loadPage('gate-mg', true); };
   window.closeSpaPage = closePage;
   window.closeAbout = closePage;
   window.closeWork = closePage;
   window.closeContact = closePage;
+  window.closeGateMg = closePage;
 
   // Load SPA fragment from URL path on initial load (so refresh keeps current view)
   function loadFromPath() {
@@ -277,7 +285,7 @@
     const isZh = path.startsWith('zh');
     const page = (isZh ? path.replace(/^zh\/?/, '') : path).toLowerCase();
 
-    if (page === 'about' || page === 'work' || page === 'contact') {
+    if (page === 'about' || page === 'work' || page === 'contact' || page === 'gate-mg' || page === 'gate_mg') {
       if (document.body) {
         document.body.dataset.sitePage = page;
       }

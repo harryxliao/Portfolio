@@ -1323,11 +1323,11 @@ body {
 
 /* Page replacement animation (replace #appRoot content) */
 #mainContent.page-enter {
-  animation: pageSlideUp 420ms cubic-bezier(.22, .98, .28, 1) forwards;
+  animation: pageSlideUp 800ms cubic-bezier(.22, .98, .28, 1) forwards;
 }
 
 #mainContent.page-exit {
-  animation: pageSlideDown 320ms cubic-bezier(.4, 0, .2, 1) forwards;
+  animation: pageSlideDown 600ms cubic-bezier(.4, 0, .2, 1) forwards;
 }
 
 @keyframes pageSlideUp {

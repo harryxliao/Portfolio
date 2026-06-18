@@ -687,19 +687,39 @@
     // ── Work grid cards 交錯入場 ──
     const workCards = document.querySelectorAll('.work-page .work-grid .work-card');
     if (workCards.length) {
-      gsap.fromTo(workCards,
-        { opacity: 0, y: 50, filter: 'blur(6px)' },
-        {
+      // On mobile all cards are stacked and the grid is already in-viewport
+      // when the page loads, so ScrollTrigger fires immediately — making the
+      // second card appear before the first (featured) card has finished its
+      // 1.6s animation. Use a fixed delay on mobile so the grid cards always
+      // start AFTER the featured card has appeared.
+      const isMob = mobile();
+      gsap.set(workCards, { opacity: 0, y: 50, filter: 'blur(6px)' });
+
+      if (isMob) {
+        // Featured card delay=0.6 + duration=1.6 → visible ~1.0s in.
+        // Start grid at 1.1s so it cleanly follows the featured card.
+        gsap.to(workCards, {
           opacity: 1, y: 0, filter: 'blur(0px)',
-          duration: 0.6, stagger: 0.08,
+          duration: 0.7, stagger: 0.18,
           ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.work-page .work-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
+          delay: 1.1
+        });
+      } else {
+        gsap.fromTo(workCards,
+          { opacity: 0, y: 50, filter: 'blur(6px)' },
+          {
+            opacity: 1, y: 0, filter: 'blur(0px)',
+            duration: 0.6, stagger: 0.18,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.work-page .work-grid',
+              start: 'top 95%',
+              toggleActions: 'play none none reverse',
+              invalidateOnRefresh: true
+            }
           }
-        }
-      );
+        );
+      }
     }
 
     // ── Work Index Section header ──
@@ -711,8 +731,9 @@
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.work-page .work-index-section',
-          start: 'top 85%',
-          toggleActions: 'play none none reverse'
+          start: 'top 95%',
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true
         }
       });
 
@@ -747,8 +768,9 @@
           ease: 'power2.out',
           scrollTrigger: {
             trigger: '.work-page .work-table',
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
+            start: 'top 95%',
+            toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true
           }
         }
       );
@@ -845,8 +867,15 @@
       initContactAnimations();
     }
 
-    // Recalculate positions after DOM settles
+    // Recalculate positions after DOM settles AND after the page-enter
+    // CSS animation finishes (800ms). On mobile the cards are already
+    // in-viewport, but ScrollTrigger miscalculates positions while
+    // the container still has translateY from the slide animation.
     requestAnimationFrame(() => ScrollTrigger.refresh());
+    // Refresh again after the pageSlideUp animation completes (800ms)
+    setTimeout(() => ScrollTrigger.refresh(), 850);
+    // One more safety refresh for slow devices
+    setTimeout(() => ScrollTrigger.refresh(), 1400);
   }
 
   // Expose globally so SPA loader can call it

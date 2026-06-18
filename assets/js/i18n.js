@@ -9,12 +9,16 @@
       about: '關於 Harry | Xian-Hao (Harry) Liao',
       work: '作品總覽 | Xian-Hao (Harry) Liao',
       contact: '聯絡 Harry | Xian-Hao (Harry) Liao',
+      'gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
+      gate_mg: 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
     },
     en: {
       home: 'Xian-Hao (Harry) Liao | Design Portfolio',
       about: 'About Harry | Xian-Hao (Harry) Liao',
       work: 'Work | Xian-Hao (Harry) Liao',
       contact: 'Contact | Xian-Hao (Harry) Liao',
+      'gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
+      gate_mg: 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
     },
   };
 
@@ -322,6 +326,22 @@
     localizeText(root, '.contact-video-caption span', contactZh.caption);
   }
 
+  function applyGateMg(scope) {
+    const root = scope || document;
+    const elements = root.querySelectorAll('[data-i18n-zh]');
+    elements.forEach(el => {
+      cacheText(el, false);
+      if (getCurrentLang() === 'zh') {
+        el.textContent = el.getAttribute('data-i18n-zh');
+      } else {
+        const original = el.getAttribute('data-i18n-original-text');
+        if (original !== null) {
+          el.textContent = original;
+        }
+      }
+    });
+  }
+
   function applySiteLanguage(scope = document, pageName) {
     const lang = getCurrentLang();
     const page = pageName || (document.body && document.body.dataset.sitePage) || 'home';
@@ -345,6 +365,8 @@
       applyWork(scope);
     } else if (page === 'contact') {
       applyContact(scope);
+    } else if (page === 'gate-mg' || page === 'gate_mg') {
+      applyGateMg(scope);
     }
   }
 
