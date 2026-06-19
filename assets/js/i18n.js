@@ -9,20 +9,16 @@
       about: '關於 Harry | Xian-Hao (Harry) Liao',
       work: '作品總覽 | Xian-Hao (Harry) Liao',
       contact: '聯絡 Harry | Xian-Hao (Harry) Liao',
-      'gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
-      gate_mg: 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
-      'gate-redbull': 'Gate × RedBull F1 NFT | Xian-Hao (Harry) Liao',
-      gate_redbull: 'Gate × RedBull F1 NFT | Xian-Hao (Harry) Liao',
+      'work/gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
+      'work/gate-redbull': 'Gate × RedBull F1 NFT | Xian-Hao (Harry) Liao',
     },
     en: {
       home: 'Xian-Hao (Harry) Liao | Design Portfolio',
       about: 'About Harry | Xian-Hao (Harry) Liao',
       work: 'Work | Xian-Hao (Harry) Liao',
       contact: 'Contact | Xian-Hao (Harry) Liao',
-      'gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
-      gate_mg: 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
-      'gate-redbull': 'Gate × RedBull Racing F1 NFT | Xian-Hao (Harry) Liao',
-      gate_redbull: 'Gate × RedBull Racing F1 NFT | Xian-Hao (Harry) Liao',
+      'work/gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
+      'work/gate-redbull': 'Gate × RedBull Racing F1 NFT | Xian-Hao (Harry) Liao',
     },
   };
 
@@ -381,9 +377,7 @@
       applyWork(scope);
     } else if (page === 'contact') {
       applyContact(scope);
-    } else if (page === 'gate-mg' || page === 'gate_mg') {
-      applyGateMg(scope);
-    } else if (page === 'gate-redbull' || page === 'gate_redbull') {
+    } else if (page.startsWith('work/')) {
       applyGateMg(scope); // reuses data-i18n-zh attribute pattern
     }
   }

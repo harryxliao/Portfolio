@@ -47,12 +47,9 @@
           loadPage('contact', true);
           return;
         }
-        if (target === 'gate-mg' || target === 'gate_mg') {
+        if (target.startsWith('work/')) {
           loadPage(target, true);
           return;
-        }
-        if (target === 'gate-redbull' || target === 'gate_redbull') {
-          loadPage(target, true);
         }
       });
     });
@@ -94,7 +91,7 @@
     loadPage._token = token;
 
     // Prevent FOUC on SPA-triggered page navigation.
-    if (pushState && (pageName === 'about' || pageName === 'work' || pageName === 'contact' || pageName === 'gate-mg' || pageName === 'gate_mg' || pageName === 'gate-redbull' || pageName === 'gate_redbull')) {
+    if (pushState && (pageName === 'about' || pageName === 'work' || pageName === 'contact' || pageName.startsWith('work/'))) {
       try {
         document.documentElement.classList.add('spa-loading');
         document.body.classList.add('spa-loading');
@@ -105,10 +102,24 @@
     const scriptSrc = scriptEl ? scriptEl.getAttribute('src') : '';
     const match = scriptSrc.match(/^(.*)assets\/js\/about\.js/);
     const prefix = match ? match[1] : '';
-    return fetch(`${prefix}${pageName}-content.html`, { cache: 'no-store' })
+
+    const isWorkProject = pageName.startsWith('work/');
+    const fetchUrl = isWorkProject ? `${prefix}${pageName}.html` : `${prefix}${pageName}-content.html`;
+
+    return fetch(fetchUrl, { cache: 'no-store' })
       .then(r => r.text())
       .then(html => {
         if (loadPage._token !== token) return;
+
+        let contentHtml = html;
+        if (isWorkProject) {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const mainContentEl = doc.getElementById('mainContent');
+          if (mainContentEl) {
+            contentHtml = mainContentEl.innerHTML;
+          }
+        }
 
         if (!currentPage) {
           originalHTML = root.innerHTML;
@@ -117,7 +128,7 @@
 
         root.classList.remove('page-exit');
         root.classList.remove('page-enter');
-        root.innerHTML = html;
+        root.innerHTML = contentHtml;
 
         // Rewrite relative paths in the loaded fragment using the page depth prefix
         if (prefix) {
@@ -168,7 +179,8 @@
         }
 
         document.body.classList.remove('spa-about', 'spa-work', 'spa-contact', 'spa-gate-mg', 'spa-gate_mg', 'spa-gate-redbull', 'spa-gate_redbull');
-        document.body.classList.add(`spa-${pageName}`);
+        document.body.className = document.body.className.replace(/\bspa-work-\S+/g, '');
+        document.body.classList.add(`spa-${pageName.replace('/', '-')}`);
 
         requestAnimationFrame(() => root.classList.add('page-enter'));
         // Reset scroll position to top when switching pages
@@ -276,6 +288,7 @@
       root.classList.remove('page-exit');
       root.innerHTML = originalHTML;
       document.body.classList.remove('spa-about', 'spa-work', 'spa-contact', 'spa-gate-mg', 'spa-gate_mg');
+      document.body.className = document.body.className.replace(/\bspa-work-\S+/g, '');
       if (document.body) {
         document.body.dataset.sitePage = 'home';
       }
@@ -304,7 +317,7 @@
     }
 
     const state = e.state || {};
-    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact' || state.spa === 'gate-mg' || state.spa === 'gate_mg' || state.spa === 'gate-redbull' || state.spa === 'gate_redbull') {
+    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact' || (state.spa && state.spa.startsWith('work/'))) {
       loadPage(state.spa, false);
     } else if (currentPage) {
       closePage(false);
@@ -314,8 +327,9 @@
   window.openAbout = function () { return loadPage('about', true); };
   window.openWork = function () { return loadPage('work', true); };
   window.openContact = function () { return loadPage('contact', true); };
-  window.openGateMg = function () { return loadPage('gate-mg', true); };
-  window.openGateRedbull = function () { return loadPage('gate-redbull', true); };
+  window.openGateMg = function () { return loadPage('work/gate-mg', true); };
+  window.openGateRedbull = function () { return loadPage('work/gate-redbull', true); };
+  window.loadPage = loadPage;
   window.closeSpaPage = closePage;
   window.closeAbout = closePage;
   window.closeWork = closePage;
@@ -329,7 +343,7 @@
     const isZh = path.startsWith('zh');
     const page = (isZh ? path.replace(/^zh\/?/, '') : path).toLowerCase();
 
-    if (page === 'about' || page === 'work' || page === 'contact' || page === 'gate-mg' || page === 'gate_mg' || page === 'gate-redbull' || page === 'gate_redbull') {
+    if (page === 'about' || page === 'work' || page === 'contact' || page.startsWith('work/')) {
       if (document.body) {
         document.body.dataset.sitePage = page;
       }
