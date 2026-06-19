@@ -10,11 +10,13 @@
     window.openWork = function () { window.location.href = '/work'; };
     window.openContact = function () { window.location.href = '/contact'; };
     window.openGateMg = function () { window.location.href = '/gate-mg'; };
+    window.openGateRedbull = function () { window.location.href = '/gate-redbull'; };
     window.closeSpaPage = function () { window.history.back(); };
     window.closeAbout = window.closeSpaPage;
     window.closeWork = window.closeSpaPage;
     window.closeContact = window.closeSpaPage;
     window.closeGateMg = window.closeSpaPage;
+    window.closeGateRedbull = window.closeSpaPage;
     return;
   }
 
@@ -46,6 +48,10 @@
           return;
         }
         if (target === 'gate-mg' || target === 'gate_mg') {
+          loadPage(target, true);
+          return;
+        }
+        if (target === 'gate-redbull' || target === 'gate_redbull') {
           loadPage(target, true);
         }
       });
@@ -88,7 +94,7 @@
     loadPage._token = token;
 
     // Prevent FOUC on SPA-triggered page navigation.
-    if (pushState && (pageName === 'about' || pageName === 'work' || pageName === 'contact' || pageName === 'gate-mg' || pageName === 'gate_mg')) {
+    if (pushState && (pageName === 'about' || pageName === 'work' || pageName === 'contact' || pageName === 'gate-mg' || pageName === 'gate_mg' || pageName === 'gate-redbull' || pageName === 'gate_redbull')) {
       try {
         document.documentElement.classList.add('spa-loading');
         document.body.classList.add('spa-loading');
@@ -161,19 +167,28 @@
           window.initWorkMediaFallback(root);
         }
 
-        document.body.classList.remove('spa-about', 'spa-work', 'spa-contact', 'spa-gate-mg', 'spa-gate_mg');
+        document.body.classList.remove('spa-about', 'spa-work', 'spa-contact', 'spa-gate-mg', 'spa-gate_mg', 'spa-gate-redbull', 'spa-gate_redbull');
         document.body.classList.add(`spa-${pageName}`);
 
         requestAnimationFrame(() => root.classList.add('page-enter'));
         // Reset scroll position to top when switching pages
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        requestAnimationFrame(() => {
-          window.scrollTo(0, 0);
+        const resetScroll = () => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
           document.documentElement.scrollTop = 0;
           document.body.scrollTop = 0;
+        };
+        resetScroll();
+        requestAnimationFrame(() => {
+          resetScroll();
+          setTimeout(resetScroll, 10);
+          setTimeout(resetScroll, 50);
+          setTimeout(resetScroll, 100);
         });
+        // We no longer reset scroll on animationend because long animations (like 3s for gate projects) 
+        // will snap the user back to the top if they've already started scrolling.
+        root.addEventListener('animationend', function onEnterEnd() {
+          root.removeEventListener('animationend', onEnterEnd);
+        }, { once: true });
 
         // Trigger GSAP text transition animations synchronously before paint
         // to prevent flash (GSAP sets initial opacity:0 before browser renders)
@@ -188,6 +203,9 @@
           waitForFragmentStyles(root, 3000).then(function () {
             requestAnimationFrame(function () {
               try {
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
                 document.documentElement.classList.remove('spa-loading');
                 document.body.classList.remove('spa-loading');
               } catch (e) { }
@@ -286,7 +304,7 @@
     }
 
     const state = e.state || {};
-    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact' || state.spa === 'gate-mg' || state.spa === 'gate_mg') {
+    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact' || state.spa === 'gate-mg' || state.spa === 'gate_mg' || state.spa === 'gate-redbull' || state.spa === 'gate_redbull') {
       loadPage(state.spa, false);
     } else if (currentPage) {
       closePage(false);
@@ -297,11 +315,13 @@
   window.openWork = function () { return loadPage('work', true); };
   window.openContact = function () { return loadPage('contact', true); };
   window.openGateMg = function () { return loadPage('gate-mg', true); };
+  window.openGateRedbull = function () { return loadPage('gate-redbull', true); };
   window.closeSpaPage = closePage;
   window.closeAbout = closePage;
   window.closeWork = closePage;
   window.closeContact = closePage;
   window.closeGateMg = closePage;
+  window.closeGateRedbull = closePage;
 
   // Load SPA fragment from URL path on initial load (so refresh keeps current view)
   function loadFromPath() {
@@ -309,7 +329,7 @@
     const isZh = path.startsWith('zh');
     const page = (isZh ? path.replace(/^zh\/?/, '') : path).toLowerCase();
 
-    if (page === 'about' || page === 'work' || page === 'contact' || page === 'gate-mg' || page === 'gate_mg') {
+    if (page === 'about' || page === 'work' || page === 'contact' || page === 'gate-mg' || page === 'gate_mg' || page === 'gate-redbull' || page === 'gate_redbull') {
       if (document.body) {
         document.body.dataset.sitePage = page;
       }

@@ -11,6 +11,8 @@
       contact: '聯絡 Harry | Xian-Hao (Harry) Liao',
       'gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
       gate_mg: 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
+      'gate-redbull': 'Gate × RedBull F1 NFT | Xian-Hao (Harry) Liao',
+      gate_redbull: 'Gate × RedBull F1 NFT | Xian-Hao (Harry) Liao',
     },
     en: {
       home: 'Xian-Hao (Harry) Liao | Design Portfolio',
@@ -19,6 +21,8 @@
       contact: 'Contact | Xian-Hao (Harry) Liao',
       'gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
       gate_mg: 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
+      'gate-redbull': 'Gate × RedBull Racing F1 NFT | Xian-Hao (Harry) Liao',
+      gate_redbull: 'Gate × RedBull Racing F1 NFT | Xian-Hao (Harry) Liao',
     },
   };
 
@@ -330,13 +334,25 @@
     const root = scope || document;
     const elements = root.querySelectorAll('[data-i18n-zh]');
     elements.forEach(el => {
-      cacheText(el, false);
+      // Use innerHTML mode so elements containing <em>, <strong> etc. are handled correctly
+      const useHtml = el.children.length > 0;
+      cacheText(el, useHtml);
       if (getCurrentLang() === 'zh') {
-        el.textContent = el.getAttribute('data-i18n-zh');
+        const zhText = el.getAttribute('data-i18n-zh');
+        if (useHtml) {
+          el.innerHTML = zhText;
+        } else {
+          el.textContent = zhText;
+        }
       } else {
-        const original = el.getAttribute('data-i18n-original-text');
+        const attr = useHtml ? 'data-i18n-original-html' : 'data-i18n-original-text';
+        const original = el.getAttribute(attr);
         if (original !== null) {
-          el.textContent = original;
+          if (useHtml) {
+            el.innerHTML = original;
+          } else {
+            el.textContent = original;
+          }
         }
       }
     });
@@ -367,6 +383,8 @@
       applyContact(scope);
     } else if (page === 'gate-mg' || page === 'gate_mg') {
       applyGateMg(scope);
+    } else if (page === 'gate-redbull' || page === 'gate_redbull') {
+      applyGateMg(scope); // reuses data-i18n-zh attribute pattern
     }
   }
 

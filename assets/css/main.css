@@ -1327,7 +1327,9 @@ body {
 }
 
 body.spa-gate-mg #mainContent.page-enter,
-body.spa-gate_mg #mainContent.page-enter {
+body.spa-gate_mg #mainContent.page-enter,
+body.spa-gate-redbull #mainContent.page-enter,
+body.spa-gate_redbull #mainContent.page-enter {
   animation: pageSlideUp 3s cubic-bezier(.22, .98, .28, 1) forwards;
 }
 
