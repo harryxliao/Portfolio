@@ -1,0 +1,363 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description"
+    content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta name="keywords"
+    content="Harry Liao, Xian-Hao Liao, Multimedia Designer, UX Design, Visual Design, Motion Graphics, 3D Modeling, MassArt DMI">
+  <meta name="author" content="Xian-Hao (Harry) Liao">
+  <meta name="robots" content="index, follow">
+  <title>Xian-Hao (Harry) Liao | Multimedia Design Portfolio</title>
+
+  <link rel="alternate" hreflang="x-default" href="https://harryliao.design/" />
+  <link rel="alternate" hreflang="en" href="https://harryliao.design/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://harryliao.design/zh/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harryliao.design/">
+  <meta property="og:title" content="Xian-Hao (Harry) Liao | Design Portfolio">
+  <meta property="og:description"
+    content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta property="og:image" content="https://harryliao.design/images/TB.webp">
+  <meta property="og:site_name" content="Harry Liao Portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://harryliao.design/">
+  <meta name="twitter:title" content="Xian-Hao (Harry) Liao | Design Portfolio">
+  <meta name="twitter:description"
+    content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta name="twitter:image" content="https://harryliao.design/images/TB.webp">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Xian-Hao (Harry) Liao",
+    "url": "https://harryliao.design/",
+    "jobTitle": "Multimedia Designer",
+    "alumniOf": "Massachusetts College of Art and Design",
+    "sameAs": [
+      "https://www.linkedin.com/in/xian-hao-liao/",
+      "https://www.behance.net/xianhaoliao-design",
+      "https://www.instagram.com/xianhaoliao.design/",
+      "https://www.youtube.com/@HarryLiaoVideo"
+    ]
+  }
+  </script>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="../icon.ico" type="icon">
+  <link type="image/x-icon" href="../icon.ico" rel="icon">
+  <link type="image/x-icon" href="../icon.ico" rel="shortcut icon">
+  <link type="image/x-icon" href="../icon.ico" rel="bookmark">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="preload" as="style" href="../assets/css/about.css">
+  <link rel="stylesheet" href="../assets/css/about.css">
+  <link rel="preload" as="style" href="../assets/css/work.css">
+  <link rel="stylesheet" href="../assets/css/work.css">
+  <link rel="preload" as="style" href="../assets/css/contact.css">
+  <link rel="stylesheet" href="../assets/css/contact.css">
+  <link rel="preload" as="style" href="../assets/css/gate-redbull.css">
+  <link rel="stylesheet" href="../assets/css/gate-redbull.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+  <link rel="preload" as="image" href="../images/xianhaoliao.webp">
+  <link rel="preload" as="image" href="../images/TB.webp">
+  <link rel="preload" as="image" href="../images/YB.webp">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="../assets/js/i18n.js" defer></script>
+  <script src="../assets/js/navbar.js" defer></script>
+  <script src="../assets/js/about.js" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/feature.js" defer></script>
+  <script src="../assets/js/lazy-images.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Black+Ops+One&family=League+Spartan:wght@700;800;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <script>
+    // If the URL has an SPA fragment, hide the main content immediately
+    // to avoid flashing the index content before the SPA fragment loads.
+    try {
+      const path = location.pathname.replace(/^\/+/, '').replace(/\/+$/, '');
+      const isZh = path.startsWith('zh');
+      const page = isZh ? path.replace(/^zh\/?/, '') : path;
+      if (/^(about|work|contact)$/i.test(page)) {
+        document.documentElement.classList.add('spa-loading');
+        document.body.classList.add('spa-loading');
+      }
+    } catch (e) { }
+  </script>
+
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="/" class="main-menu-link active" data-menu-key="home">• HOME</a>
+      <a href="/about" class="main-menu-link" data-menu-key="about">ABOUT</a>
+      <a href="/work" class="main-menu-link" data-menu-key="work">WORK</a>
+      <a href="/contact" class="main-menu-link" data-menu-key="contact">CONTACT</a>
+    </div>
+
+    <div class="nav-center">
+      <a href="/" class="logo-link">HARRY LIAO</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="https://www.behance.net/xianhaoliao-design" target="_blank" rel="noopener noreferrer"
+        class="social-link">Be</a>
+      <a href="https://www.linkedin.com/in/xian-hao-liao/" target="_blank" rel="noopener noreferrer"
+        class="social-link">in</a>
+      <a href="https://www.youtube.com/@HarryLiaoVideo" target="_blank" rel="noopener noreferrer"
+        class="social-link">YT</a>
+      <a href="https://www.instagram.com/xianhaoliao.design/" target="_blank" rel="noopener noreferrer"
+        class="social-link">IG</a>
+      <button class="lang-toggle desktop-lang-toggle" type="button" data-lang-toggle><span
+          class="lang-option lang-en">EN</span><span class="lang-sep">/</span><span
+          class="lang-option lang-zh">中</span></button>
+    </div>
+
+    <button class="mobile-menu-toggle" id="openMenuBtn" aria-label="Open menu">☰</button>
+    <button class="lang-toggle mobile-lang-toggle" type="button" data-lang-toggle><span
+        class="lang-option lang-en">EN</span><span class="lang-sep">/</span><span
+        class="lang-option lang-zh">中</span></button>
+  </nav>
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="menu-header">
+      <a href="/" class="logo-link">HARRY LIAO</a>
+      <div class="menu-header-actions">
+        <button class="lang-toggle overlay-lang-toggle" type="button" data-lang-toggle><span
+            class="lang-option lang-en">EN</span><span class="lang-sep">/</span><span
+            class="lang-option lang-zh">中</span></button>
+        <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">♦ CLOSE ♦</button>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <nav class="mobile-nav-links">
+      <a href="/" class="mobile-link active" data-menu-key="home">HOME</a>
+      <a href="/about" class="mobile-link" data-menu-key="about">ABOUT</a>
+      <a href="/work" class="mobile-link" data-menu-key="work">WORK</a>
+      <a href="/contact" class="mobile-link" data-menu-key="contact">CONTACT</a>
+    </nav>
+
+    <div class="menu-divider"></div>
+
+    <div class="mobile-socials">
+      <span class="arrows">&gt;&gt;</span>
+      <div class="social-icons">
+        <a href="https://www.behance.net/xianhaoliao-design" target="_blank" rel="noopener noreferrer">Be</a>
+        <a href="https://www.linkedin.com/in/xian-hao-liao/" target="_blank" rel="noopener noreferrer">in</a>
+        <a href="https://www.youtube.com/@HarryLiaoVideo" target="_blank" rel="noopener noreferrer">YT</a>
+        <a href="https://www.instagram.com/xianhaoliao.design/" target="_blank" rel="noopener noreferrer">IG</a>
+      </div>
+      <span class="arrows">&lt;&lt;</span>
+    </div>
+
+    <div class="mobile-footer-text">// Designing the next reality.</div>
+  </div>
+
+  <div id="mainContent">
+<link rel="stylesheet" href="../assets/css/cocook-app.css">
+
+<div class="cocook-app-page">
+  <div class="cocook-app-container">
+
+    <!-- Project Header -->
+    <header class="project-header">
+      <div class="project-title-area">
+        <h1>Cocook</h1>
+        <p class="subtitle" data-i18n-zh="創新的DIY烹飪平台，讓做飯不再有藉口。">
+          Innovative DIY Cooking Platform, No More Excuses For Cooking.
+        </p>
+      </div>
+
+      <!-- Metadata -->
+      <div class="project-meta-table">
+        <div class="meta-row">
+          <span class="meta-label" data-i18n-zh="類別">Medium</span>
+          <span class="meta-value" data-i18n-zh="UI/UX 設計">UI/UX Design</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label" data-i18n-zh="年份">Date</span>
+          <span class="meta-value">2023</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label" data-i18n-zh="角色">Role</span>
+          <span class="meta-value" data-i18n-zh="UI 設計師">UI Designer</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    <section class="media-block full-width">
+      <div class="image-wrapper">
+        <img src="../images/Project/cocook-01.webp" alt="Cocook App Hero Mockup" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Intro Text & Image -->
+    <section class="content-grid-2col">
+      <div class="text-section">
+        <h3 data-i18n-zh="創新的DIY烹飪平台，讓做飯不再有藉口。">Innovative DIY Cooking Platform, No More Excuses For Cooking.</h3>
+        <p data-i18n-zh="這是一個降低烹飪門檻的平台，透過提供設備齊全的 DIY 廚房租借服務，讓年輕人可以輕鬆享受料理的樂趣，並與朋友共度美好時光。">
+          A platform that lowers the boundary of cooking by renting DIY kitchen rooms with fully equipped facilities. We encourage young adults to enjoy cooking and socialize with friends without the hassle of prep and cleaning.
+        </p>
+      </div>
+      <div class="media-block">
+        <div class="image-wrapper">
+          <img src="../images/Project/cocook_life.webp" alt="Cooking lifestyle" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Logo & Role Section -->
+    <section class="content-grid-2col">
+      <div class="media-block brand-image">
+        <div class="image-wrapper">
+          <img src="../images/Project/cocook_logo_mockup.webp" alt="Cocook Logo Mockup" loading="lazy">
+        </div>
+      </div>
+      <div class="text-section">
+        <h3 data-i18n-zh="UI 設計師">UI Designer</h3>
+        <ul>
+          <li data-i18n-zh="<strong>姓名：</strong>廖先皓 (Harry)"><strong>Name:</strong> Xian-Hao (Harry) Liao</li>
+          <li data-i18n-zh="<strong>時間：</strong>2023 秋季"><strong>Date:</strong> Fall 2023</li>
+          <li data-i18n-zh="<strong>課程：</strong>UI/UX 設計"><strong>Class:</strong> UI/UX Design</li>
+          <li data-i18n-zh="<strong>工具：</strong>Figma, Illustrator, Photoshop"><strong>Tools:</strong> Figma, Illustrator, Photoshop</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section-header">
+      <p class="section-kicker" data-i18n-zh="核心問題">The Problem</p>
+      <h2 data-i18n-zh="波士頓年輕人在追求營養均衡的生活方式時面臨哪些挑戰？">What Are The Challenges Young Adults In Boston Face When Pursuing A Nutritionally Balanced Lifestyle?</h2>
+    </section>
+    
+    <div class="problem-cards-grid">
+      <div class="problem-card">
+        <div class="problem-icon">⏱️</div>
+        <h4 data-i18n-zh="時間與精力">Time &amp; Effort</h4>
+        <p data-i18n-zh="工作繁忙，準備食材和清理廚房耗時過長，讓人對下廚望而卻步。">Busy schedules make meal prep and cleanup too time-consuming, discouraging home cooking.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🍳</div>
+        <h4 data-i18n-zh="空間與設備">Space &amp; Equipment</h4>
+        <p data-i18n-zh="租屋處廚房空間狹小，且缺乏專業的烹飪設備和多樣化的調味料。">Small apartment kitchens lack space, professional equipment, and diverse ingredients.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🤝</div>
+        <h4 data-i18n-zh="社交與動力">Social &amp; Motivation</h4>
+        <p data-i18n-zh="一個人做飯缺乏樂趣，希望能有和朋友一起下廚、分享美食的社交空間。">Cooking alone lacks fun. There is a desire for social spaces to cook and share meals with friends.</p>
+      </div>
+    </div>
+
+    <!-- User Research Section -->
+    <section class="section-header">
+      <p class="section-kicker" data-i18n-zh="使用者研究">User Research</p>
+      <h2 data-i18n-zh="了解使用者情境">Understand User Scenarios</h2>
+    </section>
+
+    <!-- Vimeo Video from User Request -->
+    <section class="media-block full-width">
+      <div class="iframe-wrapper">
+        <iframe src="https://player.vimeo.com/video/988069103?autoplay=1&amp;loop=1&amp;autopause=0badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; picture-in-picture" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+      </div>
+    </section>
+
+    <!-- Key Features & Infra Section -->
+    <section class="content-grid-2col" style="margin-top: 80px;">
+      <div class="text-section">
+        <p class="section-kicker" style="margin-bottom: 8px;" data-i18n-zh="設計概念">Design Concept</p>
+        <h2 data-i18n-zh="核心功能" style="font-family: 'League Spartan', 'Anton', sans-serif; font-size: clamp(28px, 4vw, 52px); margin: 0 0 20px 0; letter-spacing: -0.02em;">Key Features</h2>
+        <ol style="padding-left: 20px; color: rgba(255, 255, 255, 0.7); line-height: 1.7; margin-bottom: 20px;">
+          <li style="margin-bottom: 12px;" data-i18n-zh="<strong>進階篩選與排序：</strong>透過地點、設施等多種條件進行客製化搜尋。"><strong>Advanced Filters and Sorting:</strong> Robust filtering by location, amenities, and more for tailored searches.</li>
+          <li style="margin-bottom: 12px;" data-i18n-zh="<strong>詳細資訊展示：</strong>使用側滑面板與可展開卡片呈現完整的詳細資訊。"><strong>Detailed Information Display:</strong> Comprehensive details using fly-out panels and expandable cards.</li>
+          <li style="margin-bottom: 12px;" data-i18n-zh="<strong>便利的料理排程：</strong>輕鬆預訂並規劃你想要烹飪的料理類型。"><strong>Easy Food Style Scheduling:</strong> Convenient option to schedule the type of cuisine you plan to cook.</li>
+        </ol>
+        <p style="font-size: 15px;" data-i18n-zh="<strong>✓ 自訂餐點計畫 &nbsp; ✓ 廚房空間預訂 &nbsp; ✓ 營養知識學習</strong>"><strong>✓ Customize Meal Plan &nbsp; ✓ Kitchen Booking &nbsp; ✓ Nutrition Knowledge</strong></p>
+      </div>
+      <div class="media-block" style="margin-bottom: 0;">
+        <div class="image-wrapper" style="background: #ffffff; padding: 24px; display: flex; justify-content: center; align-items: center;">
+          <img src="../images/Project/cocook_infra.webp" alt="Cocook App Infrastructure and Flows" loading="lazy" style="max-height: 75vh; width: auto; object-fit: contain;">
+        </div>
+      </div>
+    </section>
+
+    <!-- User Flows -->
+    <section class="section-header" style="margin-top: 80px;">
+      <p class="section-kicker" data-i18n-zh="使用者體驗">User Experience</p>
+      <h2 data-i18n-zh="使用者流程與故事板">User Flows &amp; Storyboard</h2>
+    </section>
+
+    <section class="media-block full-width">
+      <div class="image-wrapper">
+        <img src="../images/Project/cocook_storyboard.webp" alt="User Flow Storyboard 1" loading="lazy">
+      </div>
+    </section>
+
+    <section class="media-block full-width">
+      <div class="image-wrapper">
+        <img src="../images/Project/cocook_storyboard_2.webp" alt="User Flow Storyboard 2" loading="lazy">
+      </div>
+    </section>
+
+    <!-- App Platform Integration & Prototype Design -->
+    <section class="section-header" style="margin-top: 80px;">
+      <p class="section-kicker" data-i18n-zh="原型設計">Prototype Design</p>
+      <h2 data-i18n-zh="App 平台整合與原型設計">App Platform Integration &amp; Prototype Design</h2>
+    </section>
+
+    <section class="media-block full-width">
+      <div class="image-wrapper">
+        <img src="../images/Project/cocook-prototype.webp" alt="Cocook App Prototype Design" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="learn-more-section">
+      <div class="learn-more-inner">
+        <h2 class="learn-more-title" data-i18n-zh="期待與您合作！">Looking Forward To Speaking With You Soon!</h2>
+        <a href="/work" data-spa-target="work" class="learn-more-btn" id="cocookBackBtn">
+          <span data-i18n-zh="查看更多作品">See more work</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</div>
+  </div>
+  <footer class="site-footer">
+    <div class="tech-divider bottom-divider"></div>
+
+    <div class="giant-name-container">
+      <h1 class="giant-name">HARRY LIAO</h1>
+    </div>
+
+    <div class="footer-meta">
+      <div class="footer-left">©2026 ALL RIGHTS RESERVED.</div>
+      <div class="footer-right">
+        <a href="mailto:harryxliao@gmail.com">HARRYXLIAO@GMAIL.COM</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -135,23 +135,23 @@
           root.querySelectorAll('img[src], video[src], source[src], video[poster], video[data-fallback], iframe[data-fallback]').forEach(el => {
             if (el.hasAttribute('src')) {
               const srcVal = el.getAttribute('src');
-              if (srcVal && !srcVal.startsWith('http') && !srcVal.startsWith('/') && !srcVal.startsWith('.') && !srcVal.startsWith('data:')) {
+              if (srcVal && !srcVal.startsWith('http') && !srcVal.startsWith('/') && !srcVal.startsWith('data:')) {
                 el.setAttribute('src', prefix + srcVal);
               }
             }
             const posterVal = el.getAttribute('poster');
-            if (posterVal && !posterVal.startsWith('http') && !posterVal.startsWith('/') && !posterVal.startsWith('.')) {
+            if (posterVal && !posterVal.startsWith('http') && !posterVal.startsWith('/')) {
               el.setAttribute('poster', prefix + posterVal);
             }
             const fallbackVal = el.getAttribute('data-fallback');
-            if (fallbackVal && !fallbackVal.startsWith('http') && !fallbackVal.startsWith('/') && !fallbackVal.startsWith('.')) {
+            if (fallbackVal && !fallbackVal.startsWith('http') && !fallbackVal.startsWith('/')) {
               el.setAttribute('data-fallback', prefix + fallbackVal);
             }
           });
 
           root.querySelectorAll('a[href], link[href]').forEach(el => {
             const hrefVal = el.getAttribute('href');
-            if (hrefVal && !hrefVal.startsWith('http') && !hrefVal.startsWith('/') && !hrefVal.startsWith('.') && !hrefVal.startsWith('#')) {
+            if (hrefVal && !hrefVal.startsWith('http') && !hrefVal.startsWith('/') && !hrefVal.startsWith('#')) {
               el.setAttribute('href', prefix + hrefVal);
             }
           });
