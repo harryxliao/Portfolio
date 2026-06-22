@@ -1,3 +1,28 @@
+(function() {
+  const path = window.location.pathname;
+  if (path.includes('/work/') && !path.endsWith('/') && !path.endsWith('.html')) {
+    const parts = path.split('/');
+    const last = parts[parts.length - 1];
+    if (last && last !== 'work') {
+      window.history.replaceState(null, '', path + '.html' + window.location.search + window.location.hash);
+    }
+  }
+
+})();
+
+// Intercept non-navbar work links to preserve Chinese language state
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a[href^="/work/"], a[href="/work"]');
+  if (link && !link.classList.contains('main-menu-link') && !link.classList.contains('mobile-link')) {
+    const href = link.getAttribute('href');
+    const isZh = window.location.pathname.startsWith('/zh');
+    if (isZh && !href.startsWith('/zh/')) {
+      e.preventDefault();
+      window.location.href = '/zh' + href;
+    }
+  }
+});
+
 function initEmbeddedMediaFallback(scope = document) {
   if (!scope) return;
 

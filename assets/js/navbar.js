@@ -60,12 +60,16 @@ document.addEventListener("DOMContentLoaded", function() {
         page = cleanPath.startsWith('zh') ? cleanPath.replace(/^zh\/?/, '') : cleanPath;
       }
 
-      if (page === 'about' && window.openAbout) { window.openAbout(); return; }
-      if (page === 'work' && window.openWork) { window.openWork(); return; }
-      if (page === 'contact' && window.openContact) { window.openContact(); return; }
-      if (page.startsWith('work/')) { window.location.href = href; return; }
+      if (page === 'about') { if (window.openAbout) { window.openAbout(); } else { window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/about' : '/about'; } return; }
+      if (page === 'work') { if (window.openWork) { window.openWork(); } else { window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/work/' : '/work/'; } return; }
+      if (page === 'contact') { if (window.openContact) { window.openContact(); } else { window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/contact' : '/contact'; } return; }
+      if (page.startsWith('work/')) { 
+        const isZh = window.location.pathname.startsWith('/zh');
+        window.location.href = isZh ? '/zh/' + page : '/' + page; 
+        return; 
+      }
       // If desktop Home clicked, navigate to the real index page
-      if (page === '') { window.location.href = href; return; }
+      if (page === '') { window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/' : '/'; return; }
       // 其他路由仍保留預設行為（可自行改為 client-side 路由）
     });
   });
@@ -133,12 +137,16 @@ document.addEventListener("DOMContentLoaded", function() {
         page = cleanPath.startsWith('zh') ? cleanPath.replace(/^zh\/?/, '') : cleanPath;
       }
 
-      if (page === 'about' && window.openAbout) { window.openAbout(); mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
-      if (page === 'work' && window.openWork) { window.openWork(); mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
-      if (page === 'contact' && window.openContact) { window.openContact(); mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
-      if (page.startsWith('work/')) { window.location.href = href; return; }
+      if (page === 'about') { if (window.openAbout) { window.openAbout(); } else { window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/about' : '/about'; } mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
+      if (page === 'work') { if (window.openWork) { window.openWork(); } else { window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/work/' : '/work/'; } mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
+      if (page === 'contact') { if (window.openContact) { window.openContact(); } else { window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/contact' : '/contact'; } mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; return; }
+      if (page.startsWith('work/')) { 
+        const isZh = window.location.pathname.startsWith('/zh');
+        window.location.href = isZh ? '/zh/' + page : '/' + page; 
+        return; 
+      }
       // If mobile Home is clicked, always navigate to the real index page
-      if (page === '') { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; window.location.href = href; return; }
+      if (page === '') { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; window.location.href = window.location.pathname.startsWith('/zh') ? '/zh/' : '/'; return; }
 
       // 預設延遲收起選單
       setTimeout(() => {

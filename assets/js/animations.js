@@ -674,12 +674,12 @@
       const overlay = featuredCard.querySelector('.work-overlay');
       gsap.fromTo(featuredCard,
         { opacity: 0, y: 50, filter: 'blur(6px)' },
-        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.6, ease: 'power2.out', delay: 0.6 }
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power2.out', delay: 0.3 }
       );
       if (overlay) {
         gsap.fromTo(overlay,
           { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', delay: 1.2 }
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 0.6 }
         );
       }
     }
@@ -696,13 +696,13 @@
       gsap.set(workCards, { opacity: 0, y: 50, filter: 'blur(6px)' });
 
       if (isMob) {
-        // Featured card delay=0.6 + duration=1.6 → visible ~1.0s in.
-        // Start grid at 1.1s so it cleanly follows the featured card.
+        // Featured card delay=0.3 + duration=1.0.
+        // Start grid at 0.7s so it cleanly follows the featured card.
         gsap.to(workCards, {
           opacity: 1, y: 0, filter: 'blur(0px)',
-          duration: 0.7, stagger: 0.18,
+          duration: 0.6, stagger: 0.15,
           ease: 'power2.out',
-          delay: 1.1
+          delay: 0.7
         });
       } else {
         gsap.fromTo(workCards,
@@ -925,6 +925,7 @@
 
   // Initial run
   initAllHomeAnimations();
+  initProjectDetailReveals();
 
   // 語言切換後重新計算 ScrollTrigger 位置
   window.addEventListener('site-language-changed', () => {
