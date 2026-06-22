@@ -99,7 +99,7 @@
   z-index: 1;
   opacity: 1;
   filter: saturate(0.92) contrast(1.03) blur(0px);
-  transition: transform 600ms ease, opacity 1600ms ease, filter 1600ms ease;
+  transition: transform 300ms ease, opacity 300ms ease, filter 300ms ease;
 }
 
 .work-featured-card.media-pending video,
@@ -108,7 +108,7 @@
 .work-card.media-pending iframe {
   opacity: 0;
   filter: saturate(0.92) contrast(1.03) blur(10px);
-  transition: transform 600ms ease, opacity 1600ms ease, filter 1600ms ease;
+  transition: transform 300ms ease, opacity 300ms ease, filter 300ms ease;
 }
 
 .work-featured-card.media-ready video,

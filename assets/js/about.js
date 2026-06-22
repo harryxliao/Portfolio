@@ -6,11 +6,11 @@
   }
   const root = document.getElementById('mainContent');
   if (!root) {
-    window.openAbout = function () { window.location.href = '/about/'; };
-    window.openWork = function () { window.location.href = '/work/'; };
-    window.openContact = function () { window.location.href = '/contact/'; };
-    window.openGateMg = function () { window.location.href = '/gate-mg'; };
-    window.openGateRedbull = function () { window.location.href = '/gate-redbull'; };
+    window.openAbout = function () { window.location.href = '/about'; };
+    window.openWork = function () { window.location.href = '/work'; };
+    window.openContact = function () { window.location.href = '/contact'; };
+    window.openGateMg = function () { window.location.href = '/work/gate-mg'; };
+    window.openGateRedbull = function () { window.location.href = '/work/gate-redbull'; };
     window.closeSpaPage = function () { window.history.back(); };
     window.closeAbout = window.closeSpaPage;
     window.closeWork = window.closeSpaPage;
@@ -34,6 +34,12 @@
       link.addEventListener('click', (event) => {
         const target = link.getAttribute('data-spa-target');
         if (!target) return;
+        
+        // Bypass SPA for work projects, let default navigation handle it
+        if (target.startsWith('work/')) {
+          return;
+        }
+
         event.preventDefault();
         if (target === 'about') {
           loadPage('about', true);
@@ -45,10 +51,6 @@
         }
         if (target === 'contact') {
           loadPage('contact', true);
-          return;
-        }
-        if (target.startsWith('work/')) {
-          loadPage(target, true);
           return;
         }
       });
@@ -270,17 +272,14 @@
           try {
             const lang = (window.getCurrentSiteLanguage && window.getCurrentSiteLanguage()) || 'en';
             const prefix = lang === 'zh' ? '/zh' : '';
-            const isDir = pageName === 'about' || pageName === 'work' || pageName === 'contact' || pageName === '';
-            const trail = isDir ? '/' : '';
-            window.history.pushState({ spa: pageName }, '', `${prefix}/${pageName}${trail}`);
+            window.history.pushState({ spa: pageName }, '', `${prefix}/${pageName}`);
             window.dispatchEvent(new CustomEvent('spa-navigation-changed', { detail: { page: pageName, lang } }));
           } catch (e) { }
         }
       })
       .catch(err => {
         console.error(`Failed to load ${pageName}.html, falling back to full navigation`, err);
-        const isDir = pageName === 'about' || pageName === 'work' || pageName === 'contact';
-        window.location.href = `/${pageName}${isDir ? '/' : ''}`;
+        window.location.href = `/${pageName}`;
       });
   }
 
@@ -328,7 +327,7 @@
     }
 
     const state = e.state || {};
-    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact' || (state.spa && state.spa.startsWith('work/'))) {
+    if (state.spa === 'about' || state.spa === 'work' || state.spa === 'contact') {
       loadPage(state.spa, false);
     } else if (currentPage) {
       closePage(false);
@@ -338,8 +337,8 @@
   window.openAbout = function () { return loadPage('about', true); };
   window.openWork = function () { return loadPage('work', true); };
   window.openContact = function () { return loadPage('contact', true); };
-  window.openGateMg = function () { return loadPage('work/gate-mg', true); };
-  window.openGateRedbull = function () { return loadPage('work/gate-redbull', true); };
+  window.openGateMg = function () { window.location.href = '/work/gate-mg'; };
+  window.openGateRedbull = function () { window.location.href = '/work/gate-redbull'; };
   window.loadPage = loadPage;
   window.closeSpaPage = closePage;
   window.closeAbout = closePage;
@@ -354,7 +353,7 @@
     const isZh = path.startsWith('zh');
     const page = (isZh ? path.replace(/^zh\/?/, '') : path).toLowerCase();
 
-    if (page === 'about' || page === 'work' || page === 'contact' || page.startsWith('work/')) {
+    if (page === 'about' || page === 'work' || page === 'contact') {
       if (document.body) {
         document.body.dataset.sitePage = page;
       }
