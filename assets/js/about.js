@@ -6,9 +6,9 @@
   }
   const root = document.getElementById('mainContent');
   if (!root) {
-    window.openAbout = function () { window.location.href = '/about'; };
-    window.openWork = function () { window.location.href = '/work'; };
-    window.openContact = function () { window.location.href = '/contact'; };
+    window.openAbout = function () { window.location.href = '/about/'; };
+    window.openWork = function () { window.location.href = '/work/'; };
+    window.openContact = function () { window.location.href = '/contact/'; };
     window.openGateMg = function () { window.location.href = '/gate-mg'; };
     window.openGateRedbull = function () { window.location.href = '/gate-redbull'; };
     window.closeSpaPage = function () { window.history.back(); };
@@ -270,14 +270,17 @@
           try {
             const lang = (window.getCurrentSiteLanguage && window.getCurrentSiteLanguage()) || 'en';
             const prefix = lang === 'zh' ? '/zh' : '';
-            window.history.pushState({ spa: pageName }, '', `${prefix}/${pageName}`);
+            const isDir = pageName === 'about' || pageName === 'work' || pageName === 'contact' || pageName === '';
+            const trail = isDir ? '/' : '';
+            window.history.pushState({ spa: pageName }, '', `${prefix}/${pageName}${trail}`);
             window.dispatchEvent(new CustomEvent('spa-navigation-changed', { detail: { page: pageName, lang } }));
           } catch (e) { }
         }
       })
       .catch(err => {
         console.error(`Failed to load ${pageName}.html, falling back to full navigation`, err);
-        window.location.href = `/${pageName}`;
+        const isDir = pageName === 'about' || pageName === 'work' || pageName === 'contact';
+        window.location.href = `/${pageName}${isDir ? '/' : ''}`;
       });
   }
 

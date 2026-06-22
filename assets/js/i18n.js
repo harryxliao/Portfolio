@@ -411,10 +411,12 @@
 
     if (isZh) {
       // Go to English
-      window.location.href = '/' + page;
+      const isDir = page === 'about' || page === 'work' || page === 'contact';
+      window.location.href = '/' + page + (isDir && page !== '' ? '/' : '');
     } else {
       // Go to Chinese
-      window.location.href = '/zh/' + page;
+      const isDir = page === 'about' || page === 'work' || page === 'contact';
+      window.location.href = '/zh/' + (page ? page + (isDir ? '/' : '') : '');
     }
     return isZh ? 'en' : 'zh';
   }
