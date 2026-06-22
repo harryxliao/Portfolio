@@ -11,6 +11,8 @@
       contact: '聯絡 Harry | Xian-Hao (Harry) Liao',
       'work/gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
       'work/gate-redbull': 'Gate × RedBull F1 NFT | Xian-Hao (Harry) Liao',
+      'work/thesisbook': 'Dream Reality — MFA 碩士論文書 | Xian-Hao (Harry) Liao',
+      'work/bjs-intern': 'BJ\'s 暑期實習設計 | Xian-Hao (Harry) Liao',
     },
     en: {
       home: 'Xian-Hao (Harry) Liao | Design Portfolio',
@@ -19,6 +21,8 @@
       contact: 'Contact | Xian-Hao (Harry) Liao',
       'work/gate-mg': 'Gate Motion Graphics | Xian-Hao (Harry) Liao',
       'work/gate-redbull': 'Gate × RedBull Racing F1 NFT | Xian-Hao (Harry) Liao',
+      'work/thesisbook': 'Dream Reality — MFA Thesis Book | Xian-Hao (Harry) Liao',
+      'work/bjs-intern': 'BJ\'s Wholesale Club Internship | Xian-Hao (Harry) Liao',
     },
   };
 

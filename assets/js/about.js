@@ -99,12 +99,19 @@
     }
 
     const scriptEl = document.querySelector('script[src*="about.js"]');
-    const scriptSrc = scriptEl ? scriptEl.getAttribute('src') : '';
-    const match = scriptSrc.match(/^(.*)assets\/js\/about\.js/);
-    const prefix = match ? match[1] : '';
+    let absolutePrefix = '/';
+    if (scriptEl && scriptEl.src) {
+      try {
+        const url = new URL(scriptEl.src, window.location.href);
+        const match = url.pathname.match(/^(.*)\/assets\/js\/about\.js/i);
+        if (match) {
+          absolutePrefix = match[1] + '/';
+        }
+      } catch (e) {}
+    }
 
     const isWorkProject = pageName.startsWith('work/');
-    const fetchUrl = isWorkProject ? `${prefix}${pageName}.html` : `${prefix}${pageName}-content.html`;
+    const fetchUrl = isWorkProject ? `${absolutePrefix}${pageName}.html` : `${absolutePrefix}${pageName}-content.html`;
 
     return fetch(fetchUrl, { cache: 'no-store' })
       .then(r => r.text())
@@ -130,29 +137,29 @@
         root.classList.remove('page-enter');
         root.innerHTML = contentHtml;
 
-        // Rewrite relative paths in the loaded fragment using the page depth prefix
-        if (prefix) {
+        // Rewrite relative paths in the loaded fragment using the absolute prefix
+        if (absolutePrefix) {
           root.querySelectorAll('img[src], video[src], source[src], video[poster], video[data-fallback], iframe[data-fallback]').forEach(el => {
             if (el.hasAttribute('src')) {
               const srcVal = el.getAttribute('src');
-              if (srcVal && !srcVal.startsWith('http') && !srcVal.startsWith('/') && !srcVal.startsWith('data:')) {
-                el.setAttribute('src', prefix + srcVal);
+              if (srcVal && !srcVal.startsWith('http') && !srcVal.startsWith('data:')) {
+                try { el.setAttribute('src', new URL(srcVal, window.location.origin + absolutePrefix).pathname); } catch(e){}
               }
             }
             const posterVal = el.getAttribute('poster');
-            if (posterVal && !posterVal.startsWith('http') && !posterVal.startsWith('/')) {
-              el.setAttribute('poster', prefix + posterVal);
+            if (posterVal && !posterVal.startsWith('http') && !posterVal.startsWith('data:')) {
+              try { el.setAttribute('poster', new URL(posterVal, window.location.origin + absolutePrefix).pathname); } catch(e){}
             }
             const fallbackVal = el.getAttribute('data-fallback');
-            if (fallbackVal && !fallbackVal.startsWith('http') && !fallbackVal.startsWith('/')) {
-              el.setAttribute('data-fallback', prefix + fallbackVal);
+            if (fallbackVal && !fallbackVal.startsWith('http') && !fallbackVal.startsWith('data:')) {
+              try { el.setAttribute('data-fallback', new URL(fallbackVal, window.location.origin + absolutePrefix).pathname); } catch(e){}
             }
           });
 
           root.querySelectorAll('a[href], link[href]').forEach(el => {
             const hrefVal = el.getAttribute('href');
-            if (hrefVal && !hrefVal.startsWith('http') && !hrefVal.startsWith('/') && !hrefVal.startsWith('#')) {
-              el.setAttribute('href', prefix + hrefVal);
+            if (hrefVal && !hrefVal.startsWith('http') && !hrefVal.startsWith('mailto:') && !hrefVal.startsWith('javascript:') && !hrefVal.startsWith('#')) {
+              try { el.setAttribute('href', new URL(hrefVal, window.location.origin + absolutePrefix).pathname); } catch(e){}
             }
           });
         }
@@ -185,9 +192,9 @@
         requestAnimationFrame(() => root.classList.add('page-enter'));
         // Reset scroll position to top when switching pages
         const resetScroll = () => {
-          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-          document.documentElement.scrollTop = 0;
-          document.body.scrollTop = 0;
+          window.scrollTo(0, 0);
+          if (document.documentElement) document.documentElement.scrollTop = 0;
+          if (document.body) document.body.scrollTop = 0;
         };
         resetScroll();
         requestAnimationFrame(() => {
@@ -195,6 +202,7 @@
           setTimeout(resetScroll, 10);
           setTimeout(resetScroll, 50);
           setTimeout(resetScroll, 100);
+          setTimeout(resetScroll, 300); // extra wait for heavy pages
         });
         // We no longer reset scroll on animationend because long animations (like 3s for gate projects) 
         // will snap the user back to the top if they've already started scrolling.
@@ -215,9 +223,9 @@
           waitForFragmentStyles(root, 3000).then(function () {
             requestAnimationFrame(function () {
               try {
-                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                document.documentElement.scrollTop = 0;
-                document.body.scrollTop = 0;
+                window.scrollTo(0, 0);
+                if (document.documentElement) document.documentElement.scrollTop = 0;
+                if (document.body) document.body.scrollTop = 0;
                 document.documentElement.classList.remove('spa-loading');
                 document.body.classList.remove('spa-loading');
               } catch (e) { }

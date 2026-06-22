@@ -851,6 +851,21 @@
   }
 
 
+  function initProjectDetailReveals() {
+    const reveals = document.querySelectorAll('.pd-reveal');
+    if (!reveals.length) return;
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function (el) { observer.observe(el); });
+  }
+
   // ═══════════════════════════════════════════
   //  SPA 頁面動畫入口（供 about.js 調用）
   // ═══════════════════════════════════════════
@@ -865,6 +880,8 @@
       initWorkAnimations();
     } else if (pageName === 'contact') {
       initContactAnimations();
+    } else if (pageName.startsWith('work/')) {
+      initProjectDetailReveals();
     }
 
     // Recalculate positions after DOM settles AND after the page-enter

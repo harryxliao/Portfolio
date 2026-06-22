@@ -1,13 +1,13 @@
-/* Cocook App Page Styles */
+/* For-U Page Styles */
 
-.cocook-app-page {
+.for-u-page {
   background: #040404;
   color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
-.cocook-app-container {
+.for-u-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: calc(100px + env(safe-area-inset-top)) 24px 100px;
@@ -164,6 +164,17 @@
   align-items: center;
 }
 
+.image-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.image-grid-2col .image-wrapper {
+  margin-bottom: 0;
+}
+
 .text-section {
   display: flex;
   flex-direction: column;
@@ -208,83 +219,49 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* Problem Cards Grid */
-.problem-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 80px;
-}
-
-.problem-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 40px 30px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.problem-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.problem-icon {
-  font-size: 40px;
-  margin-bottom: 24px;
-}
-
-.problem-card h4 {
-  font-family: 'League Spartan', 'Anton', sans-serif;
-  font-size: 22px;
-  margin: 0 0 16px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.problem-card p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
+.thanks-team-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
 }
 
-/* User Research Scenarios */
-.scenarios-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 40px;
+.thanks-team-list li {
+  margin-bottom: 16px;
 }
 
-.scenario-card {
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.thanks-team-list strong {
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 4px;
 }
-.scenario-card span {
+
+.thanks-team-list span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+
+.project-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  display: block;
-  margin-top: 12px;
-}
-.scenario-icon {
-  font-size: 24px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* Branding specifics */
-.brand-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.brand-image img {
-  width: 100%;
-  border-radius: 0;
-}
 
 /* Footer Section */
 
@@ -296,12 +273,11 @@
     gap: 40px;
   }
   
-  .problem-cards-grid,
-  .scenarios-grid {
+  .image-grid-2col {
     grid-template-columns: 1fr;
   }
   
-  .cocook-app-container {
+  .for-u-container {
     padding: calc(80px + env(safe-area-inset-top)) 20px 80px;
   }
 }
