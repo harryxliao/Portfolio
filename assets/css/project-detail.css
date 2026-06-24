@@ -799,7 +799,7 @@
 .pd-spread-stack {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: clamp(20px, 4vw, 60px);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -1036,3 +1036,618 @@
 
   .pd-thanks-text { font-size: 11px; letter-spacing: 1px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   20. UTILITY CLASSES
+   Replace common inline styles across project pages
+   ═══════════════════════════════════════════════════════ */
+
+/* margin-bottom: 0 on .media-block */
+.media-block--flush { margin-bottom: 0; }
+
+/* margin-top: 40px on .learn-more-section */
+.learn-more-section--spaced { margin-top: 40px; }
+
+/* Video container: position:relative; background:#0d0d0d; border + overflow */
+.media-block--video {
+  position: relative;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+/* Full-width block video */
+.block-video {
+  width: 100%;
+  display: block;
+}
+
+/* Block video with max-height hero constraint */
+.block-video--hero {
+  width: 100%;
+  display: block;
+  max-height: 700px;
+  object-fit: cover;
+}
+
+/* Transparent image wrapper (no bg, no border) */
+.image-wrapper--transparent {
+  background: transparent;
+  border: none;
+}
+
+/* Tall contained image (e.g. DMI full-page screenshot) */
+.img--contained-tall {
+  width: 100%;
+  height: 75vh;
+  object-fit: contain;
+}
+
+/* Section header spacing variants */
+.section-header--mt-lg { margin-top: 80px; }
+.section-header--mt-md { margin-top: 60px; }
+.section-header--spaced { margin-top: 60px; margin-bottom: 40px; }
+.section-header--spaced-sm { margin-top: 40px; margin-bottom: 40px; }
+
+/* Section header description paragraph */
+.section-header-desc {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 800px;
+  margin: 20px auto 0;
+}
+
+/* Impact number inline suffix (e.g. "453K+") */
+.impact-suffix {
+  font-size: 0.5em;
+  vertical-align: middle;
+}
+
+/* Video title caption */
+.video-title--subtle {
+  font-size: 0.85em;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* pd-video-showcase flush variant (no border-top, no margin-top, reduced padding) */
+.pd-video-showcase--flush {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+/* content-grid-2col spacing variant */
+.content-grid-2col--mt-lg { margin-top: 80px; }
+
+/* Section kicker with reduced margin */
+.section-kicker--tight { margin-bottom: 8px; }
+
+/* ═══════════════════════════════════════════════════════
+   21. FOR-U — Team Credits List
+   ═══════════════════════════════════════════════════════ */
+.credits-list {
+  list-style: none;
+  padding: 0;
+}
+
+.credits-list li {
+  margin-bottom: 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.credits-list li:last-child { margin-bottom: 0; }
+
+.credits-list strong {
+  color: #fff;
+  display: block;
+}
+
+.credits-list span {
+  display: block;
+}
+
+.credits-list .credits-check {
+  color: #fff;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   22. DMI PAGE — Extracted from DMI.html <style>
+   ═══════════════════════════════════════════════════════ */
+.dmi-role-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.dmi-role-list li {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dmi-role-list li::before {
+  content: '▸';
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+}
+
+/* Before / After redesign comparison */
+.dmi-comparison { margin-bottom: 60px; }
+
+.dmi-comparison-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.dmi-comparison-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.dmi-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dmi-comparison-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dmi-comparison-col .image-wrapper { margin-bottom: 0; }
+
+/* Logo ideation grid */
+.dmi-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 60px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.dmi-logo-grid .image-wrapper {
+  margin-bottom: 0;
+  aspect-ratio: 1;
+  background: transparent;
+  border: none;
+}
+
+.dmi-logo-grid .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dmi-quote-banner {
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 60px;
+}
+
+.dmi-quote-banner h2 {
+  font-family: 'League Spartan', 'Anton', sans-serif;
+  font-size: clamp(22px, 4vw, 44px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+@media (max-width: 900px) {
+  .dmi-comparison-header,
+  .dmi-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  .dmi-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .dmi-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   23. ARCCSRL PAGE — Extracted from ARCCSRL-Robotic-Limb.html <style>
+   ═══════════════════════════════════════════════════════ */
+.arc-video-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.arc-video-wrapper {
+  position: relative;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.arc-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-height: 480px;
+}
+
+.arc-video-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.6);
+  padding: 4px 8px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.arc-full-video {
+  position: relative;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.arc-full-video video {
+  width: 100%;
+  display: block;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+.arc-video-duration {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.6);
+  padding: 4px 10px;
+  letter-spacing: 1px;
+}
+
+.arc-role-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.arc-role-list li {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.arc-role-list li::before {
+  content: '▶';
+  color: rgba(255,255,255,0.4);
+  font-size: 9px;
+}
+
+.arc-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: start;
+}
+
+.arc-result-item h4 {
+  font-family: 'League Spartan', 'Anton', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.arc-result-item p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+
+.arc-image-grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.arc-image-grid-4col .image-wrapper {
+  margin-bottom: 0;
+  aspect-ratio: 1;
+}
+
+.arc-image-grid-4col .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .arc-video-pair,
+  .arc-results-grid {
+    grid-template-columns: 1fr;
+  }
+  .arc-image-grid-4col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .arc-image-grid-4col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   24. ABC DESIGN PAGE — Extracted from ABC-Design.html <style>
+   ═══════════════════════════════════════════════════════ */
+.abc-video-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.abc-video-item {
+  position: relative;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  aspect-ratio: 9/16;
+}
+
+.abc-video-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.abc-video-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.abc-image-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 60px;
+}
+
+.abc-image-mosaic .image-wrapper {
+  margin-bottom: 0;
+  aspect-ratio: 1;
+}
+
+.abc-image-mosaic .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.abc-wide-image { margin-bottom: 60px; }
+
+.abc-wide-image .image-wrapper img {
+  width: 100%;
+  height: auto;
+}
+
+.abc-banner-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.abc-banner-pair .image-wrapper { margin-bottom: 0; }
+
+.abc-role-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.abc-role-list li {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.abc-role-list li::before {
+  content: '☑';
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+}
+
+.abc-links-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.abc-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.abc-link:hover { color: #fff; }
+
+@media (max-width: 900px) {
+  .abc-video-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .abc-image-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .abc-banner-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .abc-video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   25. COCOOK PAGE — Insight & Feature Sections
+   ═══════════════════════════════════════════════════════ */
+.ck-insight-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.ck-insight-tag-wrap { margin-bottom: 16px; }
+
+.ck-insight-heading {
+  font-family: 'League Spartan', 'Anton', sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+}
+
+.ck-body-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.ck-body-text--emphasis {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.ck-feature-list {
+  padding-left: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+.ck-feature-list li { margin-bottom: 8px; }
+
+.ck-ordered-list {
+  padding-left: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.ck-ordered-list li { margin-bottom: 12px; }
+
+.ck-check-text { font-size: 15px; }
+
+/* Canvas image wrapper (light bg for diagrams) */
+.image-wrapper--canvas {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Infra image wrapper (white bg for diagrams) */
+.image-wrapper--infra {
+  background: #ffffff;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.img--contained-infra {
+  max-height: 75vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Prototype section header */
+.section-header--prototype {
+  margin-top: 80px;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ck-proto-desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.ck-insight-tag-wrap--lg { margin-bottom: 20px; }

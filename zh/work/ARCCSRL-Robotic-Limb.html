@@ -1,4 +1,4 @@
-<html lang="zh-Hant">
+﻿<html lang="zh-Hant">
 
 <head>
   <meta charset="UTF-8">
@@ -81,154 +81,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Black+Ops+One&family=League+Spartan:wght@700;800;900&display=swap"
     rel="stylesheet">
-
-  <style>
-    /* ARCCSRL page extra styles */
-    .arc-video-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 60px;
-    }
-
-    .arc-video-wrapper {
-      position: relative;
-      background: #0d0d0d;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      overflow: hidden;
-    }
-
-    .arc-video-wrapper video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      max-height: 480px;
-    }
-
-    .arc-video-label {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: rgba(255, 255, 255, 0.7);
-      background: rgba(0, 0, 0, 0.6);
-      padding: 4px 8px;
-      text-transform: uppercase;
-    }
-
-    .arc-full-video {
-      position: relative;
-      background: #0d0d0d;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      overflow: hidden;
-      margin-bottom: 60px;
-    }
-
-    .arc-full-video video {
-      width: 100%;
-      display: block;
-      max-height: 600px;
-      object-fit: cover;
-    }
-
-    .arc-video-duration {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.8);
-      background: rgba(0, 0, 0, 0.6);
-      padding: 4px 10px;
-      letter-spacing: 1px;
-    }
-
-    .arc-role-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 16px 0;
-    }
-
-    .arc-role-list li {
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.7);
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .arc-role-list li::before {
-      content: '▶';
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 9px;
-    }
-
-    .arc-results-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 60px;
-      align-items: start;
-    }
-
-    .arc-result-item h4 {
-      font-family: 'League Spartan', 'Anton', sans-serif;
-      font-size: 16px;
-      color: #fff;
-      margin: 0 0 8px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .arc-result-item p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.6);
-      margin: 0;
-    }
-
-    .arc-image-grid-4col {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 60px;
-    }
-
-    .arc-image-grid-4col .image-wrapper {
-      margin-bottom: 0;
-      aspect-ratio: 1;
-    }
-
-    .arc-image-grid-4col .image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    @media (max-width: 900px) {
-
-      .arc-video-pair,
-      .arc-results-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .arc-image-grid-4col {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .arc-image-grid-4col {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -354,9 +206,9 @@
         <!-- Hero Video -->
         <section class="media-block full-width"
           style="position:relative; background:#0d0d0d; border: 1px solid rgba(255,255,255,0.05); overflow:hidden;">
-          <div class="arc-video-label" style="z-index: 2;">Demo Footage</div>
+          <div class="arc-video-label">Demo Footage</div>
           <video autoplay muted loop playsinline
-            style="width:100%; display:block; max-height: 700px; object-fit: cover;">
+            class="block-video--hero">
             <source src="../../images/Project/ARCCSRL-Robotic-Limb/Golden_robotic_arm.mp4" type="video/mp4">
           </video>
         </section>
@@ -378,7 +230,7 @@
               <li data-i18n-zh="5 個月的研究歷程">5 Months of Research</li>
             </ul>
           </div>
-          <div class="media-block" style="margin-bottom: 0;">
+          <div class="media-block media-block--flush">
             <div class="image-wrapper">
               <img src="../../images/Project/ARCCSRL-Robotic-Limb/MIT (2).webp" alt="MIT Media Lab Research Team"
                 loading="lazy">
@@ -388,7 +240,7 @@
 
         <!-- AR x Robotic Limb Section -->
         <section class="content-grid-2col">
-          <div class="media-block" style="margin-bottom: 0;">
+          <div class="media-block media-block--flush">
             <div class="image-wrapper">
               <img src="../../images/Project/ARCCSRL-Robotic-Limb/HoloLens Device Mockup.webp" alt="HoloLens AR Mockup"
                 loading="lazy">
@@ -413,7 +265,7 @@
         </section>
 
         <!-- Quote Banner -->
-        <section class="section-header" style="margin-top: 60px; margin-bottom: 40px;">
+        <section class="section-header section-header--spaced">
           <h2 data-i18n-zh="「用眼神就能移動物體！」">&quot;You Can Move Things By Just Looking At It!&quot;</h2>
         </section>
 
@@ -430,7 +282,7 @@
         </div>
 
         <!-- User Testing Quote Banner -->
-        <section class="section-header" style="margin-top: 40px; margin-bottom: 40px;">
+        <section class="section-header section-header--spaced-sm">
           <h2 data-i18n-zh="「我們進行了 22 個使用者測試！」">&quot;We Conducted 22 User Testing Protocol&quot;</h2>
         </section>
 
@@ -461,7 +313,7 @@
               MIT.
             </p>
           </div>
-          <div class="media-block" style="margin-bottom: 0;">
+          <div class="media-block media-block--flush">
             <div class="image-wrapper">
               <img src="../../images/Project/ARCCSRL-Robotic-Limb/CITI Research.webp" alt="CITI Research Certificate"
                 loading="lazy">
@@ -487,7 +339,7 @@
         </div>
 
         <!-- Footer CTA -->
-        <section class="learn-more-section" style="margin-top: 40px;">
+        <section class="learn-more-section learn-more-section--spaced">
           <div class="learn-more-inner">
             <h2 class="learn-more-title" data-i18n-zh="期待很快與您對話！">Looking Forward To Speaking With You Soon!</h2>
             <a href="/zh/work" data-spa-target="work" class="learn-more-btn">

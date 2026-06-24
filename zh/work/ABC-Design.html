@@ -1,4 +1,4 @@
-<html lang="zh-Hant">
+﻿<html lang="zh-Hant">
 
 <head>
   <meta charset="UTF-8">
@@ -83,146 +83,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Black+Ops+One&family=League+Spartan:wght@700;800;900&display=swap"
     rel="stylesheet">
-
-  <style>
-    /* ABC Design page extra styles */
-    .abc-video-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      margin-bottom: 60px;
-    }
-
-    .abc-video-item {
-      position: relative;
-      background: #0d0d0d;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      overflow: hidden;
-      aspect-ratio: 9/16;
-    }
-
-    .abc-video-item video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .abc-video-label {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,0.6);
-      background: rgba(0,0,0,0.5);
-      padding: 4px 8px;
-      text-transform: uppercase;
-    }
-
-    .abc-image-mosaic {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 60px;
-    }
-
-    .abc-image-mosaic .image-wrapper {
-      margin-bottom: 0;
-      aspect-ratio: 1;
-    }
-
-    .abc-image-mosaic .image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .abc-wide-image {
-      margin-bottom: 60px;
-    }
-
-    .abc-wide-image .image-wrapper img {
-      width: 100%;
-      height: auto;
-    }
-
-    .abc-banner-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 60px;
-    }
-
-    .abc-banner-pair .image-wrapper {
-      margin-bottom: 0;
-    }
-
-    .abc-role-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 16px 0;
-    }
-
-    .abc-role-list li {
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .abc-role-list li::before {
-      content: '☑';
-      color: rgba(255,255,255,0.5);
-      font-size: 12px;
-    }
-
-    .abc-links-row {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-
-    .abc-link {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-
-    .abc-link:hover {
-      color: #fff;
-    }
-
-    @media (max-width: 900px) {
-      .abc-video-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .abc-image-mosaic {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .abc-banner-pair {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .abc-video-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -372,7 +232,7 @@
               </a>
             </div>
           </div>
-          <div class="media-block" style="margin-bottom: 0;">
+          <div class="media-block media-block--flush">
             <div class="image-wrapper">
               <img src="../../images/Project/ABC Design/ABC Design.webp" alt="ABC Design Logo" loading="lazy">
             </div>
@@ -381,7 +241,7 @@
 
         <!-- Trade Show / Exhibition -->
         <section class="content-grid-2col">
-          <div class="media-block" style="margin-bottom: 0;">
+          <div class="media-block media-block--flush">
             <div class="image-wrapper">
               <img src="../../images/Project/ABC Design/ABC Design Banner (2).webp" alt="ABC Design Exhibition Booth" loading="lazy">
             </div>
@@ -404,9 +264,9 @@
         </section>
 
         <!-- Short Videos Section Header -->
-        <section class="section-header" style="margin-top: 60px;">
+        <section class="section-header section-header--mt-md">
           <h2 data-i18n-zh="「短影音作品」">&quot;Short Videos&quot;</h2>
-          <p style="color: rgba(255, 255, 255, 0.7); max-width: 800px; margin: 20px auto 0;"
+          <p class="section-header-desc"
             data-i18n-zh="以下是 Harry 為 ABC Design 旗下品牌製作的社群短影音，分別用於 Instagram Reels 及各社群平台推廣。">
             Short-form video content produced for ABC Design's brands, created for Instagram Reels and social media
             promotion across multiple platforms.
@@ -448,9 +308,9 @@
         </div>
 
         <!-- Image Gallery — Brand Assets -->
-        <section class="section-header" style="margin-top: 40px;">
+        <section class="section-header section-header--spaced-sm">
           <h2 data-i18n-zh="「品牌視覺設計」">&quot;Brand Visual Design&quot;</h2>
-          <p style="color: rgba(255, 255, 255, 0.7); max-width: 800px; margin: 20px auto 0;"
+          <p class="section-header-desc"
             data-i18n-zh="以下為 Harry 在 ABC Design 期間所設計的品牌視覺素材，涵蓋產品圖形、社群貼文、以及行銷物料。">
             Brand visual materials designed by Harry at ABC Design, covering product graphics, social media posts, and
             marketing collateral.
@@ -494,7 +354,7 @@
         </div>
 
         <!-- Footer CTA -->
-        <section class="learn-more-section" style="margin-top: 40px;">
+        <section class="learn-more-section learn-more-section--spaced">
           <div class="learn-more-inner">
             <h2 class="learn-more-title" data-i18n-zh="期待很快與您對話！">Looking Forward To Speaking With You Soon!</h2>
             <a href="/zh/work" data-spa-target="work" class="learn-more-btn">
