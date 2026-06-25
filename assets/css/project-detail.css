@@ -1421,6 +1421,16 @@
 /* ═══════════════════════════════════════════════════════
    24. ABC DESIGN PAGE — Extracted from ABC-Design.html <style>
    ═══════════════════════════════════════════════════════ */
+.abc-intro-logo {
+  padding: 0 40px;
+}
+
+@media (max-width: 900px) {
+  .abc-intro-logo {
+    padding: 0 20px;
+  }
+}
+
 .abc-video-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
