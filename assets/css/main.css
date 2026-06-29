@@ -2518,7 +2518,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .swiper-slide {
-  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
   opacity: 1;
   /* 保持圖片亮著不變黑 */
   display: flex;

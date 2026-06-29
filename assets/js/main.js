@@ -17,8 +17,12 @@ document.addEventListener('click', function(e) {
     const href = link.getAttribute('href');
     const isZh = window.location.pathname.startsWith('/zh');
     if (isZh && !href.startsWith('/zh/')) {
-      e.preventDefault();
-      window.location.href = '/zh' + href;
+      if (link.getAttribute('target') === '_blank') {
+        link.setAttribute('href', '/zh' + href);
+      } else {
+        e.preventDefault();
+        window.location.href = '/zh' + href;
+      }
     }
   }
 });
