@@ -360,7 +360,7 @@ const portfolioItems = [
   {
     edition: "/ ISBN 9798881411671",
     title: "DREAM REALITY",
-    projectUrl: "https://www.behance.net/gallery/202521069/MFA-Thesis-Book-Slides-Dream-Reality",
+    projectUrl: "/work/thesisbook.html",
     image: "images/TB.webp",
     description: "Every day, we experience two realities. The first is experienced when we are awake. The second is experienced when we are asleep, dreaming. Dreams are often viewed as experiences that are out of our control. For me, this is not the case. My thesis is an exploration into the unique realm of lucid dreaming, a state where the dreamer is aware they are dreaming. As a result of this awareness, the dreamer has the ability to influence their own dream narrative.",
     zhDescription: "每天，我們經歷兩種現實：清醒時的現實與睡夢中的現實。夢境常被視為不可控的體驗，但我並不這麼認為。我的論文探索『清醒夢』的特殊領域——夢者在夢中意識到自己正在做夢，因而能以此意識影響夢境敘事。",
@@ -389,6 +389,7 @@ const portfolioImageCache = new Map();
 
 const els = {
   image: document.getElementById('artwork-img'),
+  imageLink: document.getElementById('artwork-link'),
   edition: document.getElementById('edition-text'),
   title: document.getElementById('title-text'),
   desc: document.getElementById('desc-text'),
@@ -493,6 +494,9 @@ function updateUIWithAnimation() {
   const fullSrc = featurePrefix + item.image;
   if (els.image) {
     els.image.src = fullSrc;
+  }
+  if (els.imageLink && item.projectUrl) {
+    els.imageLink.href = item.projectUrl;
   }
 
   const cachedImage = portfolioImageCache.get(fullSrc);
