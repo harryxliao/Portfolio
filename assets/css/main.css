@@ -1440,6 +1440,8 @@ body.spa-gate_redbull #mainContent.page-enter {
   /* 補償 padding 讓左側視覺切齊 */
   transition: all 0.3s ease;
   background-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* =========================================
@@ -1549,8 +1551,9 @@ body.spa-gate_redbull #mainContent.page-enter {
   grid-template-rows: 1fr;
 }
 
-.accordion-item.active .full-text {
+.accordion-item.active .item-content-col .full-text {
   opacity: 1;
+  color: #999;
 }
 
 .accordion-item.active .icon-box::before {
@@ -1594,12 +1597,16 @@ body.spa-gate_redbull #mainContent.page-enter {
   }
 
   .item-title-col {
-    width: 100%;
+    display: block;
+    width: calc(100% - 80px);
     margin-bottom: 10px;
+    padding-right: 0;
+    padding-left: 20px;
   }
 
   .title-text {
-    margin-left: 0;
+    margin-left: -8px;
+    display: inline;
   }
 
   .item-icon-col {

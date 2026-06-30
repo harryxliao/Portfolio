@@ -69,19 +69,41 @@
   /**
    * 將元素文字拆分成單獨的 <span class="char">，
    * 讓每個字母都能獨立做 transform 動畫。
+   * 保留 <br> 與 <span> 等既有子元素。
    */
   function splitTextToChars(el) {
     // 清除前次殘留
     unwrapAnimSpans(el);
     const text = el.textContent;
     el.setAttribute('aria-label', text);
+    // Collect child nodes before clearing
+    var nodes = Array.from(el.childNodes);
     el.innerHTML = '';
-    text.split('').forEach(c => {
-      const span = document.createElement('span');
-      span.className = 'char';
-      span.setAttribute('aria-hidden', 'true');
-      span.textContent = c === ' ' ? '\u00A0' : c;
-      el.appendChild(span);
+    nodes.forEach(function(node) {
+      if (node.nodeType === 1 && node.tagName === 'BR') {
+        // Preserve <br> elements
+        el.appendChild(document.createElement('br'));
+      } else if (node.nodeType === 1) {
+        // For inline elements like <span class="accent">, wrap their text in chars
+        var innerText = node.textContent;
+        innerText.split('').forEach(function(c) {
+          var span = document.createElement('span');
+          span.className = 'char';
+          span.setAttribute('aria-hidden', 'true');
+          if (node.className) span.classList.add(node.className);
+          span.textContent = c === ' ' ? '\u00A0' : c;
+          el.appendChild(span);
+        });
+      } else if (node.nodeType === 3) {
+        // Text node — split into chars
+        node.textContent.split('').forEach(function(c) {
+          var span = document.createElement('span');
+          span.className = 'char';
+          span.setAttribute('aria-hidden', 'true');
+          span.textContent = c === ' ' ? '\u00A0' : c;
+          el.appendChild(span);
+        });
+      }
     });
     return el.querySelectorAll('.char');
   }
@@ -866,13 +888,556 @@
     reveals.forEach(function (el) { observer.observe(el); });
   }
 
+
+  // ═══════════════════════════════════════════
+  //  作品頁面 GSAP 轉場動畫
+  //  適用所有 /work/* 子頁面
+  // ═══════════════════════════════════════════
+
+  function initProjectPageAnimations() {
+    // ─── 偵測是否在作品子頁面 ───────────────────────────
+    const isForULayout   = !!document.querySelector('.for-u-page, .gate-mg-page, .gate-redbull-page');
+    const isPdLayout     = !!document.querySelector('.project-detail-page');
+    const isCCubeLayout  = !!document.querySelector('.c-cube-page');
+    const isCocookLayout = !!document.querySelector('.cocook-app-page');
+    const isProjectPage  = isForULayout || isPdLayout || isCCubeLayout || isCocookLayout;
+    if (!isProjectPage) return;
+
+    // ─────────────────────────────────────────────────────
+    //  0. 頁面進場：黑色遠罩收起 transition overlay
+    // ─────────────────────────────────────────────────────
+    let overlay = document.getElementById('page-transition-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'page-transition-overlay';
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:9990;background:#000;pointer-events:none;transform-origin:top center';
+      document.body.appendChild(overlay);
+      gsap.fromTo(overlay,
+        { scaleY: 1 },
+        {
+          scaleY: 0, duration: 0.75, ease: 'power3.inOut', delay: 0.05,
+          onComplete: function() { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }
+        }
+      );
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  1. 頁面進場：標題逐字飛入 + Meta 資訊 stagger
+    // ─────────────────────────────────────────────────────
+
+    // for-u / gate-mg / ARCCSRL / DMI / ABC 版型主標题
+    var projectH1 = document.querySelector('.project-header h1');
+    if (projectH1 && !isPdLayout) {
+      var h1Chars = splitTextToChars(projectH1);
+      projectH1.style.opacity = '1';
+      gsap.set(h1Chars, { opacity: 0, y: mobile() ? 30 : 60, rotateX: -90, transformPerspective: 600 });
+      gsap.to(h1Chars, {
+        opacity: 1, y: 0, rotateX: 0,
+        duration: mobile() ? 0.55 : 0.85,
+        stagger: 0.03,
+        ease: 'back.out(1.3)',
+        delay: 0.25
+      });
+    }
+
+    // pd-layout 版型：大字 Hero 逐字飛入
+    var pdH1 = document.querySelector('.pd-hero-title-area h1');
+    if (pdH1) {
+      var pdChars = splitTextToChars(pdH1);
+      pdH1.style.opacity = '1';
+      gsap.set(pdChars, { opacity: 0, y: mobile() ? 40 : 80, rotateX: -90, transformPerspective: 800 });
+      gsap.to(pdChars, {
+        opacity: 1, y: 0, rotateX: 0,
+        duration: mobile() ? 0.6 : 1.0,
+        stagger: 0.04,
+        ease: 'back.out(1.5)',
+        delay: 0.3
+      });
+    }
+
+    // subtitle 淡入
+    var subtitle = document.querySelector('.project-header .subtitle, .pd-hero-title-area .pd-subtitle');
+    if (subtitle) {
+      gsap.fromTo(subtitle,
+        { opacity: 0, y: 20, filter: 'blur(6px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out', delay: 0.55 }
+      );
+    }
+
+    // Meta 表格行 stagger 滑入
+    var metaRows = document.querySelectorAll('.project-meta-table .meta-row, .pd-meta-table .pd-meta-row');
+    if (metaRows.length) {
+      gsap.fromTo(metaRows,
+        { opacity: 0, x: mobile() ? 15 : 30 },
+        { opacity: 1, x: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out', delay: 0.6 }
+      );
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  2. 全寬 Hero 圖片/影片：scale reveal
+    // ─────────────────────────────────────────────────────
+    // Find the block that immediately follows the header
+    var headerEl = document.querySelector('.project-header, .pd-hero-header');
+    var heroBlock = null;
+    if (headerEl && headerEl.nextElementSibling) {
+      var ns = headerEl.nextElementSibling;
+      if (ns.classList.contains('media-block') || ns.classList.contains('pd-hero-banner') || ns.classList.contains('pd-video-showcase')) {
+        heroBlock = ns;
+      }
+    }
+    if (!heroBlock) heroBlock = document.querySelector('.pd-hero-banner');
+    if (heroBlock) {
+      gsap.fromTo(heroBlock,
+        { opacity: 0, scale: 1.04, filter: 'blur(8px)' },
+        { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out', delay: 0.35 }
+      );
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  3. content-grid-2col: 左右交替揭露
+    // ─────────────────────────────────────────────────────
+    var gridSections = document.querySelectorAll('.content-grid-2col');
+    gridSections.forEach(function(section, idx) {
+      var children = Array.from(section.children);
+      if (!children.length) return;
+      var isEven = idx % 2 === 0;
+      var fromLeft  = mobile() ? -20 : -60;
+      var fromRight = mobile() ?  20 :  60;
+
+      children.forEach(function(child, ci) {
+        var xFrom = (ci === 0) ? (isEven ? fromLeft : fromRight) : (isEven ? fromRight : fromLeft);
+        gsap.fromTo(child,
+          { opacity: 0, x: xFrom, filter: 'blur(6px)' },
+          {
+            opacity: 1, x: 0, filter: 'blur(0px)',
+            duration: mobile() ? 0.65 : 0.9,
+            ease: 'power3.out',
+            delay: ci * 0.12,
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      });
+    });
+
+    // ─────────────────────────────────────────────────────
+    //  4. 全寬 media-block（非 hero）：縮放+模糊揭露
+    // ─────────────────────────────────────────────────────
+    var fullWidthBlocks = document.querySelectorAll('.media-block.full-width');
+    fullWidthBlocks.forEach(function(block, idx) {
+      if (idx === 0) return; // hero handled above
+      gsap.fromTo(block,
+        { opacity: 0, scale: 0.97, filter: 'blur(6px)' },
+        {
+          opacity: 1, scale: 1, filter: 'blur(0px)',
+          duration: 0.9, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: block,
+            start: 'top 82%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // ─────────────────────────────────────────────────────
+    //  5. section-header (h2 + desc): 逐字 + 淡入
+    // ─────────────────────────────────────────────────────
+    var sectionHeaders = document.querySelectorAll('.section-header');
+    sectionHeaders.forEach(function(sh) {
+      var h2 = sh.querySelector('h2');
+      var desc = sh.querySelector('.section-header-desc, .ck-proto-desc');
+      var kicker = sh.querySelector('.section-kicker, p.section-kicker');
+
+      var tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sh,
+          start: 'top 82%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      if (kicker) tl.fromTo(kicker, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out' });
+      if (h2) {
+        var shWords = wrapWordsInSpans(h2);
+        tl.fromTo(shWords,
+          { opacity: 0, y: 20, filter: 'blur(4px)' },
+          { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.45, stagger: 0.06, ease: 'power2.out' },
+          kicker ? '-=0.1' : 0
+        );
+      }
+      if (desc) tl.fromTo(desc, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+    });
+
+    // ─────────────────────────────────────────────────────
+    //  6. ABC Design: abc-image-mosaic 格子交錯浮現
+    // ─────────────────────────────────────────────────────
+    var mosaicGrids = document.querySelectorAll('.abc-image-mosaic');
+    mosaicGrids.forEach(function(grid) {
+      var wrappers = grid.querySelectorAll('.image-wrapper');
+      gsap.fromTo(wrappers,
+        { opacity: 0, y: 30, scale: 0.94 },
+        {
+          opacity: 1, y: 0, scale: 1,
+          duration: 0.55, stagger: 0.07,
+          ease: 'back.out(1.1)',
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
+    // ─────────────────────────────────────────────────────
+    //  7. ABC Design: 影片 grid stagger 縮放入場
+    // ─────────────────────────────────────────────────────
+    var videoItems = document.querySelectorAll('.abc-video-item');
+    if (videoItems.length) {
+      gsap.fromTo(videoItems,
+        { opacity: 0, y: 40, scale: 0.9 },
+        {
+          opacity: 1, y: 0, scale: 1,
+          duration: 0.6, stagger: 0.1,
+          ease: 'back.out(1.15)',
+          scrollTrigger: {
+            trigger: '.abc-video-grid',
+            start: 'top 82%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  8. DMI: logo grid 翻轉 + quote banner sweep
+    // ─────────────────────────────────────────────────────
+    var dmiLogoGrid = document.querySelector('.dmi-logo-grid');
+    if (dmiLogoGrid) {
+      gsap.fromTo(dmiLogoGrid,
+        { opacity: 0, y: 60, filter: 'blur(8px)' },
+        {
+          opacity: 1, y: 0, filter: 'blur(0px)',
+          duration: 1, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: dmiLogoGrid,
+            start: 'top 84%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+    var dmiQuote = document.querySelector('.dmi-quote-banner');
+    if (dmiQuote) {
+      gsap.fromTo(dmiQuote,
+        { opacity: 0, scaleX: 0.7, transformOrigin: 'left center' },
+        {
+          opacity: 1, scaleX: 1,
+          duration: 0.75, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: dmiQuote,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  9. C-Cube: grid cards 縮放入場 + service items
+    // ─────────────────────────────────────────────────────
+    var cubeCards = document.querySelectorAll('.c-cube-card');
+    if (cubeCards.length) {
+      gsap.fromTo(cubeCards,
+        { opacity: 0, scale: 0.88, y: 25 },
+        {
+          opacity: 1, scale: 1, y: 0,
+          duration: 0.55, stagger: 0.08,
+          ease: 'back.out(1.2)',
+          scrollTrigger: {
+            trigger: '.c-cube-grid-container',
+            start: 'top 84%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+    var serviceItems = document.querySelectorAll('.c-cube-service-item');
+    if (serviceItems.length) {
+      gsap.fromTo(serviceItems,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.65, stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.c-cube-services-row',
+            start: 'top 84%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  10. Cocook: problem cards 縮放入場
+    // ─────────────────────────────────────────────────────
+    var problemCards = document.querySelectorAll('.problem-card');
+    if (problemCards.length) {
+      gsap.fromTo(problemCards,
+        { opacity: 0, y: 40, scale: 0.9 },
+        {
+          opacity: 1, y: 0, scale: 1,
+          duration: 0.6, stagger: 0.12,
+          ease: 'back.out(1.15)',
+          scrollTrigger: {
+            trigger: '.problem-cards-grid',
+            start: 'top 84%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  11. Gate.com: contribution cards + tool pills
+    // ─────────────────────────────────────────────────────
+    var contribCards = document.querySelectorAll('.contribution-card');
+    if (contribCards.length) {
+      gsap.fromTo(contribCards,
+        { opacity: 0, y: 50, x: mobile() ? 0 : 30 },
+        {
+          opacity: 1, y: 0, x: 0,
+          duration: 0.65, stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.contributions-grid',
+            start: 'top 82%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+      contribCards.forEach(function(card) {
+        var num = card.querySelector('.contribution-number');
+        if (num) {
+          gsap.fromTo(num,
+            { opacity: 0, scale: 0.5 },
+            {
+              opacity: 1, scale: 1,
+              duration: 0.5, ease: 'back.out(1.5)',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        }
+      });
+    }
+    var toolPills = document.querySelectorAll('.tool-pill');
+    if (toolPills.length) {
+      gsap.fromTo(toolPills,
+        { opacity: 0, scale: 0.8, y: 10 },
+        {
+          opacity: 1, scale: 1, y: 0,
+          duration: 0.4, stagger: 0.06,
+          ease: 'back.out(1.3)',
+          scrollTrigger: {
+            trigger: '.tools-grid',
+            start: 'top 86%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+    var quoteBanner = document.querySelector('.quote-banner');
+    if (quoteBanner) {
+      var qh2 = quoteBanner.querySelector('h2');
+      if (qh2) {
+        var qWords = wrapWordsInSpans(qh2);
+        gsap.fromTo(qWords,
+          { opacity: 0, y: 20, filter: 'blur(4px)' },
+          {
+            opacity: 1, y: 0, filter: 'blur(0px)',
+            duration: 0.5, stagger: 0.05, ease: 'power2.out',
+            scrollTrigger: {
+              trigger: quoteBanner,
+              start: 'top 84%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      }
+    }
+    var contribHeader = document.querySelector('.contributions-header');
+    if (contribHeader) {
+      var chKicker = contribHeader.querySelector('.contributions-kicker');
+      var chH2 = contribHeader.querySelector('h2');
+      var chTl = gsap.timeline({
+        scrollTrigger: { trigger: contribHeader, start: 'top 84%', toggleActions: 'play none none reverse' }
+      });
+      if (chKicker) chTl.fromTo(chKicker, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out' });
+      if (chH2) chTl.fromTo(chH2, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+    }
+    var captions = document.querySelectorAll('.block-caption');
+    captions.forEach(function(cap) {
+      gsap.fromTo(cap,
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+          scrollTrigger: { trigger: cap, start: 'top 90%', toggleActions: 'play none none reverse' }
+        }
+      );
+    });
+
+    // ─────────────────────────────────────────────────────
+    //  12. pd-layout (BJS / thesisbook): 詳細區塊動畫
+    // ─────────────────────────────────────────────────────
+    if (isPdLayout) {
+      // pd-split-section
+      var pdSplits = document.querySelectorAll('.pd-split-section');
+      pdSplits.forEach(function(section) {
+        var text = section.querySelector('.pd-split-text');
+        var mediaPd = section.querySelector('.pd-split-media');
+        var isReverse = section.classList.contains('reverse');
+        var pdTl = gsap.timeline({
+          scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none reverse' }
+        });
+        if (text) {
+          var xT = isReverse ? (mobile() ? 20 : 60) : (mobile() ? -20 : -60);
+          pdTl.fromTo(text, { opacity: 0, x: xT, filter: 'blur(6px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out' });
+        }
+        if (mediaPd) {
+          var xM = isReverse ? (mobile() ? -20 : -60) : (mobile() ? 20 : 60);
+          pdTl.fromTo(mediaPd, { opacity: 0, x: xM, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: 'power3.out' }, '-=0.5');
+        }
+      });
+
+      // pd-centered-section
+      var pdCentered = document.querySelectorAll('.pd-centered-section');
+      pdCentered.forEach(function(section) {
+        var pck = section.querySelector('.pd-section-kicker');
+        var pch2 = section.querySelector('h2');
+        var pcm = section.querySelector('.pd-centered-media');
+        var pcTl = gsap.timeline({
+          scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none reverse' }
+        });
+        if (pck) pcTl.fromTo(pck, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+        if (pch2) pcTl.fromTo(pch2, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+        if (pcm) pcTl.fromTo(pcm, { opacity: 0, scale: 0.97, filter: 'blur(6px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out' }, '-=0.3');
+      });
+
+      // pd-final-section
+      var pdFinal = document.querySelector('.pd-final-section');
+      if (pdFinal) {
+        var pfH2 = pdFinal.querySelector('h2');
+        var pfPhoto = pdFinal.querySelector('.pd-final-photo');
+        var pfThanks = pdFinal.querySelector('.pd-thanks-text');
+        var pfTl = gsap.timeline({
+          scrollTrigger: { trigger: pdFinal, start: 'top 80%', toggleActions: 'play none none reverse' }
+        });
+        if (pfH2) pfTl.fromTo(pfH2, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
+        if (pfPhoto) pfTl.fromTo(pfPhoto, { opacity: 0, scale: 0.96, filter: 'blur(8px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' }, '-=0.3');
+        if (pfThanks) pfTl.fromTo(pfThanks, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3');
+      }
+
+      // pd-intro-section (thesisbook)
+      var pdIntro = document.querySelector('.pd-intro-section');
+      if (pdIntro) {
+        var piText = pdIntro.querySelector('.pd-intro-text');
+        var piMedia = pdIntro.querySelector('.pd-intro-media');
+        var piTl = gsap.timeline({
+          scrollTrigger: { trigger: pdIntro, start: 'top 80%', toggleActions: 'play none none reverse' }
+        });
+        if (piText) piTl.fromTo(piText, { opacity: 0, x: mobile() ? 0 : -50, filter: 'blur(6px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out' });
+        if (piMedia) piTl.fromTo(piMedia, { opacity: 0, x: mobile() ? 0 : 50, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: 'power3.out' }, '-=0.5');
+      }
+
+      // pd-spread-stack (thesisbook)
+      var spreadImgs = document.querySelectorAll('.pd-spread-stack img');
+      spreadImgs.forEach(function(img) {
+        gsap.fromTo(img,
+          { opacity: 0, y: 50, scale: 0.97 },
+          {
+            opacity: 1, y: 0, scale: 1,
+            duration: 0.75, ease: 'power3.out',
+            scrollTrigger: { trigger: img, start: 'top 85%', toggleActions: 'play none none reverse' }
+          }
+        );
+      });
+
+      // pd-video-showcase
+      var pdVideo = document.querySelector('.pd-video-showcase');
+      if (pdVideo) {
+        var pvk = pdVideo.querySelector('.pd-section-kicker');
+        var pvc = pdVideo.querySelector('.pd-video-container');
+        var pvTl = gsap.timeline({
+          scrollTrigger: { trigger: pdVideo, start: 'top 82%', toggleActions: 'play none none reverse' }
+        });
+        if (pvk) pvTl.fromTo(pvk, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+        if (pvc) pvTl.fromTo(pvc, { opacity: 0, scale: 0.97, filter: 'blur(8px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.0, ease: 'power3.out' }, '-=0.2');
+      }
+    }
+
+    // ─────────────────────────────────────────────────────
+    //  13. 各頁面通用角色清單 stagger
+    // ─────────────────────────────────────────────────────
+    var roleLists = document.querySelectorAll('.arc-role-list li, .abc-role-list li, .dmi-role-list li');
+    roleLists.forEach(function(li) {
+      gsap.fromTo(li,
+        { opacity: 0, x: -20 },
+        {
+          opacity: 1, x: 0, duration: 0.4, ease: 'power2.out',
+          scrollTrigger: { trigger: li, start: 'top 88%', toggleActions: 'play none none reverse' }
+        }
+      );
+    });
+
+    // For-U project tags
+    var projectTags = document.querySelectorAll('.project-tags .tag');
+    if (projectTags.length) {
+      gsap.fromTo(projectTags,
+        { opacity: 0, scale: 0.8, y: 10 },
+        {
+          opacity: 1, scale: 1, y: 0,
+          duration: 0.4, stagger: 0.08, ease: 'back.out(1.2)',
+          scrollTrigger: { trigger: '.project-tags', start: 'top 88%', toggleActions: 'play none none reverse' }
+        }
+      );
+    }
+
+    // C-Cube ck-insight blocks
+    var insightBlocks = document.querySelectorAll('.ck-insight-heading, .ck-body-text, .ck-feature-list li, .ck-ordered-list li');
+    insightBlocks.forEach(function(block) {
+      if (block.closest('.section-header')) return;
+      gsap.fromTo(block,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+          scrollTrigger: { trigger: block, start: 'top 85%', toggleActions: 'play none none reverse' }
+        }
+      );
+    });
+
+    // ─────────────────────────────────────────────────────
+    //  14. 通用 footer CTA 入場
+    // ─────────────────────────────────────────────────────
+    initLearnMore();
+  }
+
+
   // ═══════════════════════════════════════════
   //  SPA 頁面動畫入口（供 about.js 調用）
   // ═══════════════════════════════════════════
 
   function initSpaPageAnimations(pageName) {
     // Kill existing ScrollTriggers to prevent stale references
-    ScrollTrigger.getAll().forEach(st => st.kill());
+    ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
 
     if (pageName === 'about') {
       initAboutAnimations();
@@ -882,17 +1447,14 @@
       initContactAnimations();
     } else if (pageName.startsWith('work/')) {
       initProjectDetailReveals();
+      initProjectPageAnimations();
     }
 
     // Recalculate positions after DOM settles AND after the page-enter
-    // CSS animation finishes (800ms). On mobile the cards are already
-    // in-viewport, but ScrollTrigger miscalculates positions while
-    // the container still has translateY from the slide animation.
-    requestAnimationFrame(() => ScrollTrigger.refresh());
-    // Refresh again after the pageSlideUp animation completes (800ms)
-    setTimeout(() => ScrollTrigger.refresh(), 850);
-    // One more safety refresh for slow devices
-    setTimeout(() => ScrollTrigger.refresh(), 1400);
+    // CSS animation finishes (800ms).
+    requestAnimationFrame(function() { ScrollTrigger.refresh(); });
+    setTimeout(function() { ScrollTrigger.refresh(); }, 850);
+    setTimeout(function() { ScrollTrigger.refresh(); }, 1400);
   }
 
   // Expose globally so SPA loader can call it
@@ -918,17 +1480,18 @@
 
   // Expose for restoring home animations after SPA close
   window.initHomeAnimations = function () {
-    ScrollTrigger.getAll().forEach(st => st.kill());
+    ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
     initAllHomeAnimations();
-    requestAnimationFrame(() => ScrollTrigger.refresh());
+    requestAnimationFrame(function() { ScrollTrigger.refresh(); });
   };
 
   // Initial run
   initAllHomeAnimations();
   initProjectDetailReveals();
+  initProjectPageAnimations();
 
   // 語言切換後重新計算 ScrollTrigger 位置
-  window.addEventListener('site-language-changed', () => {
+  window.addEventListener('site-language-changed', function() {
     ScrollTrigger.refresh();
   });
 

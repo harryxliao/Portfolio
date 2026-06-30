@@ -250,7 +250,7 @@
     localizeList(root, '.work-table-row--head span', workCardZh.tableHead);
     localizeText(root, '.parallax-title', '科技與人文<br>敘事', { html: true });
     localizeText(root, '.tech-text-box p', '從 Web3 到學術研究，Harry 的作品把靜態畫面變成可沉浸的數位世界。');
-    localizeList(root, '.accordion-item .title-text', homeAccordionZh.map((item) => item[0]));
+    localizeList(root, '.accordion-item .title-text', homeAccordionZh.map((item) => item[0]), { html: true });
     localizeList(root, '.accordion-item .preview-text', homeAccordionZh.map((item) => item[2].replace(/<br\s*\/?>/gi, ' ')));
     localizeList(root, '.accordion-item .full-text', homeAccordionZh.map((item) => item[2]), { html: true });
     localizeText(root, '.impact-section .title-solid', '廖先皓 Harry');
