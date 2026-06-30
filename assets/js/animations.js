@@ -1061,14 +1061,6 @@
       });
 
       if (kicker) tl.fromTo(kicker, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out' });
-      if (h2) {
-        var shWords = wrapWordsInSpans(h2);
-        tl.fromTo(shWords,
-          { opacity: 0, y: 20, filter: 'blur(4px)' },
-          { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.45, stagger: 0.06, ease: 'power2.out' },
-          kicker ? '-=0.1' : 0
-        );
-      }
       if (desc) tl.fromTo(desc, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2');
     });
 
@@ -1255,25 +1247,7 @@
         }
       );
     }
-    var quoteBanner = document.querySelector('.quote-banner');
-    if (quoteBanner) {
-      var qh2 = quoteBanner.querySelector('h2');
-      if (qh2) {
-        var qWords = wrapWordsInSpans(qh2);
-        gsap.fromTo(qWords,
-          { opacity: 0, y: 20, filter: 'blur(4px)' },
-          {
-            opacity: 1, y: 0, filter: 'blur(0px)',
-            duration: 0.5, stagger: 0.05, ease: 'power2.out',
-            scrollTrigger: {
-              trigger: quoteBanner,
-              start: 'top 84%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-      }
-    }
+
     var contribHeader = document.querySelector('.contributions-header');
     if (contribHeader) {
       var chKicker = contribHeader.querySelector('.contributions-kicker');
