@@ -772,7 +772,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   padding: 80px 0;
-  align-items: start;
+  align-items: center;
 }
 
 .pd-intro-text .pd-section-kicker {
@@ -798,9 +798,106 @@
 .pd-intro-text p {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
-  line-height: 1.75;
-  color: #A0A0A0;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
   margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────
+   18. THESIS BOOK CTA BANNER
+   ────────────────────────────────────────────────────── */
+.thesis-cta-banner-wrapper {
+  margin: 60px 0;
+}
+
+.thesis-cta-banner {
+  background: #111111;
+  border-radius: 12px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.thesis-cta-content {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.thesis-cta-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  color: #fff;
+  margin: 4px 0 20px 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.thesis-cta-content p.pd-section-kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin: 0 0 8px 0;
+}
+
+
+.thesis-cta-content p {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.thesis-cta-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.thesis-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.thesis-cta-media {
+  flex: 1;
+  max-width: 50%;
+}
+
+.thesis-cta-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .thesis-cta-banner {
+    flex-direction: column;
+  }
+  .thesis-cta-media {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .pd-intro-media {
