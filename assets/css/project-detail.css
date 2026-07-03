@@ -796,8 +796,8 @@
 }
 
 .pd-intro-text p {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
   line-height: 1.8;
   color: rgba(255,255,255,0.7);
   margin: 0;
@@ -811,17 +811,14 @@
 }
 
 .thesis-cta-banner {
-  background: #111111;
-  border-radius: 12px;
   display: flex;
   align-items: stretch;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 60px;
 }
 
 .thesis-cta-content {
   flex: 1;
-  padding: 60px 40px;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -893,10 +890,16 @@
 @media (max-width: 768px) {
   .thesis-cta-banner {
     flex-direction: column;
+    gap: 32px;
+  }
+  .thesis-cta-content {
+    padding: 0;
+    order: 1;
   }
   .thesis-cta-media {
     max-width: 100%;
     height: auto;
+    order: 2;
   }
 }
 
