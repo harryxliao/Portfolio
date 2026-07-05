@@ -2686,9 +2686,9 @@ body.spa-gate_redbull #mainContent.page-enter {
 .learn-more-title {
   margin: 0;
   color: #f0f0f0;
-  font-size: clamp(1.8rem, 4.2vw, 3.4rem);
+  font-size: clamp(1.4rem, 4.2vw, 3.4rem);
   font-family: 'Space Mono', 'Courier New', monospace;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

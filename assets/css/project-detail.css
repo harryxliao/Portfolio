@@ -529,8 +529,8 @@
 .learn-more-title,
 .pd-footer-cta h2 {
   font-family: 'League Spartan', 'Anton', sans-serif;
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 800;
+  font-size: clamp(22px, 4vw, 52px);
+  font-weight: 600;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #fff;
