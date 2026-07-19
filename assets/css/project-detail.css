@@ -239,6 +239,12 @@
   height: 100%;
 }
 
+@media (min-width: 769px) {
+  .content-grid-2col--canvas {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
 .content-grid-2col--stretch .image-wrapper img {
   height: 100%;
   object-fit: cover;
@@ -657,6 +663,51 @@
 
 .problem-card p {
   font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.problem-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.problem-dot-kicker {
+  display: flex;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.problem-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: inline-block;
+}
+
+.problem-item h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+  color: #fff;
+  letter-spacing: -0.5px;
+  text-transform: none;
+}
+
+.problem-item p {
+  font-size: 16px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
@@ -1771,9 +1822,8 @@
 
 .image-wrapper--canvas img {
   max-height: 70vh;
-  width: auto;
+  width: 100%;
   object-fit: contain;
-  cursor: zoom-in;
   transition: transform 0.3s ease;
 }
 
