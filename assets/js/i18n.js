@@ -292,7 +292,7 @@
       if (getCurrentLang() === 'zh') {
         resumeBtn.setAttribute('href', prefix + 'upload/廖先皓_中文簡歷.pdf');
       } else {
-        resumeBtn.setAttribute('href', prefix + 'upload/Resume_Harry_Liao_CN.pdf');
+        resumeBtn.setAttribute('href', prefix + 'upload/Resume_Xian-Hao_Harry_Liao.pdf');
       }
     }
 
