@@ -235,35 +235,7 @@
           });
         }
 
-        if (pageName === 'contact') {
-          const copyButton = document.querySelector('[data-copy-text]');
-          if (copyButton) {
-            copyButton.addEventListener('click', async () => {
-              const copyText = copyButton.getAttribute('data-copy-text') || '';
-              try {
-                if (navigator.clipboard && window.isSecureContext) {
-                  await navigator.clipboard.writeText(copyText);
-                } else {
-                  const tempInput = document.createElement('textarea');
-                  tempInput.value = copyText;
-                  tempInput.style.position = 'fixed';
-                  tempInput.style.opacity = '0';
-                  document.body.appendChild(tempInput);
-                  tempInput.focus();
-                  tempInput.select();
-                  document.execCommand('copy');
-                  document.body.removeChild(tempInput);
-                }
-                copyButton.textContent = 'COPIED';
-                setTimeout(() => {
-                  copyButton.textContent = copyText;
-                }, 1200);
-              } catch (copyError) {
-                console.error('Copy email failed:', copyError);
-              }
-            });
-          }
-        }
+
 
         const closeBtn = document.getElementById(`${pageName}CloseBtn`);
         if (closeBtn) closeBtn.addEventListener('click', () => closePage(true));
