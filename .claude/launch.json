@@ -1,6 +1,0 @@
-{
-  "version": "0.0.1",
-  "configurations": [
-    { "name": "site", "runtimeExecutable": "npx", "runtimeArgs": ["eleventy", "--serve", "--port", "5502"], "port": 5502 }
-  ]
-}
