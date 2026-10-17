@@ -521,8 +521,8 @@ function goToNextPortfolioItem() {
   updateUIWithAnimation();
 }
 
-els.prevBtn.addEventListener('click', goToPrevPortfolioItem);
-els.nextBtn.addEventListener('click', goToNextPortfolioItem);
+if (els.prevBtn) els.prevBtn.addEventListener('click', goToPrevPortfolioItem);
+if (els.nextBtn) els.nextBtn.addEventListener('click', goToNextPortfolioItem);
 
 if (portfolioSwipeArea) {
   let isPortfolioDragging = false;
@@ -572,9 +572,12 @@ if (portfolioSwipeArea) {
   button.addEventListener('click', (event) => event.stopPropagation());
 });
 
-initIndicators();
-preloadPortfolioImages();
-updateUIWithAnimation();
+// The press-features carousel only exists on the home page.
+if (els.indicatorContainer) {
+  initIndicators();
+  preloadPortfolioImages();
+  updateUIWithAnimation();
+}
 
 // Refresh portfolio UI when language changes elsewhere
 window.addEventListener('site-language-changed', () => {

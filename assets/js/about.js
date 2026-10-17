@@ -113,7 +113,10 @@
     }
 
     const isWorkProject = pageName.startsWith('work/');
-    const fetchUrl = isWorkProject ? `${absolutePrefix}${pageName}.html` : `${absolutePrefix}${pageName}-content.html`;
+    const langPrefix = ((window.getCurrentSiteLanguage && window.getCurrentSiteLanguage()) === 'zh') ? 'zh/' : '';
+    const fetchUrl = isWorkProject
+      ? `${absolutePrefix}${langPrefix}${pageName}.html`
+      : `${absolutePrefix}${langPrefix}fragments/${pageName}.html`;
 
     return fetch(fetchUrl, { cache: 'no-store' })
       .then(r => r.text())

@@ -1,0 +1,17 @@
+---
+# Rendered once (overrides the per-language pagination from src.11tydata.js).
+pagination:
+  size: 99
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for p in collections.all %}
+  <url>
+    <loc>{{ site.url }}{{ p.url }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ p.data.urls.en }}"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="{{ site.url }}{{ p.data.urls.zh }}"/>
+  </url>
+{%- endfor %}
+</urlset>

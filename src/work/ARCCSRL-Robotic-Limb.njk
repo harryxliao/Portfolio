@@ -1,0 +1,292 @@
+---
+slug: "work/ARCCSRL-Robotic-Limb.html"
+navKey: "work"
+---
+{% extends "layouts/base.njk" %}
+
+{% block seo %}
+  <meta name="description" content="ARCCSRL Robotic Limb — Harry Liao contributed to the MIT Media Lab ARCCSRL project, building a HoloLens GUI for a novel continuous robotic limb with eye-gaze and voice control.">
+  <meta name="keywords" content="Harry Liao, ARCCSRL, Robotic Limb, MIT Media Lab, HoloLens, Human 2.0, Prosthetics, UX Design">
+  <meta name="author" content="Xian-Hao (Harry) Liao">
+  <meta name="robots" content="index, follow">
+  <title>{% if zh %}ARCCSRL 義肢研究 — MIT Media Lab | Xian-Hao (Harry) Liao{% else %}ARCCSRL Robotic Limb — MIT Media Lab | Xian-Hao (Harry) Liao{% endif %}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ARCCSRL Robotic Limb | Harry Liao Portfolio">
+  <meta property="og:description" content="ARCCSRL Robotic Limb — MIT Media Lab research project on eye-gaze controlled prosthetics.">
+  <meta property="og:image" content="https://harryliao.design/images/TB.webp">
+  <meta property="og:site_name" content="Harry Liao Portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ARCCSRL Robotic Limb | Harry Liao Portfolio">
+  <meta name="twitter:description" content="ARCCSRL Robotic Limb — MIT Media Lab research project on eye-gaze controlled prosthetics.">
+  <meta name="twitter:image" content="https://harryliao.design/images/TB.webp">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Xian-Hao (Harry) Liao",
+    "url": "https://harryliao.design/",
+    "jobTitle": "Multimedia Designer",
+    "alumniOf": "Massachusetts College of Art and Design",
+    "sameAs": [
+      "https://www.linkedin.com/in/xian-hao-liao/",
+      "https://www.behance.net/xianhaoliao-design",
+      "https://www.instagram.com/xianhaoliao.design/",
+      "https://www.youtube.com/@HarryLiaoVideo"
+    ]
+  }
+  </script>
+{% endblock %}
+
+{% block assets %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="preload" as="style" href="/assets/css/about.css">
+  <link rel="stylesheet" href="/assets/css/about.css">
+  <link rel="preload" as="style" href="/assets/css/work.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+  <link rel="preload" as="style" href="/assets/css/contact.css">
+  <link rel="stylesheet" href="/assets/css/contact.css">
+  <link rel="stylesheet" href="/assets/css/project-detail.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="/assets/js/i18n.js" defer=""></script>
+  <script src="/assets/js/navbar.js" defer=""></script>
+  <script src="/assets/js/about.js" defer=""></script>
+  <script src="/assets/js/main.js" defer=""></script>
+  <script src="/assets/js/feature.js" defer=""></script>
+  <script src="/assets/js/lazy-images.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer=""></script>
+  <script src="/assets/js/animations.js" defer=""></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo+Black&amp;family=Black+Ops+One&amp;family=League+Spartan:wght@700;800;900&amp;display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+    <div class="for-u-page">
+      <div class="for-u-container">
+
+        <!-- Project Header -->
+        <header class="project-header">
+          <div class="project-title-area">
+            <h1>ARCCSRL</h1>
+            <p class="subtitle">{% if zh %}Harry 在 MIT Media Lab 的課程中探索人機互動科技，參與了 ARCCSRL 連續機械肢體研究專案。在此專案中同時負責視覺傳達圖片產出、協助搭建 HoloLens 的視覺輔助 GUI，以及最終的發表報告設計。透過多媒體設計的專業，設計出實驗時所需的圖表以及最終報告的簡報，研究成果最終在哈佛創新實驗室與 MIT Media Lab 公開展出。{% else %}
+              Harry explored human-computer interaction technologies through MIT Media Lab's course, contributing
+              to the ARCCSRL continuous robotic limb research project. He was responsible for visual
+              communication assets, assisting in building the HoloLens AR GUI, and designing the final
+              presentation report. The research outcomes were exhibited at Harvard Innovation Labs and MIT Media Lab.
+            {% endif %}</p>
+          </div>
+
+          <!-- Metadata -->
+          <div class="project-meta-table">
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}類別{% else %}Category{% endif %}</span>
+              <span class="meta-value">{% if zh %}人機互動研究{% else %}Human-Computer Interaction{% endif %}</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}角色{% else %}Role{% endif %}</span>
+              <span class="meta-value">{% if zh %}UX 研究員 / GUI 設計師{% else %}UX Researcher / GUI Designer{% endif %}</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}年份{% else %}Date{% endif %}</span>
+              <span class="meta-value">2023 – 2024</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}單位{% else %}Organization{% endif %}</span>
+              <span class="meta-value">MIT Media Lab</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Hero Video -->
+        {% if zh %}<section class="media-block full-width" style="position:relative; background:#0d0d0d; border: 1px solid rgba(255,255,255,0.05); overflow:hidden;">{% else %}<section class="media-block full-width media-block--video">{% endif %}
+          <div class="arc-video-label">Demo Footage</div>
+          <video autoplay="" muted="" loop="" playsinline="" class="block-video--hero">
+            <source src="/images/Project/ARCCSRL-Robotic-Limb/Footage.mp4" type="video/mp4">
+          </video>
+        </section>
+
+        <!-- Human 2.0 at MIT -->
+        <section class="content-grid-2col">
+          <div class="text-section">
+            <span class="section-kicker">{% if zh %}總覽{% else %}Overview{% endif %}</span>
+            <h3>Human 2.0 At MIT</h3>
+            <p>{% if zh %}這門 MIT Media Lab 課程深入探索當前與未來應用於人體認知、情感、社交及身體增強的核心技術原理。主題涵蓋機器人外骨骼與矯形器、肢體義肢、神經植入物、社交情感義肢，以及認知義肢等前沿研究領域。{% else %}
+              This MIT Media Lab course delves into the principles underlying current and future technologies for
+              cognitive, emotional, social, and physical augmentation. Topics span robotic exoskeletons and orthoses,
+              limb prostheses, neural implants, social-emotional prostheses, and cognitive prostheses at the cutting
+              edge of human augmentation research.
+            {% endif %}</p>
+            <p>{% if zh %}Harry 在課程中以多媒體設計師的身份參與研究團隊，透過設計專業將複雜的科學資訊轉化為清晰、具說服力的視覺語言，從實驗圖表到最終簡報，全程貫穿整個研究週期。{% else %}
+              Harry joined the research team as a multimedia designer, translating complex scientific information into
+              clear and compelling visual language — from experimental diagrams to the final presentation — throughout
+              the entire research cycle.
+            {% endif %}</p>
+            <ul class="arc-role-list">
+              <li>{% if zh %}仿生機電學 — Hugh Herr 教授主講，涵蓋動力義肢與外骨骼{% else %}Biomechatronics — Powered Prostheses &amp;
+                Exoskeletons by Prof. Hugh Herr{% endif %}</li>
+              <li>{% if zh %}神經介面 — 周邊神經介面、腦機介面與神經感知義肢{% else %}Neural Interfaces — Peripheral &amp; Central Neuroprostheses
+              {% endif %}</li>
+              <li>{% if zh %}人體實驗設計 — MIT COUHES 人類受試者測試規範與實驗方法{% else %}Human Subject Testing — MIT COUHES Experimental
+                Design{% endif %}</li>
+              <li>{% if zh %}學期專案 — 自選人類增強主題，完成實驗並發表論文品質報告{% else %}Semester Project — Human Augmentation Research &amp;
+                Publication{% endif %}</li>
+            </ul>
+          </div>
+          <div class="media-block media-block--flush">
+            <div class="image-wrapper">
+              <img src="/images/Project/ARCCSRL-Robotic-Limb/MIT%20(2).webp" alt="MIT Media Lab Research Team" loading="lazy">
+            </div>
+          </div>
+        </section>
+
+        <!-- AR x Robotic Limb Section -->
+        <section class="content-grid-2col">
+          <div class="media-block media-block--flush">
+            <div class="image-wrapper">
+              <img src="/images/Project/ARCCSRL-Robotic-Limb/HoloLens%20Device%20Mockup.webp" alt="HoloLens AR Mockup" loading="lazy">
+            </div>
+          </div>
+          <div class="text-section">
+            <span class="section-kicker">{% if zh %}技術核心{% else %}Technology{% endif %}</span>
+            <h3>{% if zh %}AR X 機械義肢{% else %}AR X ROBOTIC LIMB{% endif %}</h3>
+            <p>{% if zh %}Harry 協助 ARCCSRL 團隊為 MIT Media Lab 研發的連續型機械義肢搭建 HoloLens 視覺輔助 GUI。這套 AR 介面整合了眼球追蹤技術與語音指令，讓使用者得以在完全不接觸義肢的情況下，透過直覺的凝視與聲音直接操控肢體動作。{% else %}
+              Harry assisted the ARCCSRL team in building the HoloLens visual-assist GUI for the continuous robotic
+              limb developed at MIT Media Lab. This AR interface integrates eye-gaze tracking and voice commands,
+              enabling users to intuitively control limb movements without any physical contact.
+            {% endif %}</p>
+            <p>{% if zh %}為了確保介面在混合現實環境下的可讀性，Harry 協助設計 HoloLens 上的浮動 UI 元件，包含狀態指示器、操作提示與即時回饋視覺，讓使用者在配戴設備時能即時掌握義肢的控制狀態。{% else %}
+              To ensure readability in mixed reality environments, Harry assisted in designing floating UI components
+              for HoloLens — including status indicators, operation prompts, and real-time feedback visuals — enabling
+              users to instantly understand prosthetic control states while wearing the device.
+            {% endif %}</p>
+            <ul class="arc-role-list">
+              <li>{% if zh %}HoloLens GUI 介面協助搭建{% else %}HoloLens GUI Development{% endif %}</li>
+              <li>{% if zh %}混合現實 UI 元件設計{% else %}Mixed Reality UI Components{% endif %}</li>
+              <li>{% if zh %}使用者測試數據視覺化{% else %}User Testing Data Visualization{% endif %}</li>
+              <li>{% if zh %}協助使用者實驗{% else %}Supporting User Experiments{% endif %}</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Quote Banner -->
+        <section class="section-header section-header--spaced">
+          <h2>{% if zh %}「用眼神就能移動物體！」{% else %}"You Can Move Things By Just Looking At It!"{% endif %}</h2>
+        </section>
+
+        <!-- Footage images -->
+        <div class="image-grid-2col">
+          <div class="image-wrapper">
+            <img src="/images/Project/ARCCSRL-Robotic-Limb/ARCCSRL-footage.webp" alt="ARCCSRL Robotic Limb Footage" loading="lazy">
+          </div>
+          <div class="image-wrapper">
+            <img src="/images/Project/ARCCSRL-Robotic-Limb/ARCCSRL_DEMO_FOOTAGE_EDITED-4.webp" alt="ARCCSRL Demo Footage" loading="lazy">
+          </div>
+        </div>
+
+        <!-- User Testing Quote Banner -->
+        <section class="section-header section-header--spaced-sm">
+          <h2>{% if zh %}「我們進行了 22 個使用者測試！」{% else %}"We Conducted 22 User Testing Protocol"{% endif %}</h2>
+        </section>
+
+        <!-- Full Demo Video -->
+        <div class="arc-full-video">
+          <div class="arc-video-label">DEMO VIDEO</div>
+          <video controls="" muted="" loop="" playsinline="">
+            <source src="/images/Project/ARCCSRL-Robotic-Limb/EGCCSRL_DEMO_FOOTAGE_EDITED-3.mp4" type="video/mp4">
+          </video>
+          <div class="arc-video-duration">00:11:20</div>
+        </div>
+
+        <!-- Results & Takeaways -->
+        <section class="content-grid-2col">
+          <div class="text-section">
+            <span class="section-kicker">{% if zh %}成果與洞察{% else %}Outcomes{% endif %}</span>
+            <h3>{% if zh %}成果與心得{% else %}Results And Takeaways{% endif %}</h3>
+            <p>{% if zh %}這次研究中，Harry 負責建立視覺資產並協助進行使用者測試。透過 22 次的使用者測試協議，團隊蒐集了大量的互動數據並進行分析。最終成果在哈佛創新實驗室與 MIT Media Lab 展出，引發廣泛討論，並受到業界廣泛關注。{% else %}
+              During this research, Harry contributed visual assets and assisted in conducting user testing sessions.
+              Through 22 user testing protocols, the team collected and analyzed extensive interaction data.
+              The final outcomes were exhibited at Harvard Innovation Labs and MIT Media Lab, generating broad
+              discussion and attracting significant attention from the industry.
+            {% endif %}</p>
+            <p>{% if zh %}主要貢獻包含：視覺傳達圖片產出、協助完成 22 人次的使用者測試、將測試數據轉化為直觀的資料視覺化圖表、設計最終的發表簡報，以及在哈佛與 MIT 的公開成果展出。{% else %}
+              Key contributions: visual communication asset production, supporting 22 user testing sessions,
+              transforming complex experimental data into intuitive visualizations, designing the final
+              presentation report, and showcasing research outcomes at Harvard &amp; MIT.
+            {% endif %}</p>
+          </div>
+          <div class="media-block media-block--flush">
+            <div class="image-wrapper">
+              <img src="/images/Project/ARCCSRL-Robotic-Limb/CITI%20Research.webp" alt="CITI Research Certificate" loading="lazy">
+            </div>
+          </div>
+        </section>
+
+        <!-- Visual Design Contribution Section -->
+        <section class="content-grid-2col">
+          <div class="media-block media-block--flush">
+            <div class="image-wrapper">
+              <img src="/images/Project/ARCCSRL-Robotic-Limb/Slides.jpeg" alt="ARCCSRL Final Presentation Slides" loading="lazy">
+            </div>
+          </div>
+          <div class="text-section">
+            <span class="section-kicker">{% if zh %}視覺傳達{% else %}Visual Design{% endif %}</span>
+            <h3>{% if zh %}多媒體設計 X 科學研究{% else %}MULTIMEDIA DESIGN X RESEARCH{% endif %}</h3>
+            <p>{% if zh %}透過多媒體設計的專業背景，Harry 將研究過程中產出的技術資料與數據，轉化為清晰易讀的視覺圖表，協助團隊在實驗與報告中有效傳達研究成果。{% else %}
+              Leveraging a multimedia design background, Harry transformed technical research data and findings
+              into clear, accessible visual diagrams — helping the team effectively communicate their work
+              during experiments and in the final report.
+            {% endif %}</p>
+            <p>{% if zh %}最終的發表簡報由 Harry 主導設計，整合了機械義肢的技術示意圖、使用者測試統計圖表與 HoloLens 介面截圖，以完整的視覺敘事呈現整個研究歷程，並在哈佛創新實驗室與 MIT Media Lab 的正式發表場合中使用。{% else %}
+              Harry led the design of the final presentation deck, integrating technical diagrams of the robotic
+              limb, user testing statistics, and HoloLens interface screenshots into a cohesive visual narrative
+              — used in formal presentations at Harvard Innovation Labs and MIT Media Lab.
+            {% endif %}</p>
+            <ul class="arc-role-list">
+              <li>{% if zh %}研究圖表與資料視覺化{% else %}Research Diagrams &amp; Data Visualization{% endif %}</li>
+              <li>{% if zh %}最終發表簡報設計{% else %}Final Presentation Deck Design{% endif %}</li>
+              <li>{% if zh %}哈佛與 MIT 正式發表{% else %}Exhibited at Harvard &amp; MIT{% endif %}</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 4 Images Grid -->
+        <div class="arc-image-grid-4col">
+          <div class="image-wrapper">
+            <img src="/images/Project/ARCCSRL-Robotic-Limb/unnamed%20(3).webp" alt="ARCCSRL Robotic Limb 3D Model" loading="lazy">
+          </div>
+          <div class="image-wrapper">
+            <img src="/images/Project/ARCCSRL-Robotic-Limb/unnamed%20(2).webp" alt="ARCCSRL Presentation Slides" loading="lazy">
+          </div>
+          <div class="image-wrapper">
+            <img src="/images/Project/ARCCSRL-Robotic-Limb/unnamed.webp" alt="ARCCSRL Diagram" loading="lazy">
+          </div>
+          <div class="image-wrapper">
+            <img src="/images/Project/ARCCSRL-Robotic-Limb/MIT%20(1).webp" alt="MIT Media Lab Team" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Footer CTA -->
+        <section class="learn-more-section learn-more-section--spaced">
+          <div class="learn-more-inner">
+            <h2 class="learn-more-title">{% if zh %}期待很快與您對話！{% else %}Looking Forward To Speaking With You Soon!{% endif %}</h2>
+            {% if zh %}<a href="{{ L }}/work" data-spa-target="work" class="learn-more-btn">{% else %}<a href="{{ L }}/work/" data-spa-target="work" class="learn-more-btn">{% endif %}
+              <span>{% if zh %}查看更多作品{% else %}See more work{% endif %}</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+{% endblock %}

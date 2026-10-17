@@ -1,0 +1,80 @@
+{% set menu = [
+  { key: "home", href: "/", en: "HOME", zh: "首頁" },
+  { key: "about", href: "/about", en: "ABOUT", zh: "關於" },
+  { key: "work", href: "/work", en: "WORK", zh: "作品" },
+  { key: "contact", href: "/contact", en: "CONTACT", zh: "聯絡" }
+] %}
+{% set langToggleAttrs -%}
+type="button" data-lang-toggle="" aria-label="{{ '目前是中文，切換到 English' if zh else 'Currently English, switch to 中文' }}" title="{{ '目前是中文，點擊切換到 English' if zh else 'Currently English, click to switch to 中文' }}" data-current-lang="{{ lang }}"
+{%- endset %}
+{% set langToggleInner %}<span class="lang-option lang-en">EN</span><span class="lang-sep">/</span><span class="lang-option lang-zh">中</span>{% endset %}
+  <script>
+    // If the URL has an SPA fragment, hide the main content immediately
+    // to avoid flashing the index content before the SPA fragment loads.
+    try {
+      const path = location.pathname.replace(/^\/+/, '').replace(/\/+$/, '');
+      const isZh = path.startsWith('zh');
+      const page = isZh ? path.replace(/^zh\/?/, '') : path;
+      if (/^(about|work|contact)$/i.test(page)) {
+        document.documentElement.classList.add('spa-loading');
+        document.body.classList.add('spa-loading');
+      }
+    } catch (e) { }
+  </script>
+
+  <nav class="top-nav">
+    <div class="nav-left">
+      {%- for item in menu %}
+      <a href="{{ L }}{{ item.href }}" class="main-menu-link{{ ' active' if item.key == navKey }}" data-menu-key="{{ item.key }}">{{ '• ' if item.key == navKey }}{{ item[lang] }}</a>
+      {%- endfor %}
+    </div>
+
+    <div class="nav-center">
+      <a href="{{ L }}/" class="logo-link">HARRY LIAO</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="https://www.behance.net/xianhaoliao-design" target="_blank" rel="noopener noreferrer" class="social-link">Be</a>
+      <a href="https://www.linkedin.com/in/xian-hao-liao/" target="_blank" rel="noopener noreferrer" class="social-link">in</a>
+      <a href="https://www.youtube.com/@HarryLiaoVideo" target="_blank" rel="noopener noreferrer" class="social-link">YT</a>
+      <a href="https://www.instagram.com/xianhaoliao.design/" target="_blank" rel="noopener noreferrer" class="social-link">IG</a>
+      {% include "partials/theme-toggle.njk" %}
+      <button class="lang-toggle desktop-lang-toggle lang-{{ lang }}-active" {{ langToggleAttrs | safe }}>{{ langToggleInner | safe }}</button>
+    </div>
+
+    <button class="mobile-menu-toggle" id="openMenuBtn" aria-label="Open menu">☰</button>
+    <button class="lang-toggle mobile-lang-toggle lang-{{ lang }}-active" {{ langToggleAttrs | safe }}>{{ langToggleInner | safe }}</button>
+  </nav>
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="menu-header">
+      <a href="{{ L }}/" class="logo-link">HARRY LIAO</a>
+      <div class="menu-header-actions">
+        {% include "partials/theme-toggle.njk" %}
+        <button class="lang-toggle overlay-lang-toggle lang-{{ lang }}-active" {{ langToggleAttrs | safe }}>{{ langToggleInner | safe }}</button>
+        <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">{{ '♦ 關閉 ♦' if zh else '♦ CLOSE ♦' }}</button>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <nav class="mobile-nav-links">
+      {%- for item in menu %}
+      <a href="{{ L }}{{ item.href }}" class="mobile-link{{ ' active' if item.key == navKey }}" data-menu-key="{{ item.key }}">{{ item[lang] }}</a>
+      {%- endfor %}
+    </nav>
+
+    <div class="menu-divider"></div>
+
+    <div class="mobile-socials">
+      <span class="arrows">&gt;&gt;</span>
+      <div class="social-icons">
+        <a href="https://www.behance.net/xianhaoliao-design" target="_blank" rel="noopener noreferrer">Be</a>
+        <a href="https://www.linkedin.com/in/xian-hao-liao/" target="_blank" rel="noopener noreferrer">in</a>
+        <a href="https://www.youtube.com/@HarryLiaoVideo" target="_blank" rel="noopener noreferrer">YT</a>
+        <a href="https://www.instagram.com/xianhaoliao.design/" target="_blank" rel="noopener noreferrer">IG</a>
+      </div>
+      <span class="arrows">&lt;&lt;</span>
+    </div>
+
+    <div class="mobile-footer-text">{{ '// 設計下一個未來。' if zh else '// Designing the next reality.' }}</div>
+  </div>

@@ -1,0 +1,11 @@
+<button class="theme-toggle" type="button" data-theme-toggle aria-label="{{ '切換深色／淺色模式' if zh else 'Switch between dark and light mode' }}" title="{{ '切換深色／淺色模式' if zh else 'Switch between dark and light mode' }}">
+  {#- sun: shown in dark mode (switch to light) -#}
+  <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4.25"/>
+    <path d="M12 2.75v2M12 19.25v2M2.75 12h2M19.25 12h2M5.46 5.46l1.41 1.41M17.13 17.13l1.41 1.41M5.46 18.54l1.41-1.41M17.13 6.87l1.41-1.41"/>
+  </svg>
+  {#- moon: shown in light mode (switch to dark) -#}
+  <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" aria-hidden="true">
+    <path d="M20.25 14.6A8.25 8.25 0 0 1 9.4 3.75a8.25 8.25 0 1 0 10.85 10.85Z"/>
+  </svg>
+</button>

@@ -1,0 +1,15 @@
+  {# Runs before any CSS so a saved light theme never flashes dark first. #}
+  <script>
+    (function () {
+      var KEY = 'portfolio-theme';
+      var root = document.documentElement;
+      try { if (localStorage.getItem(KEY) === 'light') root.dataset.theme = 'light'; } catch (e) { }
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest || !e.target.closest('[data-theme-toggle]')) return;
+        var next = root.dataset.theme === 'light' ? 'dark' : 'light';
+        if (next === 'light') root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem(KEY, next); } catch (e) { }
+      });
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/css/theme.css">

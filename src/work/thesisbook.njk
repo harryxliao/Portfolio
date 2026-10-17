@@ -1,0 +1,170 @@
+---
+slug: "work/thesisbook.html"
+navKey: "work"
+---
+{% extends "layouts/base.njk" %}
+
+{% block seo %}
+  {% if zh %}<meta name="description" content="Dream Reality — 廖先皓 Harry Liao 的 MFA 碩士論文書。探索清醒夢的多學科論文，結合出版設計、裝置藝術與互動體驗。">{% else %}<meta name="description" content="Dream Reality — MFA Thesis Book by Harry Liao. A multidisciplinary thesis exploring lucid dreaming through publication design, art installations, and interactive experiences.">{% endif %}
+  {% if zh %}<meta name="keywords" content="廖先皓, Harry Liao, Dream Reality, MFA 論文, 論文書, 出版設計, 清醒夢, MassArt DMI">{% else %}<meta name="keywords" content="Harry Liao, Dream Reality, MFA Thesis, Thesis Book, Publication Design, Lucid Dreaming, MassArt DMI">{% endif %}
+  <meta name="author" content="Xian-Hao (Harry) Liao">
+  <meta name="robots" content="index, follow">
+  <title>{% if zh %}Dream Reality — MFA 碩士論文書 | Xian-Hao (Harry) Liao{% else %}Dream Reality — MFA Thesis Book | Xian-Hao (Harry) Liao{% endif %}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  {% if zh %}<meta property="og:title" content="Dream Reality — MFA 碩士論文書 | 廖先皓">{% else %}<meta property="og:title" content="Dream Reality — MFA Thesis Book | Harry Liao">{% endif %}
+  {% if zh %}<meta property="og:description" content="探索清醒夢的多學科論文，結合出版設計、裝置藝術與互動體驗。">{% else %}<meta property="og:description" content="A multidisciplinary thesis exploring lucid dreaming through publication design, art installations, and interactive experiences.">{% endif %}
+  <meta property="og:image" content="https://harryliao.design/images/TB.webp">
+  <meta property="og:site_name" content="Harry Liao Portfolio">
+
+  <!-- X -->
+  <meta name="twitter:card" content="summary_large_image">
+  {% if zh %}<meta name="twitter:title" content="Dream Reality — MFA 碩士論文書 | 廖先皓">{% else %}<meta name="twitter:title" content="Dream Reality — MFA Thesis Book | Harry Liao">{% endif %}
+  {% if zh %}<meta name="twitter:description" content="探索清醒夢的多學科論文，結合出版設計、裝置藝術與互動體驗。">{% else %}<meta name="twitter:description" content="A multidisciplinary thesis exploring lucid dreaming through publication design, art installations, and interactive experiences.">{% endif %}
+  <meta name="twitter:image" content="https://harryliao.design/images/TB.webp">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {% if zh %}{
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Dream Reality — MFA Thesis Book",
+    "author": { "@type": "Person", "name": "Xian-Hao (Harry) Liao" },
+    "url": "https://harryliao.design/zh/work/thesisbook",
+    "datePublished": "2025"
+  }{% else %}{
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Dream Reality — MFA Thesis Book",
+    "author": { "@type": "Person", "name": "Xian-Hao (Harry) Liao" },
+    "url": "https://harryliao.design/work/thesisbook",
+    "datePublished": "2025"
+  }{% endif %}
+  </script>
+{% endblock %}
+
+{% block assets %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/project-detail.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+  <script src="/assets/js/i18n.js" defer=""></script>
+  <script src="/assets/js/navbar.js" defer=""></script>
+  <script src="/assets/js/main.js" defer=""></script>
+  <script src="/assets/js/lazy-images.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer=""></script>
+  <script src="/assets/js/animations.js" defer=""></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo+Black&amp;family=Black+Ops+One&amp;family=League+Spartan:wght@700;800;900&amp;family=Montserrat:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <link rel="stylesheet" href="/assets/css/project-detail.css">
+
+    <div class="project-detail-page">
+      <div class="pd-container">
+
+        <!-- ── HERO HEADER ── -->
+        <header class="pd-hero-header pd-reveal">
+          <div class="pd-hero-title-area">
+            <h1>DREAM<br>REALITY</h1>
+            <p class="pd-subtitle">{% if zh %}MFA 碩士論文書{% else %}MFA THESIS BOOK{% endif %}</p>
+          </div>
+
+          <div class="pd-meta-table">
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}類型{% else %}TYPE{% endif %}</span>
+              <span class="pd-meta-value">{% if zh %}出版物 / 論文{% else %}PUBLICATION / THESIS{% endif %}</span>
+            </div>
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}年份{% else %}YEAR{% endif %}</span>
+              <span class="pd-meta-value">2024</span>
+            </div>
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}載體{% else %}MEDIUM{% endif %}</span>
+              <span class="pd-meta-value">{% if zh %}實體書 / 數位出版{% else %}PRINT / DIGITAL{% endif %}</span>
+            </div>
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}連結{% else %}LINK{% endif %}</span>
+              <a href="https://dynamicmediainstitute.org/wp-content/uploads/Xian-Hao-Harry-Liao_Dream-Reality_Thesis-Book-compressed.pdf" target="_blank" rel="noopener noreferrer" class="pd-meta-value" style="text-decoration: underline; color: inherit;"><span>{% if zh %}論文書{% else %}THESIS BOOK{% endif %}</span> ↗</a>
+            </div>
+          </div>
+        </header>
+
+        <!-- ── HERO BANNER ── -->
+        <div class="pd-hero-banner pd-reveal">
+          {% if zh %}<img src="/images/Project/TB%20(3).webp" alt="Dream Reality MFA 碩士論文書 — 多本書籍俯視圖" loading="eager">{% else %}<img src="/images/Project/TB%20(3).webp" alt="Dream Reality MFA Thesis Book — Top view of multiple copies" loading="eager">{% endif %}
+        </div>
+
+        <!-- ── INTRODUCTION ── -->
+        <section class="pd-intro-section pd-reveal">
+          <div class="pd-intro-text">
+            <p class="pd-section-kicker">{% if zh %}工具與流程{% else %}TOOLS &amp; PROCESS{% endif %}</p>
+            <h2>{% if zh %}設計概覽{% else %}OVERVIEW{% endif %}</h2>
+            <p>{% if zh %}「夢境形塑了我，讓我明白何為真實與虛幻。」本作期望凸顯將夢境視為強大自我探索方法的價值，進而培養向內探求的心智。整體採用 InDesign 排版、Photoshop 影像處理以及自訂字體設計。{% else %}
+              "Dreams shaped me and made me know what is real and what is unreal." The project highlights the value of
+              understanding dreams as a powerful method for self-exploration, ultimately fostering a mindset of
+              self-enquiry. Designed with InDesign, Photoshop, and custom typography.{% endif %}<br><br>{% if zh %}這是 Harry 的 MFA 碩士論文書，探索清醒夢（Lucid Dreaming）的深層現象。透過互動設計作品與裝置藝術，Harry 引導讀者理解清醒夢的概念，讓讀者得以模擬並親身感受意識覺醒的夢境體驗。{% else %}This is Harry's MFA thesis
+              book, exploring the profound phenomenon of lucid dreaming. Through interactive design pieces and art
+              installations, Harry guides readers to understand lucid dreaming by simulating the sensation of conscious
+              dreaming.
+            {% endif %}</p>
+          </div>
+          <div class="pd-intro-media">
+            <video autoplay="" muted="" loop="" playsinline="">
+              <source src="/videos/Thesisbook.mp4" type="video/mp4">
+            </video>
+          </div>
+        </section>
+
+        <!-- ── CTA BANNER ── -->
+        <section class="thesis-cta-banner-wrapper pd-reveal">
+          <div class="thesis-cta-banner">
+            <div class="thesis-cta-content">
+              <p class="pd-section-kicker">{% if zh %}論文書{% else %}THESIS BOOK{% endif %}</p>
+              <h2>Dream Reality</h2>
+              <p>{% if zh %}《Dream Reality》是 Harry 的 MFA 畢業論文書。本書結合互動設計與裝置藝術，將清醒夢的概念轉化為可親身體驗的內容。誠摯邀請您翻開這本書，一同探索夢境與現實的邊界。{% else %}
+                Dream Reality is Harry's MFA graduation thesis book. Through interactive design and art installations,
+                it transforms the concept of lucid dreaming into an experience you can feel. You are warmly invited to
+                open its pages and explore the boundary between dreams and reality.{% endif %}</p>
+              <a href="https://dynamicmediainstitute.org/wp-content/uploads/Xian-Hao-Harry-Liao_Dream-Reality_Thesis-Book-compressed.pdf" target="_blank" rel="noopener noreferrer" class="thesis-cta-btn">{% if zh %}論文書 PDF{% else %}THESIS BOOK
+                PDF{% endif %}</a>
+            </div>
+            <div class="thesis-cta-media">
+              <img src="/images/Project/TB%20(2).webp" alt="Dream Reality Thesis Book PDF" loading="lazy">
+            </div>
+          </div>
+        </section>
+
+        <!-- ── SPREAD SHOWCASE ── -->
+        <section class="pd-spread-showcase">
+          <p class="pd-section-kicker pd-reveal">{% if zh %}書籍內頁展示{% else %}SPREAD SHOWCASE{% endif %}</p>
+          <div class="pd-spread-stack">
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(4).webp" alt="Dream Reality — 論文摘要跨頁" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(4).webp" alt="Dream Reality — Thesis Abstract spread" loading="lazy">{% endif %}
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(5).webp" alt="Dream Reality — Timme! 跨頁" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(5).webp" alt="Dream Reality — Timme! spread" loading="lazy">{% endif %}
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(6).webp" alt="Dream Reality — 案例研究跨頁" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(6).webp" alt="Dream Reality — Case Studies spread" loading="lazy">{% endif %}
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(8).webp" alt="Dream Reality — 跨頁版面" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(8).webp" alt="Dream Reality — Cross-spread layout" loading="lazy">{% endif %}
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(7).webp" alt="Dream Reality — 夢境手搖器跨頁" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(7).webp" alt="Dream Reality — Dream Handcrank spread" loading="lazy">{% endif %}
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(9).webp" alt="Dream Reality — 潛入夢境跨頁" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(9).webp" alt="Dream Reality — Dive Into The Dream spread" loading="lazy">{% endif %}
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(11).webp" alt="Dream Reality — 覺知夢即是夢" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(11).webp" alt="Dream Reality — Aware of Dreams is Dreaming" loading="lazy">{% endif %}
+            {% if zh %}<img class="pd-reveal" src="/images/Project/TB%20(10).webp" alt="Dream Reality — 文字版面跨頁" loading="lazy">{% else %}<img class="pd-reveal" src="/images/Project/TB%20(10).webp" alt="Dream Reality — Text layout spread" loading="lazy">{% endif %}
+          </div>
+        </section>
+
+        <!-- ── FOOTER CTA ── -->
+        <section class="learn-more-section learn-more-section--spaced">
+          <div class="learn-more-inner">
+            <h2 class="learn-more-title">{% if zh %}期待與您合作！{% else %}Looking Forward To Speaking With You Soon!{% endif %}</h2>
+            {% if zh %}<a href="{{ L }}/work" data-spa-target="work" class="learn-more-btn" id="thesisbookBackBtn">{% else %}<a href="{{ L }}/work/" data-spa-target="work" class="learn-more-btn" id="thesisbookBackBtn">{% endif %}
+              <span>{% if zh %}查看更多作品{% else %}See more work{% endif %}</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+{% endblock %}

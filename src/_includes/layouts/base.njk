@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ 'zh-Hant' if zh else 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  {% block seo %}{% include "partials/home-seo.njk" %}{% endblock %}
+
+  {# canonical + language alternates are generated per page #}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ urls.en }}">
+  <link rel="alternate" hreflang="en" href="{{ site.url }}{{ urls.en }}">
+  <link rel="alternate" hreflang="zh-Hant" href="{{ site.url }}{{ urls.zh }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+
+  {% include "partials/theme-init.njk" %}
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/icon.ico" type="icon">
+  <link type="image/x-icon" href="/icon.ico" rel="icon">
+  <link type="image/x-icon" href="/icon.ico" rel="shortcut icon">
+  <link type="image/x-icon" href="/icon.ico" rel="bookmark">
+  {% block assets %}{% include "partials/home-assets.njk" %}{% endblock %}
+</head>
+
+<body>
+  {% include "partials/nav.njk" %}
+
+  <div id="mainContent">
+{% block main %}{% endblock %}
+  </div>
+
+  {% include "partials/footer.njk" %}
+  {% block tail %}{% endblock %}
+</body>
+</html>

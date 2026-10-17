@@ -1,0 +1,271 @@
+---
+slug: "work/gate-redbull.html"
+navKey: "work"
+---
+{% extends "layouts/base.njk" %}
+
+{% block seo %}
+  <meta name="description" content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta name="keywords" content="Harry Liao, Xian-Hao Liao, Multimedia Designer, UX Design, Visual Design, Motion Graphics, 3D Modeling, MassArt DMI">
+  <meta name="author" content="Xian-Hao (Harry) Liao">
+  <meta name="robots" content="index, follow">
+  <title>{% if zh %}Gate × RedBull F1 NFT | Xian-Hao (Harry) Liao{% else %}Gate × RedBull Racing F1 NFT | Xian-Hao (Harry) Liao{% endif %}</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Xian-Hao (Harry) Liao | Design Portfolio">
+  <meta property="og:description" content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta property="og:image" content="https://harryliao.design/images/TB.webp">
+  <meta property="og:site_name" content="Harry Liao Portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Xian-Hao (Harry) Liao | Design Portfolio">
+  <meta name="twitter:description" content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta name="twitter:image" content="https://harryliao.design/images/TB.webp">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Xian-Hao (Harry) Liao",
+    "url": "https://harryliao.design/",
+    "jobTitle": "Multimedia Designer",
+    "alumniOf": "Massachusetts College of Art and Design",
+    "sameAs": [
+      "https://www.linkedin.com/in/xian-hao-liao/",
+      "https://www.behance.net/xianhaoliao-design",
+      "https://www.instagram.com/xianhaoliao.design/",
+      "https://www.youtube.com/@HarryLiaoVideo"
+    ]
+  }
+  </script>
+{% endblock %}
+
+{% block assets %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/project-detail.css">
+  <link rel="preload" as="style" href="/assets/css/about.css">
+  <link rel="stylesheet" href="/assets/css/about.css">
+  <link rel="preload" as="style" href="/assets/css/work.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+  <link rel="preload" as="style" href="/assets/css/contact.css">
+  <link rel="stylesheet" href="/assets/css/contact.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+  <link rel="preconnect" href="https://player.vimeo.com" crossorigin="">
+  <link rel="preload" as="image" href="/images/xianhaoliao.webp">
+  <link rel="preload" as="image" href="/images/TB.webp">
+  <link rel="preload" as="image" href="/images/YB.webp">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="/assets/js/i18n.js" defer=""></script>
+  <script src="/assets/js/navbar.js" defer=""></script>
+  <script src="/assets/js/about.js" defer=""></script>
+  <script src="/assets/js/main.js" defer=""></script>
+  <script src="/assets/js/feature.js" defer=""></script>
+  <script src="/assets/js/lazy-images.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer=""></script>
+  <script src="/assets/js/animations.js" defer=""></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo+Black&amp;family=Black+Ops+One&amp;family=League+Spartan:wght@700;800;900&amp;display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    
+
+    {% if zh %}<link rel="stylesheet" href="/assets/css/project-detail.css">
+
+{% else %}{% endif %}<div class="gate-redbull-page">
+      <div class="gate-redbull-container">
+
+        <!-- ── Project Header ── -->
+        <header class="project-header">
+          <div class="project-title-area">
+            <h1>Gate <span class="accent">×</span> RedBull<br>F1 NFT</h1>
+            <p class="subtitle">{% if zh %}Gate X RedBull Racing F1 NFT 活動頁面。將 Web3 NFT 領取機制與 RedBull F1 賽車品牌能量深度結合，打造具備高度視覺衝擊力與使用流暢度的限時活動體驗。{% else %}
+              Gate X RedBull Racing F1 NFT campaign page. Fusing Web3 NFT claim mechanics with RedBull F1 racing brand
+              energy to craft a high-impact, time-limited experience that drives both user participation and brand
+              collaboration reach.
+            {% endif %}</p>
+          </div>
+
+          <!-- Metadata -->
+          <div class="project-meta-table">
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}類別{% else %}Category{% endif %}</span>
+              <span class="meta-value">{% if zh %}Web3 / 品牌活動{% else %}Web3 / Campaign{% endif %}</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}年份{% else %}Date{% endif %}</span>
+              <span class="meta-value">2025</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}載體{% else %}Medium{% endif %}</span>
+              <span class="meta-value">{% if zh %}網頁 / 數位活動{% else %}Web / Digital Campaign{% endif %}</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}角色{% else %}Role{% endif %}</span>
+              <span class="meta-value">{% if zh %}UI / UX 設計師{% else %}UI / UX Designer{% endif %}</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- ── Impact Strip ── -->
+        <div class="rb-impact-strip">
+          <div class="rb-impact-stat">
+            <span class="rb-impact-num">453K<span class="impact-suffix">+</span></span>
+            <span class="rb-impact-label">{% if zh %}活動觸及人數{% else %}Campaign Reach{% endif %}</span>
+          </div>
+          <div class="rb-impact-stat">
+            <span class="rb-impact-num">F1</span>
+            <span class="rb-impact-label">{% if zh %}國際賽車品牌合作{% else %}Global Racing Partnership{% endif %}</span>
+          </div>
+          <div class="rb-impact-stat">
+            <span class="rb-impact-num">NFT</span>
+            <span class="rb-impact-label">{% if zh %}限時 NFT 領取活動{% else %}Limited-Time NFT Drop{% endif %}</span>
+          </div>
+        </div>
+
+        <!-- ── Tools & Process ── -->
+        <section class="tools-section">
+          <div class="tools-header">
+            <p class="contributions-kicker">{% if zh %}工具與流程{% else %}Tools &amp; Process{% endif %}</p>
+            <h2>{% if zh %}設計工具鏈{% else %}Design Toolchain{% endif %}</h2>
+          </div>
+          <div class="tools-grid">
+            <div class="tool-pill">Figma</div>
+            <div class="tool-pill">Auto Layout</div>
+            <div class="tool-pill">Component Library</div>
+            <div class="tool-pill">Prototype</div>
+            <div class="tool-pill">Responsive Design</div>
+            <div class="tool-pill">Dev Handoff</div>
+            <div class="tool-pill">Photoshop</div>
+            <div class="tool-pill">Illustrator</div>
+          </div>
+          <p class="tools-desc">{% if zh %}從需求分析到最終交付，完整掌握 UI 設計的全流程：資訊架構規劃、視覺系統建立、跨平台響應設計、Prototype 驗證，以及與開發端的精準交接，確保設計完整落地。{% else %}
+            From requirement analysis to final delivery — owning the complete UI design pipeline: information
+            architecture, visual system, cross-platform responsive design, prototype validation, and precise developer
+            handoff to ensure design integrity at launch.
+          {% endif %}</p>
+        </section>
+
+        <!-- ── Text + Image Side-by-Side ── -->
+        <section class="content-grid-2col">
+          <div class="text-section">
+            <h3>{% if zh %}資訊架構 × 視覺層級{% else %}Information Architecture × Visual Hierarchy{% endif %}</h3>
+            <p>{% if zh %}GATE X REDBull F1 NFT觸及率 453K+ 此次活動專案觸及人數超過 453K，成功擴大品牌合作聲量與用戶參與。活動頁結合品牌話題與限時領取機制，有效帶動專案曝光與 NFT 領取參與。{% else %}
+              GATE X RedBull F1 NFT reached <strong>453K+</strong> users. This campaign successfully amplified brand
+              collaboration reach and user engagement. By combining brand storytelling with a time-limited claim
+              mechanism, the page effectively drove project visibility and NFT adoption.
+            {% endif %}</p>
+          </div>
+          <div class="media-block">
+            <div class="image-wrapper">
+              <img src="/images/Project/Gate_Redbull%20(2).webp" alt="Gate X RedBull F1 NFT — UI Design Showcase 02" loading="lazy">
+            </div>
+            <div class="block-caption">
+              <span>{% if zh %}活動頁 UI 設計 — 02{% else %}Campaign UI Design — 02{% endif %}</span>
+              <span>Gate × RedBull Racing</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Key Contributions ── -->
+        <section class="contributions-section">
+          <div class="contributions-header">
+            <p class="contributions-kicker">{% if zh %}核心貢獻{% else %}Key Contributions{% endif %}</p>
+            <h2>{% if zh %}跨平台 UI 設計，驅動品牌合作聲量{% else %}Cross-Platform UI. Brand-Amplifying Impact.{% endif %}</h2>
+          </div>
+
+          <div class="contributions-grid">
+
+            <!-- 01 -->
+            <div class="contribution-card">
+              <div class="contribution-number">01</div>
+              <div class="contribution-content">
+                <h4>{% if zh %}活動頁 UI / UX 設計{% else %}Campaign Page UI / UX Design{% endif %}</h4>
+                <p>{% if zh %}我能從產品概念出發，將需求轉化為清楚的資訊架構、視覺層級與操作流程，並依據不同平台特性完成對應的 UI 設計。除了畫面美感，我也重視設計規範建立、Prototype 驗證，以及與開發端協作，確保設計能被完整實現。{% else %}
+                  Starting from product concepts, I translated requirements into clear information architecture, visual
+                  hierarchy, and user flows — then executed platform-specific UI designs. Beyond aesthetics, I
+                  prioritized design system documentation, prototype validation, and developer collaboration to ensure
+                  faithful implementation.
+                {% endif %}</p>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="contribution-card">
+              <div class="contribution-number">02</div>
+              <div class="contribution-content">
+                <h4>{% if zh %}跨平台 UI / GUI 設計{% else %}Cross-Platform UI / GUI Design{% endif %}</h4>
+                <p>{% if zh %}針對桌面與行動端分別制定響應式版面，確保活動體驗在各種裝置上都能保持一致的視覺品質與操作邏輯，提升整體轉換率與用戶參與。{% else %}
+                  Designed responsive layouts tailored for both desktop and mobile, ensuring a consistent visual
+                  experience and intuitive interaction logic across all devices — maximizing conversion and user
+                  engagement.
+                {% endif %}</p>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="contribution-card">
+              <div class="contribution-number">03</div>
+              <div class="contribution-content">
+                <h4>{% if zh %}設計規範與元件整理{% else %}Design System &amp; Component Library{% endif %}</h4>
+                <p>{% if zh %}建立清楚的設計規範與可復用元件庫，讓設計在多頁面活動擴展時保持一致性，並大幅縮短後續迭代與開發的溝通成本。{% else %}
+                  Established a clear design specification and reusable component library to maintain consistency across
+                  multi-page campaign expansions, significantly reducing iteration and developer handoff overhead.
+                {% endif %}</p>
+              </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="contribution-card">
+              <div class="contribution-number">04</div>
+              <div class="contribution-content">
+                <h4>{% if zh %}Prototype 與流程驗證{% else %}Prototype &amp; Flow Validation{% endif %}</h4>
+                <p>{% if zh %}透過高保真 Prototype 驗證核心操作流程，包括 NFT 領取步驟、錢包連結與活動說明閱讀路徑，確保用戶能以最低摩擦完成目標行為。{% else %}
+                  Validated key user flows through high-fidelity prototypes — including NFT claim steps, wallet
+                  connection, and campaign content reading paths — to minimize friction and maximize task completion.
+                {% endif %}</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ── Quote Banner ── -->
+        <div class="quote-banner">
+          <h2>{% if zh %}「品牌話題 × 限時領取 × 超過 453K 觸及——設計驅動活動聲量」{% else %}
+            "Brand Collab × Time-Limited Drop × <em>453K+</em> Reach — Design That Drives Volume"
+          {% endif %}</h2>
+        </div>
+
+        <!-- ── Full-width image 1 ── -->
+        <section class="media-block full-width">
+          <div class="image-wrapper">
+            <img src="/images/Project/Gate_Redbull%20(1).webp" alt="Gate X RedBull F1 NFT — UI Design Showcase 01" loading="lazy">
+          </div>
+          <div class="block-caption">
+            <span>{% if zh %}活動頁 UI 設計 — 01{% else %}Campaign UI Design — 01{% endif %}</span>
+            <span>Gate × RedBull Racing</span>
+          </div>
+        </section>
+
+        <!-- ── Footer CTA ── -->
+        <section class="learn-more-section learn-more-section--spaced">
+          <div class="learn-more-inner">
+            <h2 class="learn-more-title">{% if zh %}期待與您合作！{% else %}Looking Forward To Speaking With You Soon!{% endif %}</h2>
+            {% if zh %}<a href="{{ L }}/work" data-spa-target="work" class="learn-more-btn" id="gate-redbullBackBtn">{% else %}<a href="{{ L }}/work/" data-spa-target="work" class="learn-more-btn" id="gate-redbullBackBtn">{% endif %}
+              <span>{% if zh %}查看更多作品{% else %}See more work{% endif %}</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+{% endblock %}

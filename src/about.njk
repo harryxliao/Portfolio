@@ -1,0 +1,13 @@
+---
+# Shell page: renders the home page, then about.js loads fragments/about.html on top of it.
+slug: "about/"
+navKey: about
+pageTitle:
+  en: "About Harry | Xian-Hao (Harry) Liao"
+  zh: "關於 Harry | Xian-Hao (Harry) Liao"
+---
+{% extends "layouts/base.njk" %}
+
+{% block main %}
+{% include "partials/home-main.njk" %}
+{% endblock %}

@@ -8,7 +8,7 @@
 }
 
 :root {
-  --bg-color: #050505;
+  --bg-color: var(--g-05);
   --font-mono: 'Space Mono', 'Courier New', monospace;
 }
 
@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
 
 body {
   background-color: var(--bg-color);
-  color: #fff;
+  color: var(--ink);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 100%;
   min-width: 100%;
@@ -39,14 +39,14 @@ body {
 }
 
 ::selection {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--ink);
+  color: var(--paper);
 }
 
 /* 針對 Firefox 瀏覽器的相容性設定 */
 ::-moz-selection {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--ink);
+  color: var(--paper);
 }
 
 /* =========================================
@@ -114,6 +114,13 @@ body {
 .media-fallback-host iframe,
 .media-fallback-host video {
   z-index: 1;
+  transition: opacity 400ms ease;
+}
+
+/* Keep the hero player hidden until it is actually playing, so Vimeo's gray
+   loading screen never flashes over the fallback image. */
+.hero-section .media-fallback-host:not(.media-ready) iframe {
+  opacity: 0;
 }
 
 .media-fallback-host.media-ready .embedded-media-fallback {
@@ -131,7 +138,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(var(--paper-rgb), 0.6);
   z-index: 2;
 }
 
@@ -139,7 +146,7 @@ body {
 .hero-title,
 .giant-name {
   margin: 0;
-  color: #ffffff;
+  color: var(--ink);
   font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15vw;
   font-weight: 900;
@@ -201,7 +208,7 @@ body {
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  background: linear-gradient(to bottom, rgba(var(--paper-rgb), 0.7), rgba(var(--paper-rgb), 0));
   backdrop-filter: blur(2px);
 }
 
@@ -229,7 +236,7 @@ html.spa-loading .site-footer {
 }
 
 .top-nav a {
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   font-size: 11px;
   letter-spacing: 1.5px;
@@ -260,9 +267,9 @@ html.spa-loading .site-footer {
 
 .lang-toggle {
   appearance: none;
-  border: 1px solid #333;
+  border: 1px solid var(--g-33);
   background: transparent;
-  color: #fff;
+  color: var(--ink);
   font-family: 'Space Mono', 'Courier New', monospace;
   font-size: 11px;
   letter-spacing: 1.8px;
@@ -296,8 +303,8 @@ html.spa-loading .site-footer {
 }
 
 .lang-toggle:hover {
-  background: #222;
-  border-color: #666;
+  background: var(--g-22);
+  border-color: var(--g-66);
 }
 
 .mobile-lang-toggle,
@@ -315,7 +322,7 @@ html.spa-loading .site-footer {
   font-family: 'Anton', 'Impact', 'Arial Black', sans-serif;
   /* 改回科幻風格粗體 */
   text-decoration: none;
-  color: #fff;
+  color: var(--ink);
 }
 
 .nav-center {
@@ -332,7 +339,7 @@ html.spa-loading .site-footer {
 .mobile-menu-toggle {
   display: none;
   background: transparent;
-  color: #fff;
+  color: var(--ink);
   border: none;
   font-size: 24px;
   cursor: pointer;
@@ -347,8 +354,8 @@ html.spa-loading .site-footer {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: #0a0a0a;
-  color: #fff;
+  background-color: var(--g-0a);
+  color: var(--ink);
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -383,15 +390,15 @@ html.spa-loading .site-footer {
   font-weight: 400;
   font-family: 'Anton', 'Impact', 'Arial Black', sans-serif;
   text-decoration: none;
-  color: #fff;
+  color: var(--ink);
   letter-spacing: 1.75px;
 }
 
 /* 【修改細節：確保 CLOSE 按鈕是 monospace 細體】 */
 .close-btn {
   background: transparent;
-  color: #fff;
-  border: 1px solid #333;
+  color: var(--ink);
+  border: 1px solid var(--g-33);
   padding: 6px 10px;
   font-size: 11px;
   cursor: pointer;
@@ -404,13 +411,13 @@ html.spa-loading .site-footer {
 }
 
 .close-btn:hover {
-  background: #222;
+  background: var(--g-22);
 }
 
 .menu-divider {
   width: 100%;
   height: 1px;
-  background-color: #222;
+  background-color: var(--g-22);
   margin: 10px 0;
   position: relative;
 }
@@ -422,7 +429,7 @@ html.spa-loading .site-footer {
   top: 0;
   width: 6px;
   height: 1px;
-  background-color: #fff;
+  background-color: var(--ink);
 }
 
 .menu-divider::before {
@@ -441,12 +448,12 @@ html.spa-loading .site-footer {
 }
 
 .mobile-link {
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   font-size: 36px;
   font-family: 'Space Mono', 'Courier New', monospace;
   padding: 20px 0;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid var(--g-1a);
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -468,7 +475,7 @@ html.spa-loading .site-footer {
 }
 
 .arrows {
-  color: #555;
+  color: var(--g-55);
   font-family: monospace;
   font-size: 14px;
   letter-spacing: 1px;
@@ -480,7 +487,7 @@ html.spa-loading .site-footer {
 }
 
 .social-icons a {
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   font-size: 16px;
   font-family: sans-serif;
@@ -493,7 +500,7 @@ html.spa-loading .site-footer {
   left: 20px;
   font-family: monospace;
   font-size: 10px;
-  color: #444;
+  color: var(--g-44);
   letter-spacing: 1.5px;
 }
 
@@ -806,7 +813,7 @@ html.spa-loading .site-footer {
   font-size: 10px;
   line-height: 1.8;
   max-width: 500px;
-  color: #e7e7e7;
+  color: var(--g-e7);
   text-transform: uppercase;
   margin: 0;
   letter-spacing: 1px;
@@ -816,12 +823,12 @@ html.spa-loading .site-footer {
 .view-project {
   display: inline-block;
   margin-top: 0.5rem;
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--ink);
   padding-bottom: 5px;
   font-family: var(--font-mono);
   transition: opacity 0.3s ease;
@@ -841,8 +848,8 @@ html.spa-loading .site-footer {
 
 .description-strip {
   padding: 80px 0;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
+  border-top: 1px solid var(--g-33);
+  border-bottom: 1px solid var(--g-33);
 }
 
 .description-content {
@@ -858,8 +865,8 @@ html.spa-loading .site-footer {
 
 /* 針對這段文字的滑鼠選取效果 */
 .description-content p::selection {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--ink);
+  color: var(--paper);
 }
 
 /* 確保 Firefox 瀏覽器的相容性 */
@@ -876,9 +883,9 @@ html.spa-loading .site-footer {
   /* 撐滿父容器 */
   padding: 18px 0;
   /* 增加上下間距 */
-  background-color: #131313;
+  background-color: var(--g-13);
   /* 純黑背景 */
-  color: #9a9a9a;
+  color: var(--g-9a);
 
   /* 字體樣式 */
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -890,7 +897,7 @@ html.spa-loading .site-footer {
   text-transform: uppercase;
 
   /* 四周邊框：形成一個完整的框 */
-  border: 1px solid #2a2a2a;
+  border: 1px solid var(--g-2a);
 
   /* 滑鼠懸停效果 */
   transition: all 0.2s ease-in-out;
@@ -900,9 +907,9 @@ html.spa-loading .site-footer {
 }
 
 .portfolio-button:hover {
-  background-color: #111111;
-  border-color: #666666;
-  color: #ffffff;
+  background-color: var(--g-11);
+  border-color: var(--g-66);
+  color: var(--ink);
 }
 
 .diamond {
@@ -913,7 +920,7 @@ html.spa-loading .site-footer {
   width: 10px;
   height: 10px;
   font-size: 0;
-  color: #9a9a9a;
+  color: var(--g-9a);
   transition: color 0.2s ease;
 }
 
@@ -927,7 +934,7 @@ html.spa-loading .site-footer {
 }
 
 .portfolio-button:hover .diamond {
-  color: #ffffff;
+  color: var(--ink);
 }
 
 .portfolio-button:hover .diamond::before {
@@ -938,8 +945,8 @@ html.spa-loading .site-footer {
    Featured Clients 區塊樣式
 ========================================= */
 .featured-clients-section {
-  background-color: #050505;
-  color: #fff;
+  background-color: var(--g-05);
+  color: var(--ink);
   padding: 100px 0;
   font-size: 18px;
   font-weight: 400;
@@ -955,12 +962,12 @@ html.spa-loading .site-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #050505;
-  color: #fff;
+  background-color: var(--g-05);
+  color: var(--ink);
   padding: 100px 0;
   font-family: 'Space Mono', 'Courier New', monospace;
-  --client-frame-line: rgba(255, 255, 255, 0.16);
-  --client-frame-line-strong: rgba(255, 255, 255, 0.28);
+  --client-frame-line: rgba(var(--ink-rgb), 0.16);
+  --client-frame-line-strong: rgba(var(--ink-rgb), 0.28);
 }
 
 .featured-clients-section,
@@ -977,7 +984,7 @@ html.spa-loading .site-footer {
   left: 16px;
   right: 16px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0 6px, var(--client-frame-line) 6px calc(100% - 6px), rgba(255, 255, 255, 0.95) calc(100% - 6px));
+  background: linear-gradient(90deg, rgba(var(--ink-rgb), 0.95) 0 6px, var(--client-frame-line) 6px calc(100% - 6px), rgba(var(--ink-rgb), 0.95) calc(100% - 6px));
   pointer-events: none;
 }
 
@@ -1039,7 +1046,7 @@ html.spa-loading .site-footer {
 ========================================= */
 .crosshair {
   position: absolute;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(var(--ink-rgb), 0.45);
   font-size: 20px;
   /* 大號字體 */
   font-family: sans-serif;
@@ -1132,7 +1139,7 @@ html.spa-loading .site-footer {
 .logo-placeholder {
   font-size: 24px;
   font-family: 'Anton', 'Impact', sans-serif;
-  color: #666;
+  color: var(--g-66);
   transition: color 0.3s ease;
 }
 
@@ -1151,19 +1158,19 @@ html.spa-loading .site-footer {
   bottom: 20px;
   font-size: 10px;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(var(--ink-rgb), 0.9);
   opacity: 0.4;
   transition: opacity 0.3s ease;
 }
 
 /* Hover 狀態 (類似 Treyarch 的效果) */
 .client-item:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(var(--ink-rgb), 0.02);
   border-right-color: var(--client-frame-line);
 }
 
 .client-item:hover .logo-placeholder {
-  color: #fff;
+  color: var(--ink);
   /* 點亮 Logo */
 }
 
@@ -1187,7 +1194,7 @@ html.spa-loading .site-footer {
 }
 
 .client-item.is-active .logo-placeholder {
-  color: #fff;
+  color: var(--ink);
 }
 
 .client-item.is-active .hover-text {
@@ -1195,7 +1202,7 @@ html.spa-loading .site-footer {
 }
 
 .client-item.is-active .crosshair {
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(var(--ink-rgb), 0.95);
 }
 
 .client-item.is-active::after {
@@ -1220,8 +1227,8 @@ html.spa-loading .site-footer {
 
 .ctrl-btn {
   background: transparent;
-  border: 2px solid #6c6c6c;
-  color: #fff;
+  border: 2px solid var(--g-6c);
+  color: var(--ink);
   width: 44px;
   height: 44px;
   display: flex;
@@ -1233,16 +1240,16 @@ html.spa-loading .site-footer {
 }
 
 .ctrl-btn:hover {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--ink);
+  background: rgba(var(--ink-rgb), 0.05);
 }
 
 /* =========================================
    1. 基礎重置與字體
 ========================================= */
 body {
-  background-color: #050505;
-  color: #fff;
+  background-color: var(--g-05);
+  color: var(--ink);
   font-family: 'Space Mono', 'Courier New', monospace;
   margin: 0;
   padding: 0;
@@ -1280,7 +1287,7 @@ body {
   font-weight: 800;
   margin: -20px 0 0 0;
   letter-spacing: 10px;
-  color: #ffffff;
+  color: var(--ink);
   -webkit-text-stroke: 0;
   font-family: sans-serif;
   text-transform: uppercase;
@@ -1367,7 +1374,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .sidebar-label {
   display: inline-block;
   background-color: transparent;
-  color: #ddd;
+  color: var(--g-dd);
   padding: 4px 10px;
   font-size: 12px;
   letter-spacing: 1.5px;
@@ -1378,13 +1385,13 @@ body.spa-gate_redbull #mainContent.page-enter {
 
 .career-content:has(.accordion-item:hover) .sidebar-label,
 .career-content:has(.accordion-item:focus-within) .sidebar-label {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--ink);
+  color: var(--paper);
 }
 
 .accordion-container {
   flex-grow: 1;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(var(--ink-rgb), 0.1);
 }
 
 /* =========================================
@@ -1393,14 +1400,14 @@ body.spa-gate_redbull #mainContent.page-enter {
 .accordion-item {
   display: flex;
   padding: 21px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(var(--ink-rgb), 0.1);
   cursor: pointer;
   align-items: flex-start;
   transition: background-color 0.3s ease;
 }
 
 .accordion-item:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(var(--ink-rgb), 0.02);
 }
 
 /* =========================================
@@ -1423,7 +1430,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   top: 4px;
   /* 微調垂直位置對齊文字 */
   font-size: 10px;
-  color: #fff;
+  color: var(--ink);
   /* 保持白色，不反白 */
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -1432,7 +1439,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .title-text {
   font-size: 12px;
   letter-spacing: 1.5px;
-  color: #ddd;
+  color: var(--g-dd);
   line-height: 1.6;
   text-transform: uppercase;
   padding: 2px 8px;
@@ -1456,7 +1463,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .preview-text {
-  color: #555;
+  color: var(--g-55);
   font-size: 12px;
   line-height: 1.6;
   letter-spacing: 1.5px;
@@ -1481,7 +1488,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .full-text {
   min-height: 0;
   overflow: hidden;
-  color: #999;
+  color: var(--g-99);
   font-size: 12px;
   line-height: 1.6;
   letter-spacing: 1.5px;
@@ -1501,7 +1508,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .accordion-item:hover .item-content-col,
 .accordion-item:hover .item-content-col .preview-text,
 .accordion-item:hover .item-content-col .full-text {
-  color: #fff;
+  color: var(--ink);
 }
 
 /* =========================================
@@ -1512,13 +1519,13 @@ body.spa-gate_redbull #mainContent.page-enter {
   flex-shrink: 0;
   display: flex;
   justify-content: flex-end;
-  color: #555;
+  color: var(--g-55);
   font-size: 14px;
   transition: color 0.25s ease;
 }
 
 .icon-box {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--ink-rgb), 0.1);
   width: 20px;
   height: 20px;
   display: flex;
@@ -1527,15 +1534,15 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .accordion-item:hover .item-icon-col {
-  color: #fff;
+  color: var(--ink);
 }
 
 /* =========================================
    5. 展開狀態 (Active) 樣式覆寫
 ========================================= */
 .accordion-item:hover .title-text {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--ink);
+  color: var(--paper);
 }
 
 .accordion-item.active .bullet {
@@ -1553,7 +1560,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 
 .accordion-item.active .item-content-col .full-text {
   opacity: 1;
-  color: #999;
+  color: var(--g-99);
 }
 
 .accordion-item.active .icon-box::before {
@@ -1949,14 +1956,14 @@ body.spa-gate_redbull #mainContent.page-enter {
   margin-top: 0;
   margin-bottom: 26px;
   /* 來自你的設定 */
-  color: #ffffff;
+  color: var(--ink);
 }
 
 .impact-section .title-outline {
   margin-top: 10px;
   margin-bottom: 0;
   /* Use solid white text instead of outlined/transparent */
-  color: #ffffff;
+  color: var(--ink);
   -webkit-text-stroke: 0;
 }
 
@@ -2013,7 +2020,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .impact-card {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--g-33);
   padding-top: 20px;
 }
 
@@ -2032,7 +2039,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 
 .card-desc {
   font-size: 0.85rem;
-  color: #888888;
+  color: var(--g-88);
   margin-bottom: auto;
   padding-bottom: 40px;
   line-height: 1.6;
@@ -2044,7 +2051,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   font-size: 5rem;
   font-weight: 400;
   line-height: 1;
-  color: #ffffff;
+  color: var(--ink);
 }
 
 .symbol {
@@ -2065,7 +2072,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   --parallax-y: 50%;
 
   /* 放入你提供的圖片網址 */
-  background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0.28) 0%, rgba(5, 5, 5, 0.62) 55%, rgba(5, 5, 5, 0.98) 100%), url('../../images/Events/01.webp');
+  background-image: linear-gradient(to bottom, rgba(var(--g-05-rgb), 0.28) 0%, rgba(var(--g-05-rgb), 0.62) 55%, rgba(var(--g-05-rgb), 0.98) 100%), url('../../images/Events/01.webp');
   background-size: var(--parallax-zoom);
   background-position: center var(--parallax-y);
 
@@ -2089,7 +2096,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(var(--paper-rgb), 0.6);
   /* 加深底圖，讓標題區更有對比 */
   z-index: 1;
 }
@@ -2101,7 +2108,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   right: 0;
   bottom: 0;
   height: 32vh;
-  background: linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.72) 58%, rgba(5, 5, 5, 1) 100%);
+  background: linear-gradient(to bottom, rgba(var(--g-05-rgb), 0) 0%, rgba(var(--g-05-rgb), 0.72) 58%, rgba(var(--g-05-rgb), 1) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -2112,7 +2119,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   z-index: 2;
   /* 確保文字在遮罩之上 */
   text-align: center;
-  color: #ffffff;
+  color: var(--ink);
   padding: 0 5%;
   max-width: 1000px;
 }
@@ -2144,11 +2151,11 @@ body.spa-gate_redbull #mainContent.page-enter {
   max-width: 600px;
   margin: 0 auto;
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(var(--paper-rgb), 0.4);
   /* 微微的半透明黑底 */
 
   /* 製作截圖中那種細線邊框與角落的四個定位點效果 */
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(var(--ink-rgb), 0.15);
 }
 
 /* 利用偽元素製作邊框四個角落的「亮點/標記」效果 */
@@ -2166,16 +2173,16 @@ body.spa-gate_redbull #mainContent.page-enter {
 
 /* 上下邊緣的裝飾線 */
 .tech-text-box::before {
-  border-top: 1px solid rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  border-top: 1px solid rgba(var(--ink-rgb), 0.8);
+  border-bottom: 1px solid rgba(var(--ink-rgb), 0.8);
   transform: scaleX(0.05);
   /* 只讓左右兩側顯示一小段 */
 }
 
 /* 左右邊緣的裝飾線 */
 .tech-text-box::after {
-  border-left: 1px solid rgba(255, 255, 255, 0.8);
-  border-right: 1px solid rgba(255, 255, 255, 0.8);
+  border-left: 1px solid rgba(var(--ink-rgb), 0.8);
+  border-right: 1px solid rgba(var(--ink-rgb), 0.8);
   transform: scaleY(0.1);
   /* 只讓上下兩側顯示一小段 */
 }
@@ -2195,8 +2202,8 @@ body.spa-gate_redbull #mainContent.page-enter {
 .portfolio-section {
   display: flex;
   flex-wrap: wrap;
-  background-color: #050505;
-  color: #a0a0a0;
+  background-color: var(--g-05);
+  color: var(--g-a0);
   font-family: 'Share Tech Mono', monospace;
   max-width: 1440px;
   margin: 0 auto;
@@ -2232,7 +2239,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   width: 100%;
   aspect-ratio: 16 / 11;
   overflow: hidden;
-  background: #0b0b0b;
+  background: var(--g-0b);
 }
 
 .image-container img {
@@ -2245,9 +2252,9 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .nav-btn {
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
-  color: #fff;
+  background: var(--g-0a);
+  border: 1px solid var(--g-1a);
+  color: var(--ink);
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -2259,8 +2266,8 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .nav-btn:hover {
-  border-color: #444;
-  background: #111;
+  border-color: var(--g-44);
+  background: var(--g-11);
 }
 
 .nav-btn svg {
@@ -2287,7 +2294,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .right-panel .crosshair::after {
   content: '';
   position: absolute;
-  background-color: #3a3a3a;
+  background-color: var(--g-3a);
 }
 
 .right-panel .crosshair::before {
@@ -2317,7 +2324,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .crosshair::after {
   content: '';
   position: absolute;
-  background-color: #333;
+  background-color: var(--g-33);
 }
 
 .crosshair::before {
@@ -2380,14 +2387,14 @@ body.spa-gate_redbull #mainContent.page-enter {
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid var(--g-1a);
   height: 20px;
 }
 
 .edition-tag {
   font-size: 0.8rem;
   letter-spacing: 2px;
-  color: #666;
+  color: var(--g-66);
 }
 
 .indicator-container {
@@ -2399,17 +2406,17 @@ body.spa-gate_redbull #mainContent.page-enter {
 .indicator {
   width: 12px;
   height: 4px;
-  background-color: #222;
+  background-color: var(--g-22);
   transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
 }
 
 .indicator.active {
   width: 48px;
-  background-color: #fff;
+  background-color: var(--ink);
 }
 
 .title {
-  color: #fff;
+  color: var(--ink);
   font-size: 3.5rem;
   font-weight: normal;
   margin: 0 0 18px 0;
@@ -2436,7 +2443,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   line-height: 1.8;
   margin: 0 0 40px 0;
   text-transform: uppercase;
-  color: #555;
+  color: var(--g-55);
   text-align: justify;
   letter-spacing: 0.5px;
 
@@ -2448,27 +2455,27 @@ body.spa-gate_redbull #mainContent.page-enter {
 .meta-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid #151515;
-  border-left: 1px solid #151515;
+  border-top: 1px solid var(--g-15);
+  border-left: 1px solid var(--g-15);
 }
 
 .meta-item {
   display: flex;
   flex-direction: column;
   padding: 24px 20px;
-  border-bottom: 1px solid #151515;
-  border-right: 1px solid #151515;
+  border-bottom: 1px solid var(--g-15);
+  border-right: 1px solid var(--g-15);
   gap: 8px;
 }
 
 .meta-label {
   font-size: 0.7rem;
-  color: #444;
+  color: var(--g-44);
   letter-spacing: 1px;
 }
 
 .meta-value {
-  color: #ddd;
+  color: var(--g-dd);
   font-size: 0.85rem;
   letter-spacing: 1px;
 }
@@ -2564,8 +2571,8 @@ body.spa-gate_redbull #mainContent.page-enter {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(var(--ink-rgb), 0.8);
+  border-left: 1px solid rgba(var(--ink-rgb), 0.3);
   padding-left: 10px;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
 }
@@ -2577,11 +2584,11 @@ body.spa-gate_redbull #mainContent.page-enter {
   transform: translateY(-50%);
   width: 64px;
   height: 64px;
-  background: rgba(20, 20, 20, 0.5);
+  background: rgba(var(--g-14-rgb), 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  border: 1px solid rgba(var(--ink-rgb), 0.1);
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2671,7 +2678,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 ========================================= */
 .learn-more-section {
   width: 100%;
-  background: #050505;
+  background: var(--g-05);
   padding: 64px 20px 72px;
 }
 
@@ -2679,13 +2686,13 @@ body.spa-gate_redbull #mainContent.page-enter {
   max-width: 980px;
   margin: 0 auto;
   text-align: center;
-  background: #090909;
+  background: var(--g-09);
   padding: 48px 24px;
 }
 
 .learn-more-title {
   margin: 0;
-  color: #f0f0f0;
+  color: var(--g-f0);
   font-size: clamp(1.4rem, 4.2vw, 3.4rem);
   font-family: 'Space Mono', 'Courier New', monospace;
   font-weight: 600;
@@ -2702,9 +2709,9 @@ body.spa-gate_redbull #mainContent.page-enter {
   justify-content: center;
   gap: 12px;
   border-radius: 0;
-  border: 1px solid #2a2a2a;
-  background: #131313;
-  color: #9a9a9a;
+  border: 1px solid var(--g-2a);
+  background: var(--g-13);
+  color: var(--g-9a);
   text-decoration: none;
   font-family: 'Space Mono', 'Courier New', monospace;
   font-size: clamp(0.88rem, 1.4vw, 1rem);
@@ -2717,9 +2724,9 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .learn-more-btn:hover {
-  background: #101010;
-  border-color: #666666;
-  color: #ffffff;
+  background: var(--g-10);
+  border-color: var(--g-66);
+  color: var(--ink);
   transform: translateY(-1px);
 }
 
@@ -2735,7 +2742,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #050505;
+  background-color: var(--g-05);
   padding-top: 4px;
   padding-bottom: 0;
   overflow: hidden;
@@ -2746,7 +2753,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   position: relative;
   width: 100%;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(var(--ink-rgb), 0.3);
 }
 
 .tech-divider::before,
@@ -2756,9 +2763,9 @@ body.spa-gate_redbull #mainContent.page-enter {
   top: -2px;
   width: 5px;
   height: 5px;
-  background-color: #050505;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
+  background-color: var(--g-05);
+  border-left: 2px solid var(--ink);
+  border-right: 2px solid var(--ink);
 }
 
 .tech-divider::before {
@@ -2786,7 +2793,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .strip-item:not(:last-child) {
-  border-right: 10px solid #050505;
+  border-right: 10px solid var(--g-05);
 }
 
 .strip-item img {
@@ -2808,7 +2815,7 @@ body.spa-gate_redbull #mainContent.page-enter {
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(var(--ink-rgb), 0.1);
 }
 
 .giant-name {
@@ -2822,8 +2829,8 @@ body.spa-gate_redbull #mainContent.page-enter {
   padding: 0;
   margin: 0;
   width: 100%;
-  background-color: #050505;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: var(--g-05);
+  border-top: 1px solid rgba(var(--ink-rgb), 0.12);
   position: relative;
   z-index: 20;
   font-family: 'Inter', sans-serif;
@@ -2836,7 +2843,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 
 .site-footer .giant-name {
   max-width: 96%;
-  color: #ffffff;
+  color: var(--ink);
 }
 
 .footer-meta {
@@ -2849,7 +2856,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 .footer-left,
 .footer-right {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(var(--ink-rgb), 0.8);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -2861,7 +2868,7 @@ body.spa-gate_redbull #mainContent.page-enter {
 }
 
 .footer-right a:hover {
-  color: #fff;
+  color: var(--ink);
 }
 
 /* =========================================
@@ -2876,17 +2883,17 @@ body.spa-gate_redbull #mainContent.page-enter {
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat;
-    background-color: #111;
+    background-color: var(--g-11);
     transition: none;
   }
 
   .parallax-overlay {
-    background: rgba(0, 0, 0, 0.88);
+    background: rgba(var(--paper-rgb), 0.88);
   }
 
   .parallax-section::after {
     height: 18vh;
-    background: linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.5) 58%, rgba(5, 5, 5, 0.92) 100%);
+    background: linear-gradient(to bottom, rgba(var(--g-05-rgb), 0) 0%, rgba(var(--g-05-rgb), 0.5) 58%, rgba(var(--g-05-rgb), 0.92) 100%);
   }
 
   .parallax-content {
@@ -2934,7 +2941,7 @@ body.spa-gate_redbull #mainContent.page-enter {
     display: block !important;
     width: 100%;
     margin: 0;
-    background-color: #050505;
+    background-color: var(--g-05);
     position: relative;
     z-index: 40;
     visibility: visible;

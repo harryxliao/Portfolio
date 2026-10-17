@@ -1,0 +1,182 @@
+---
+slug: "work/bjs-intern.html"
+navKey: "work"
+---
+{% extends "layouts/base.njk" %}
+
+{% block seo %}
+  {% if zh %}<meta name="description" content="BJ's Wholesale Club 暑期實習 — 廖先皓 Harry Liao 的視覺設計、動態圖像與行銷專案，包含 NASCAR 與 Nationals Park 戶外廣告。">{% else %}<meta name="description" content="BJ's Wholesale Club Summer Internship — Visual design, motion graphics, and marketing campaigns including NASCAR and Nationals Park OOH ads by Harry Liao.">{% endif %}
+  {% if zh %}<meta name="keywords" content="廖先皓, Harry Liao, BJ's Wholesale Club, 實習, 視覺設計, 動態圖像, 行銷, NASCAR, 戶外廣告">{% else %}<meta name="keywords" content="Harry Liao, BJ's Wholesale Club, Internship, Visual Design, Motion Graphics, Marketing, NASCAR, OOH Ads">{% endif %}
+  <meta name="author" content="Xian-Hao (Harry) Liao">
+  <meta name="robots" content="index, follow">
+  <title>{% if zh %}BJ's 暑期實習設計 | Xian-Hao (Harry) Liao{% else %}BJ's Wholesale Club Internship | Xian-Hao (Harry) Liao{% endif %}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  {% if zh %}<meta property="og:title" content="BJ's Wholesale Club 暑期實習 | 廖先皓">{% else %}<meta property="og:title" content="BJ's Wholesale Club Internship | Harry Liao">{% endif %}
+  {% if zh %}<meta property="og:description" content="視覺設計、動態圖像與行銷專案，包含 NASCAR 與 Nationals Park 戶外廣告。">{% else %}<meta property="og:description" content="Visual design, motion graphics, and marketing campaigns during a corporate summer internship at BJ's Wholesale Club.">{% endif %}
+  <meta property="og:image" content="https://harryliao.design/images/Project/BJS%20(1).webp">
+  <meta property="og:site_name" content="Harry Liao Portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  {% if zh %}<meta name="twitter:title" content="BJ's Wholesale Club 暑期實習 | 廖先皓">{% else %}<meta name="twitter:title" content="BJ's Wholesale Club Internship | Harry Liao">{% endif %}
+  {% if zh %}<meta name="twitter:description" content="視覺設計、動態圖像與行銷專案，包含 NASCAR 與 Nationals Park 戶外廣告。">{% else %}<meta name="twitter:description" content="Visual design, motion graphics, and marketing campaigns during a corporate summer internship at BJ's Wholesale Club.">{% endif %}
+  <meta name="twitter:image" content="https://harryliao.design/images/Project/BJS%20(1).webp">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {% if zh %}{
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "BJ's Wholesale Club Summer Internship",
+    "author": { "@type": "Person", "name": "Xian-Hao (Harry) Liao" },
+    "url": "https://harryliao.design/zh/work/bjs-intern",
+    "datePublished": "2022"
+  }{% else %}{
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "BJ's Wholesale Club Summer Internship",
+    "author": { "@type": "Person", "name": "Xian-Hao (Harry) Liao" },
+    "url": "https://harryliao.design/work/bjs-intern",
+    "datePublished": "2022"
+  }{% endif %}
+  </script>
+{% endblock %}
+
+{% block assets %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/project-detail.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+  <link rel="preconnect" href="https://player.vimeo.com" crossorigin="">
+  <script src="/assets/js/i18n.js" defer=""></script>
+  <script src="/assets/js/navbar.js" defer=""></script>
+  <script src="/assets/js/main.js" defer=""></script>
+  <script src="/assets/js/lazy-images.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer=""></script>
+  <script src="/assets/js/animations.js" defer=""></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo+Black&amp;family=Black+Ops+One&amp;family=League+Spartan:wght@700;800;900&amp;family=Montserrat:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <link rel="stylesheet" href="/assets/css/project-detail.css">
+
+    <div class="project-detail-page">
+      <div class="pd-container">
+
+        <!-- ── HERO HEADER ── -->
+        <header class="pd-hero-header pd-reveal">
+          <div class="pd-hero-title-area">
+            <h1>INTERNSHIP<br>AT BJ'S</h1>
+            <p class="pd-subtitle">{% if zh %}企業暑期實習 — 視覺設計與動態圖像{% else %}CORPORATE SUMMER INTERNSHIP — VISUAL DESIGN &amp;
+              MOTION GRAPHICS{% endif %}</p>
+          </div>
+
+          <div class="pd-meta-table">
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}角色{% else %}ROLE{% endif %}</span>
+              <span class="pd-meta-value">{% if zh %}企業暑期實習生{% else %}CORPORATE SUMMER INTERN{% endif %}</span>
+            </div>
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}產業{% else %}INDUSTRY{% endif %}</span>
+              <span class="pd-meta-value">{% if zh %}量販零售{% else %}WHOLESALE{% endif %}</span>
+            </div>
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}日期{% else %}DATE{% endif %}</span>
+              <span class="pd-meta-value">{% if zh %}2022 年 5 月 — 8 月{% else %}MAY — AUGUST 2022{% endif %}</span>
+            </div>
+            <div class="pd-meta-row">
+              <span class="pd-meta-label">{% if zh %}載體{% else %}MEDIUM{% endif %}</span>
+              <span class="pd-meta-value">{% if zh %}視覺設計 / 動態影像 / 行銷{% else %}VISUAL / MOTION / MARKETING{% endif %}</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- ── VIDEO SHOWCASE ── -->
+        <section class="pd-video-showcase pd-video-showcase--flush pd-reveal">
+          <p class="pd-section-kicker">{% if zh %}實習成果精華{% else %}INTERNSHIP SHOWREEL{% endif %}</p>
+          <div class="pd-video-container">
+            {% if zh %}<iframe src="https://player.vimeo.com/video/1046210841?byline=0&amp;title=0&amp;portrait=0&amp;muted=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="BJ's Wholesale Club 實習成果精華">{% else %}<iframe src="https://player.vimeo.com/video/1046210841?byline=0&amp;title=0&amp;portrait=0&amp;muted=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="BJ's Wholesale Club Internship Showreel">{% endif %}</iframe>
+          </div>
+        </section>
+
+        <!-- ── SECTION A: Three Different Projects ── -->
+        <section class="pd-split-section pd-reveal">
+          <div class="pd-split-text">
+            <h3>{% if zh %}三個不同的專案{% else %}THREE DIFFERENT PROJECTS{% endif %}</h3>
+            <p>{% if zh %}在 BJ's 實習期間，我參與了三項核心專案的視覺與動態設計工作——涵蓋品牌行銷影片、大型戶外廣告以及數位頻道的視覺重新設計。每個專案都要求我從概念發想到最終交付獨立完成，並在短週期內與跨部門團隊高效協作。{% else %}
+              During my internship at BJ's, I contributed to three core projects across visual and motion design —
+              spanning brand marketing videos, large-format outdoor advertising, and a digital channel visual redesign.
+              Each project required me to independently manage the full pipeline from concept to final delivery,
+              collaborating efficiently with cross-functional teams within tight timelines.
+            {% endif %}</p>
+            <div class="pd-tags">
+              <span class="pd-tag">VISUAL DESIGN</span>
+              <span class="pd-tag">MOTION GRAPHICS</span>
+              <span class="pd-tag">MARKETING</span>
+            </div>
+          </div>
+          <div class="pd-split-media">
+            {% if zh %}<img src="/images/Project/BJS%20(4).webp" alt="BJ's Wholesale Club — 三大專案視覺總覽" loading="lazy">{% else %}<img src="/images/Project/BJS%20(4).webp" alt="BJ's Wholesale Club — Three Projects Visual Overview" loading="lazy">{% endif %}
+          </div>
+        </section>
+
+        <!-- ── SECTION B: Nationals Park OOH ── -->
+        <section class="pd-split-section reverse pd-reveal">
+          <div class="pd-split-text">
+            <h3>{% if zh %}華盛頓特區 國民球場 OOH 廣告{% else %}WASHINGTON DC'S NATIONALS PARK OOH ADS{% endif %}</h3>
+            <p>{% if zh %}為 BJ's Wholesale Club 設計大型戶外看板廣告，投放於華盛頓特區的 Nationals Park 體育場。設計須符合超大尺寸輸出規格，同時在球場環境中保持品牌識別度與視覺衝擊力，確保遠距離觀看仍具高辨識度。{% else %}
+              Designed large-scale OOH billboard advertisements for BJ's Wholesale Club, deployed at Nationals Park
+              stadium in Washington DC. The designs had to meet super-large-format output specifications while
+              maintaining brand recognition and visual impact within the stadium environment — ensuring high legibility
+              even from long viewing distances.
+            {% endif %}</p>
+            <div class="pd-tags">
+              <span class="pd-tag">LARGE SCALE VISUAL</span>
+              <span class="pd-tag">OOH</span>
+              <span class="pd-tag">CAMPAIGN</span>
+            </div>
+          </div>
+          <div class="pd-split-media">
+            {% if zh %}<img src="/images/Project/BJS%20(2).webp" alt="BJ's Wholesale Club — Nationals Park 戶外看板" loading="lazy">{% else %}<img src="/images/Project/BJS%20(2).webp" alt="BJ's Wholesale Club — Nationals Park OOH Billboard" loading="lazy">{% endif %}
+          </div>
+        </section>
+
+        <!-- ── SECTION C: Summer Internship Final Report ── -->
+        <section class="pd-centered-section pd-reveal">
+          <p class="pd-section-kicker">{% if zh %}最終實習報告{% else %}FINAL INTERNSHIP REPORT{% endif %}</p>
+          <h2>{% if zh %}BJ'S 暑期實習最終報告{% else %}BJ'S SUMMER INTERNSHIP REPORT{% endif %}</h2>
+          <div class="pd-centered-media">
+            {% if zh %}<img src="/images/Project/BJS%20(3).webp" alt="BJ's Wholesale Club — 暑期實習最終報告" loading="lazy">{% else %}<img src="/images/Project/BJS%20(3).webp" alt="BJ's Wholesale Club — Summer Internship Final Presentation" loading="lazy">{% endif %}
+          </div>
+        </section>
+
+        <!-- ── FINAL SECTION: Group Photo ── -->
+        <section class="pd-final-section pd-reveal">
+          <h2>{% if zh %}MDP 暑期實習結業{% else %}MDP SUMMER INTERNSHIP FINAL{% endif %}</h2>
+          <div class="pd-final-photo">
+            {% if zh %}<img src="/images/Project/BJS%20(1).webp" alt="BJ's Wholesale Club — 暑期實習團隊合照" loading="lazy">{% else %}<img src="/images/Project/BJS%20(1).webp" alt="BJ's Wholesale Club — Summer Internship Team Photo with CEO" loading="lazy">{% endif %}
+          </div>
+          <p class="pd-thanks-text">{% if zh %}特別感謝所有指導過我的人，尤其是我的直屬經理 Peter Buhler！{% else %}
+            BIG THANKS TO EVERYONE WHO GUIDED ME, ESPECIALLY MY DIRECT MANAGER PETER BUHLER!
+          {% endif %}</p>
+        </section>
+
+        <!-- ── FOOTER CTA ── -->
+        <section class="learn-more-section learn-more-section--spaced">
+          <div class="learn-more-inner">
+            <h2 class="learn-more-title">{% if zh %}期待與您合作！{% else %}Looking Forward To Speaking With You Soon!{% endif %}</h2>
+            {% if zh %}<a href="{{ L }}/work" data-spa-target="work" class="learn-more-btn" id="bjsInternBackBtn">{% else %}<a href="{{ L }}/work/" data-spa-target="work" class="learn-more-btn" id="bjsInternBackBtn">{% endif %}
+              <span>{% if zh %}查看更多作品{% else %}See more work{% endif %}</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+{% endblock %}

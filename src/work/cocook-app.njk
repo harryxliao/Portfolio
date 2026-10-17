@@ -1,0 +1,313 @@
+---
+slug: "work/cocook-app.html"
+navKey: "work"
+---
+{% extends "layouts/base.njk" %}
+
+{% block seo %}
+  <meta name="description" content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta name="keywords" content="Harry Liao, Xian-Hao Liao, Multimedia Designer, UX Design, Visual Design, Motion Graphics, 3D Modeling, MassArt DMI">
+  <meta name="author" content="Xian-Hao (Harry) Liao">
+  <meta name="robots" content="index, follow">
+  <title>{% if zh %}Xian-Hao (Harry) Liao | 設計作品集{% else %}Xian-Hao (Harry) Liao | Design Portfolio{% endif %}</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  {% if zh %}<meta property="og:title" content="廖先皓 (Harry Liao) | 視覺設計師作品集">{% else %}<meta property="og:title" content="Xian-Hao (Harry) Liao | Design Portfolio">{% endif %}
+  <meta property="og:description" content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta property="og:image" content="https://harryliao.design/images/TB.webp">
+  <meta property="og:site_name" content="Harry Liao Portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  {% if zh %}<meta name="twitter:title" content="廖先皓 (Harry Liao) | 視覺設計師作品集">{% else %}<meta name="twitter:title" content="Xian-Hao (Harry) Liao | Design Portfolio">{% endif %}
+  <meta name="twitter:description" content="Xian-Hao (Harry) Liao is a multimedia designer specializing in visual design, UX, 3D, and interactive media. 視覺將會是未來改變世界的語言，設計師是將這門語言融合完整的人 — 廖先皓Harry.">
+  <meta name="twitter:image" content="https://harryliao.design/images/TB.webp">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Xian-Hao (Harry) Liao",
+    "url": "https://harryliao.design/",
+    "jobTitle": "Multimedia Designer",
+    "alumniOf": "Massachusetts College of Art and Design",
+    "sameAs": [
+      "https://www.linkedin.com/in/xian-hao-liao/",
+      "https://www.behance.net/xianhaoliao-design",
+      "https://www.instagram.com/xianhaoliao.design/",
+      "https://www.youtube.com/@HarryLiaoVideo"
+    ]
+  }
+  </script>
+{% endblock %}
+
+{% block assets %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="preload" as="style" href="/assets/css/about.css">
+  <link rel="stylesheet" href="/assets/css/about.css">
+  <link rel="preload" as="style" href="/assets/css/work.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+  <link rel="preload" as="style" href="/assets/css/contact.css">
+  <link rel="stylesheet" href="/assets/css/contact.css">
+  <link rel="stylesheet" href="/assets/css/project-detail.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+  <link rel="preconnect" href="https://player.vimeo.com" crossorigin="">
+  <link rel="preload" as="image" href="/images/xianhaoliao.webp">
+  <link rel="preload" as="image" href="/images/TB.webp">
+  <link rel="preload" as="image" href="/images/YB.webp">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="/assets/js/i18n.js" defer=""></script>
+  <script src="/assets/js/navbar.js" defer=""></script>
+  <script src="/assets/js/about.js" defer=""></script>
+  <script src="/assets/js/main.js" defer=""></script>
+  <script src="/assets/js/feature.js" defer=""></script>
+  <script src="/assets/js/lazy-images.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer=""></script>
+  <script src="/assets/js/animations.js" defer=""></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo+Black&amp;family=Black+Ops+One&amp;family=League+Spartan:wght@700;800;900&amp;display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    
+
+    {% if zh %}<link rel="stylesheet" href="/assets/css/project-detail.css">
+
+{% else %}{% endif %}<div class="cocook-app-page">
+      <div class="cocook-app-container">
+
+        <!-- Project Header -->
+        <header class="project-header">
+          <div class="project-title-area">
+            <h1>Cocook</h1>
+            <p class="subtitle">{% if zh %}創新的DIY烹飪平台，讓做飯不再有藉口。{% else %}
+              Innovative DIY Cooking Platform, No More Excuses For Cooking.
+            {% endif %}</p>
+          </div>
+
+          <!-- Metadata -->
+          <div class="project-meta-table">
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}類別{% else %}Medium{% endif %}</span>
+              <span class="meta-value">{% if zh %}UI/UX 設計{% else %}UI/UX Design{% endif %}</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}年份{% else %}Date{% endif %}</span>
+              <span class="meta-value">2023</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">{% if zh %}角色{% else %}Role{% endif %}</span>
+              <span class="meta-value">{% if zh %}UI 設計師{% else %}UI Designer{% endif %}</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Hero Image -->
+        <section class="media-block full-width">
+          <div class="image-wrapper">
+            <img src="/images/Project/cocook-01.webp" alt="Cocook App Hero Mockup" loading="lazy">
+          </div>
+        </section>
+
+        <!-- Intro Text & Image -->
+        <section class="content-grid-2col">
+          <div class="text-section">
+            <h3>{% if zh %}創新的DIY烹飪平台，讓做飯不再有藉口。{% else %}Innovative DIY Cooking Platform, No More Excuses For Cooking.{% endif %}</h3>
+            <p>{% if zh %}這是一個降低烹飪門檻的平台，透過提供設備齊全的 DIY 廚房租借服務，讓年輕人可以輕鬆享受料理的樂趣，並與朋友共度美好時光。{% else %}
+              A platform that lowers the boundary of cooking by renting DIY kitchen rooms with fully equipped
+              facilities. We encourage young adults to enjoy cooking and socialize with friends without the hassle of
+              prep and cleaning.
+            {% endif %}</p>
+          </div>
+          <div class="media-block">
+            <div class="image-wrapper">
+              <img src="/images/Project/cocook_life.webp" alt="Cooking lifestyle" loading="lazy">
+            </div>
+          </div>
+        </section>
+
+        <!-- Logo & Role Section -->
+        <section class="content-grid-2col">
+          <div class="media-block brand-image">
+            <div class="image-wrapper">
+              <img src="/images/Project/cocook_logo_mockup.webp" alt="Cocook Logo Mockup" loading="lazy">
+            </div>
+          </div>
+          <div class="text-section">
+            <h3>{% if zh %}UI 設計師{% else %}UI Designer{% endif %}</h3>
+            <ul>
+              <li><strong>{% if zh %}姓名：{% else %}Name:{% endif %}</strong>{% if zh %}廖先皓 (Harry){% else %} Xian-Hao (Harry) Liao{% endif %}</li>
+              <li><strong>{% if zh %}時間：{% else %}Date:{% endif %}</strong>{% if zh %}2023 秋季{% else %} Fall 2023{% endif %}</li>
+              <li><strong>{% if zh %}課程：{% else %}Class:{% endif %}</strong>{% if zh %}UI/UX 設計{% else %} UI/UX Design{% endif %}</li>
+              <li><strong>{% if zh %}工具：{% else %}Tools:{% endif %}</strong>{% if not zh %} {% endif %}Figma,
+                Illustrator, Photoshop</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="section-header">
+          <p class="section-kicker">{% if zh %}核心問題{% else %}The Problem{% endif %}</p>
+          <h2>{% if zh %}波士頓年輕人在追求營養均衡的生活方式時面臨哪些挑戰？{% else %}What Are The Challenges Young Adults In Boston Face When
+            Pursuing A Nutritionally Balanced Lifestyle?{% endif %}</h2>
+        </section>
+
+        <div class="problem-cards-grid">
+          <div class="problem-item">
+            <div class="problem-dot-kicker" style="color: #00FFAA;">
+              <span class="problem-dot" style="background-color: #00FFAA;"></span>
+              <span>{% if zh %}經驗{% else %}EXPERIENCE{% endif %}</span>
+            </div>
+            <h3>{% if zh %}缺乏烹飪經驗{% else %}Limited Cooking Experience{% endif %}</h3>
+            <p>{% if zh %}年輕人缺乏在家從頭開始烹飪真正餐點的技能與自信。{% else %}Young adults lack the skills and confidence to cook real meals from scratch at home.{% endif %}</p>
+          </div>
+          <div class="problem-item">
+            <div class="problem-dot-kicker" style="color: #FFCC00;">
+              <span class="problem-dot" style="background-color: #FFCC00;"></span>
+              <span>{% if zh %}設施{% else %}FACILITIES{% endif %}</span>
+            </div>
+            <h3>{% if zh %}廚房設施不足{% else %}Inadequate Kitchen Facilities{% endif %}</h3>
+            <p>{% if zh %}73% 的受訪使用者共用廚房—狹小、設備簡陋且缺乏靈感的空間扼殺了創造力。{% else %}73% of surveyed users share a kitchen—cramped, under-equipped, and uninspiring spaces kill creativity.{% endif %}</p>
+          </div>
+          <div class="problem-item">
+            <div class="problem-dot-kicker" style="color: #00FF00;">
+              <span class="problem-dot" style="background-color: #00FF00;"></span>
+              <span>{% if zh %}知識{% else %}KNOWLEDGE{% endif %}</span>
+            </div>
+            <h3>{% if zh %}缺乏食物知識{% else %}Lack of Food Knowledge{% endif %}</h3>
+            <p>{% if zh %}缺乏適當指導與互動教學，學習烹飪讓人感到難以負荷且遙不可及。{% else %}Without proper guidance and interactive tutorials, learning to cook feels overwhelming and inaccessible.{% endif %}</p>
+          </div>
+        </div>
+
+        <!-- User Research Section -->
+        <section class="section-header">
+          <p class="section-kicker">{% if zh %}使用者研究{% else %}User Research{% endif %}</p>
+          <h2>{% if zh %}了解使用者情境{% else %}Understand User Scenarios{% endif %}</h2>
+        </section>
+
+
+
+        <!-- Value Proposition Canvas -->
+        <section class="content-grid-2col content-grid-2col--mt-lg content-grid-2col--canvas">
+          <div class="media-block media-block--flush">
+            <div class="image-wrapper image-wrapper--canvas">
+              <img src="/images/Project/value-proposition-canvas-1.webp" alt="Value Proposition Canvas" loading="lazy">
+            </div>
+          </div>
+          <div class="text-section">
+            {% if zh %}<div class="ck-insight-tag-wrap">{% else %}<p class="section-kicker">Research Insights</p>{% endif %}
+            {% if zh %}<span class="ck-insight-tag">研究洞察</span>
+        </div>
+        {% else %}{% endif %}<h2 class="ck-insight-heading">{% if zh %}價值主張畫布{% else %}Value Proposition Canvas{% endif %}</h2>
+            <p class="ck-body-text">{% if zh %}Cocook 可以是一個線上市場，讓擁有廚房的屋主將空間出租給尋找地方一起做飯和用餐的人。{% else %}Cocook can be an online marketplace that lets
+              property owners rent out their kitchens to people looking for a place to cook and eat together{% endif %}</p>
+            <p class="ck-body-text--emphasis">{% if zh %}適合多人共享：{% else %}For multiple people to share{% endif %}</p>
+            <ul class="ck-feature-list">
+              <li>{% if zh %}擁有私人餐廳和娛樂設施的共享空間{% else %}A shared space with a private dining room
+                and entertainment facilities{% endif %}</li>
+              <li>{% if zh %}多種廚房主題與獨特風格{% else %}Multiple kitchen themes and unique styles{% endif %}</li>
+              <li>{% if zh %}按人頭計費的自助食材區與健康食譜服務{% else %}A per-person basis self-service
+                ingredients area &amp; healthy recipe service{% endif %}</li>
+              <li>{% if zh %}清潔服務{% else %}Clean service{% endif %}</li>
+              <li>{% if zh %}學習營養知識{% else %}Learn about nutrition{% endif %}</li>
+              <li>{% if zh %}享受無憂無慮的體驗，免去買菜、清理的麻煩，也不需要昂貴的課程{% else %}Enjoy a hassle-free
+                experience with no grocery shopping, no cleanup, and no expensive classes{% endif %}</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Key Features & Infra Section -->
+        <section class="content-grid-2col content-grid-2col--mt-lg">
+          <div class="text-section">
+            <p class="section-kicker section-kicker--tight">{% if zh %}設計概念{% else %}Design Concept{% endif %}</p>
+            <h2 class="ck-insight-heading">{% if zh %}核心功能{% else %}Key Features{% endif %}</h2>
+            <ol class="ck-ordered-list">
+              <li>
+                <strong>{% if zh %}進階篩選與排序：{% else %}Advanced Filters and Sorting:{% endif %}</strong>{% if zh %}透過地點、設施等多種條件進行客製化搜尋。{% else %} Robust filtering by location, amenities, and more for
+                tailored searches.{% endif %}</li>
+              <li>
+                <strong>{% if zh %}詳細資訊展示：{% else %}Detailed Information Display:{% endif %}</strong>{% if zh %}使用側滑面板與可展開卡片呈現完整的詳細資訊。{% else %} Comprehensive details using fly-out panels and expandable
+                cards.{% endif %}</li>
+              <li><strong>{% if zh %}便利的料理排程：{% else %}Easy
+                  Food Style Scheduling:{% endif %}</strong>{% if zh %}輕鬆預訂並規劃你想要烹飪的料理類型。{% else %} Convenient option to schedule the type of cuisine you plan to cook.
+              {% endif %}</li>
+            </ol>
+            <p class="ck-check-text">
+              <strong>{% if zh %}✓ 自訂餐點計畫 &nbsp; ✓ 廚房空間預訂 &nbsp; ✓ 營養知識學習{% else %}✓ Customize Meal Plan &nbsp; ✓ Kitchen Booking &nbsp; ✓ Nutrition Knowledge{% endif %}</strong></p>
+          </div>
+          <div class="media-block media-block--flush">
+            <div class="image-wrapper image-wrapper--infra">
+              <img src="/images/Project/cocook_infra.webp" alt="Cocook App Infrastructure and Flows" loading="lazy" class="img--contained-infra">
+            </div>
+          </div>
+        </section>
+
+        <!-- User Flows -->
+        <section class="section-header section-header--mt-lg">
+          <p class="section-kicker">{% if zh %}使用者體驗{% else %}User Experience{% endif %}</p>
+          <h2>{% if zh %}使用者流程與故事板{% else %}User Flows &amp; Storyboard{% endif %}</h2>
+        </section>
+
+        <div class="ck-storyboard-pair">
+        <section class="media-block full-width ck-storyboard-item">
+          <div class="ck-storyboard-label">{% if zh %}前{% else %}Before{% endif %}</div>
+          <div class="image-wrapper">
+            <img src="/images/Project/cocook_storyboard.webp" alt="User Flow Storyboard 1" loading="lazy">
+          </div>
+        </section>
+
+        <section class="media-block full-width ck-storyboard-item">
+          <div class="ck-storyboard-label">{% if zh %}後{% else %}After{% endif %}</div>
+          <div class="image-wrapper">
+            <img src="/images/Project/cocook_storyboard_2.webp" alt="User Flow Storyboard 2" loading="lazy">
+          </div>
+        </section>
+        </div>
+
+
+        <!-- App Platform Integration & Prototype Design -->
+        <section class="section-header section-header--prototype">
+          {% if zh %}<div class="ck-insight-tag-wrap--lg">{% else %}<p class="section-kicker">Final Prototype</p>{% endif %}
+          {% if zh %}<span class="ck-insight-tag">最終原型</span>
+      </div>
+      {% else %}{% endif %}<h2 class="ck-insight-heading">{% if zh %}App 平台整合與原型設計{% else %}App Platform Integration Prototype Design{% endif %}</h2>
+          <p class="ck-proto-desc">{% if zh %}Cocook 提供易於閱讀的使用者介面，創造直覺的使用者體驗。我們打造了具視覺吸引力、功能完善且對使用者友善的介面，實現無縫導航與多元功能的存取，帶來令人愉悅且引人入勝的體驗，在使用者心中留下深刻印象。{% else %}
+            Cocook can deliver an easy-to-read user interface that creates a straightforward user experience. We create
+            a visually appealing, functional, and user-friendly interface that enables seamless navigation and access to
+            diverse features, resulting in a pleasant and engaging experience that leaves a lasting impression on users.
+          {% endif %}</p>
+        </section>
+
+        <!-- Vimeo Video from User Request -->
+        <section class="media-block full-width">
+          <div class="iframe-wrapper">
+            <iframe src="https://player.vimeo.com/video/988069103?autoplay=1&amp;loop=1&amp;autopause=0badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; picture-in-picture" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </section>
+
+        <section class="media-block full-width">
+          <div class="image-wrapper">
+            <img src="/images/Project/cocook-prototype.webp" alt="Cocook App Prototype Design" loading="lazy">
+          </div>
+        </section>
+
+        <!-- Footer CTA -->
+        {% if zh %}<section class="learn-more-section">{% else %}<section class="learn-more-section learn-more-section--spaced">{% endif %}
+          <div class="learn-more-inner">
+            <h2 class="learn-more-title">{% if zh %}期待與您合作！{% else %}Looking Forward To Speaking With You Soon!{% endif %}</h2>
+            {% if zh %}<a href="{{ L }}/work" data-spa-target="work" class="learn-more-btn" id="cocookBackBtn">{% else %}<a href="{{ L }}/work/" data-spa-target="work" class="learn-more-btn" id="cocookBackBtn">{% endif %}
+              <span>{% if zh %}查看更多作品{% else %}See more work{% endif %}</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+{% endblock %}

@@ -876,6 +876,21 @@
   function initProjectDetailReveals() {
     const reveals = document.querySelectorAll('.pd-reveal');
     if (!reveals.length) return;
+    if (!('IntersectionObserver' in window)) return; // content stays visible
+    document.documentElement.classList.add('pd-reveal-ready');
+
+    // Safety net: if the observer never reports (seen when arriving from the
+    // work page), reveal whatever is on screen after 2.5s and while scrolling.
+    function revealOnScreen() {
+      reveals.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+      });
+    }
+    setTimeout(function () {
+      revealOnScreen();
+      window.addEventListener('scroll', revealOnScreen, { passive: true });
+    }, 2500);
+
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -1406,6 +1421,65 @@
 
 
   // ═══════════════════════════════════════════
+  //  標題出場：所有頁面中尚未有動畫的標題，統一做小幅度的出場
+  // ═══════════════════════════════════════════
+  const TITLE_SELECTOR = [
+    '#mainContent h1', '#mainContent h2',
+    '#mainContent .section-kicker', '#mainContent .pd-section-kicker',
+    '#mainContent .work-kicker', '#mainContent .contact-kicker',
+    '#mainContent .sidebar-label', '#mainContent .small-label',
+    '.site-footer .giant-name'
+  ].join(', ');
+  const KICKER_CLASSES = ['section-kicker', 'pd-section-kicker', 'work-kicker', 'contact-kicker', 'sidebar-label', 'small-label'];
+  // Elements already handled. A WeakSet (not a data attribute) so markup that
+  // about.js restores from a saved innerHTML gets animated again.
+  const titlesSeen = new WeakSet();
+
+  function initTitleEntrances() {
+    const titles = Array.from(document.querySelectorAll(TITLE_SELECTOR)).filter(function (el) {
+      // Seen and already revealed -> done. Seen but still hidden means its
+      // trigger was killed by an SPA page change, so hook it up again.
+      if (titlesSeen.has(el) && parseFloat(getComputedStyle(el).opacity) > 0.05) return false;
+      if (el.closest('.hero-section')) return false;           // hero has its own intro
+      if (el.querySelector('.char, .anim-word')) return false; // already split-animated
+      if (gsap.getTweensOf(el).length) return false;           // already animated elsewhere
+      if (!el.offsetWidth && !el.offsetHeight) return false;   // hidden
+      return true;
+    });
+    if (!titles.length) return;
+
+    const isKicker = function (el) { return KICKER_CLASSES.some(function (c) { return el.classList.contains(c); }); };
+    const kickers = titles.filter(isKicker);
+    const headings = titles.filter(function (el) { return !isKicker(el); });
+
+    titles.forEach(function (el) { titlesSeen.add(el); });
+    // Headings rise out of a mask with a soft focus pull; kickers slide in.
+    gsap.set(headings, { opacity: 0, y: 34, clipPath: 'inset(0% 0% 100% 0%)', filter: 'blur(8px)' });
+    gsap.set(kickers, { opacity: 0, x: -14 });
+
+    const reveal = function (batch) {
+      const hs = batch.filter(function (el) { return !isKicker(el); });
+      const ks = batch.filter(isKicker);
+      if (ks.length) gsap.to(ks, { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out', stagger: 0.06, overwrite: true });
+      if (hs.length) gsap.to(hs, {
+        opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)', filter: 'blur(0px)',
+        duration: 1.05, ease: 'expo.out', stagger: 0.09, delay: ks.length ? 0.08 : 0, overwrite: true,
+        clearProps: 'clipPath,filter'
+      });
+    };
+
+    ScrollTrigger.batch(titles, { start: 'top 90%', once: true, onEnter: reveal });
+
+    // Safety net: never leave a title hidden if its trigger did not fire.
+    setTimeout(function () {
+      reveal(titles.filter(function (el) {
+        return parseFloat(getComputedStyle(el).opacity) < 0.05 && el.getBoundingClientRect().top < window.innerHeight;
+      }));
+    }, 3000);
+  }
+
+
+  // ═══════════════════════════════════════════
   //  SPA 頁面動畫入口（供 about.js 調用）
   // ═══════════════════════════════════════════
 
@@ -1423,6 +1497,7 @@
       initProjectDetailReveals();
       initProjectPageAnimations();
     }
+    initTitleEntrances();
 
     // Recalculate positions after DOM settles AND after the page-enter
     // CSS animation finishes (800ms).
@@ -1456,6 +1531,7 @@
   window.initHomeAnimations = function () {
     ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
     initAllHomeAnimations();
+    initTitleEntrances();
     requestAnimationFrame(function() { ScrollTrigger.refresh(); });
   };
 
@@ -1463,6 +1539,7 @@
   initAllHomeAnimations();
   initProjectDetailReveals();
   initProjectPageAnimations();
+  initTitleEntrances();
 
   // 語言切換後重新計算 ScrollTrigger 位置
   window.addEventListener('site-language-changed', function() {

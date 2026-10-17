@@ -1,15 +1,15 @@
 /* About page styles extracted from main.css */
 
 /* About page internal layout (used when about fragment is inserted) */
-.about-page { background: #fff; color: #000; padding: 36px; border-radius: 10px; }
+.about-page { background: var(--ink); color: var(--paper); padding: 36px; border-radius: 10px; }
 .about-hero { display: flex; gap: 24px; align-items: center; margin-bottom: 28px; }
 .about-hero-left { flex: 1 1 420px; }
 .about-hero-right { flex: 0 0 420px; }
 .about-name { font-size: clamp(28px, 4.2vw, 36px); margin-bottom: 12px; font-weight: 800; }
-.about-bio { color: #222; line-height: 1.6; margin-bottom: 12px; }
+.about-bio { color: var(--g-22); line-height: 1.6; margin-bottom: 12px; }
 .about-portrait { width: 100%; height: auto; border-radius: 12px; object-fit: cover; }
 .about-skills { display: flex; gap: 18px; margin-bottom: 28px; }
-.skill-card { background: #f5f5f5; padding: 18px; border-radius: 10px; flex: 1 1 0; }
+.skill-card { background: var(--g-f5); padding: 18px; border-radius: 10px; flex: 1 1 0; }
 .skill-card h3 { margin-bottom: 8px; }
 .about-moments { margin-bottom: 28px; }
 .moments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
@@ -26,12 +26,12 @@
 }
 
 /* --- Styles to closely mirror referenced about design --- */
-.about-style-ref { background: var(--bg-color); color: #fff; padding: 60px 0; }
+.about-style-ref { background: var(--bg-color); color: var(--ink); padding: 60px 0; }
 .about-container { max-width: 1100px; margin: 0 auto; padding: 80px 28px 28px; }
 .about-hero { display: grid; grid-template-columns: 1fr 420px; gap: 36px; align-items: center; margin: 0 0 64px 0; padding-top: 20px; }
 .about-left { max-width: 620px; }
 .about-title { font-family: 'League Spartan', 'Anton', sans-serif; font-size: clamp(34px, 6vw, 54px); margin: 0 0 18px 0; letter-spacing: -1px; }
-.about-sub { color: #d6d6d6; line-height: 1.8; margin-bottom: 22px; font-family: 'Space Mono', monospace; font-size: 16px; }
+.about-sub { color: var(--g-d6); line-height: 1.8; margin-bottom: 22px; font-family: 'Space Mono', monospace; font-size: 16px; }
 .btn {
   display: inline-flex;
   align-items: center;
@@ -39,15 +39,15 @@
   gap: 12px;
   padding: 18px 22px;
   margin: 0;
-  background-color: #131313;
-  color: #9a9a9a;
+  background-color: var(--g-13);
+  color: var(--g-9a);
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-decoration: none;
   text-transform: uppercase;
-  border: 1px solid #2a2a2a;
+  border: 1px solid var(--g-2a);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   box-sizing: border-box;
@@ -55,27 +55,27 @@
 }
 
 .btn:hover {
-  background-color: #111111;
-  border-color: #666666;
-  color: #ffffff;
+  background-color: var(--g-11);
+  border-color: var(--g-66);
+  color: var(--ink);
 }
 
 .btn.resume-btn,
 .btn.thesis-btn,
 .btn.primary,
 .btn.ghost {
-  background-color: #131313;
-  color: #9a9a9a;
-  border-color: #2a2a2a;
+  background-color: var(--g-13);
+  color: var(--g-9a);
+  border-color: var(--g-2a);
 }
 
 .btn.resume-btn:hover,
 .btn.thesis-btn:hover,
 .btn.primary:hover,
 .btn.ghost:hover {
-  background-color: #111111;
-  border-color: #666666;
-  color: #ffffff;
+  background-color: var(--g-11);
+  border-color: var(--g-66);
+  color: var(--ink);
 }
 
 .about-right .portrait-frame { position: relative; width: 100%; height: auto; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 40px rgba(15,15,15,0.08); }
@@ -87,21 +87,21 @@
   margin: 30px 0;
   align-items: center;
 }
-.skill-block { background: #0f0f10; padding: 26px; border-radius: 14px; flex: 1 1 0; box-shadow: 0 6px 20px rgba(0,0,0,0.25); display: flex; flex-direction: column; justify-content: center; min-height: 160px; }
-.skill-block h3 { margin: 0 0 8px 0; font-size: 18px; color: #fff; }
-.skill-block p { margin: 0; color: #cfcfcf; }
+.skill-block { background: var(--g-0f); padding: 26px; border-radius: 14px; flex: 1 1 0; box-shadow: 0 6px 20px rgba(0,0,0,0.25); display: flex; flex-direction: column; justify-content: center; min-height: 160px; }
+.skill-block h3 { margin: 0 0 8px 0; font-size: 18px; color: var(--ink); }
+.skill-block p { margin: 0; color: var(--g-cf); }
 
 .moments { text-align: center; margin: 30px 0; }
-.moments-title { font-size: 22px; margin-bottom: 36px; color: #fff; font-family: 'Space Mono', monospace; letter-spacing: 2px; }
+.moments-title { font-size: 22px; margin-bottom: 36px; color: var(--ink); font-family: 'Space Mono', monospace; letter-spacing: 2px; }
 .moments-row { display: flex; gap: 22px; justify-content: center; }
-.moment-card { width: 300px; background: #0f0f10; border-radius: 18px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+.moment-card { width: 300px; background: var(--g-0f); border-radius: 18px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
 .moment-card img { width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; display: block; }
-.moment-card h4 { margin: 0 0 6px 0; font-size: 16px; color: #fff; }
-.moment-card p { margin: 0; color: #cfcfcf; font-size: 14px; }
+.moment-card h4 { margin: 0 0 6px 0; font-size: 16px; color: var(--ink); }
+.moment-card p { margin: 0; color: var(--g-cf); font-size: 14px; }
 
-.thesis-cta .thesis-card { display: flex; gap: 48px; align-items: center; background: #0f0f10; padding: 36px; border-radius: 18px; box-shadow: 0 12px 36px rgba(0,0,0,0.25); margin: 30px 0; }
-.thesis-text h3 { margin: 0 0 12px 0; font-size: 22px; color: #fff; font-family: 'League Spartan', sans-serif; }
-.thesis-text p { margin: 0 0 12px 0; color: #cfcfcf; font-family: 'Space Mono', monospace; }
+.thesis-cta .thesis-card { display: flex; gap: 48px; align-items: center; background: var(--g-0f); padding: 36px; border-radius: 18px; box-shadow: 0 12px 36px rgba(0,0,0,0.25); margin: 30px 0; }
+.thesis-text h3 { margin: 0 0 12px 0; font-size: 22px; color: var(--ink); font-family: 'League Spartan', sans-serif; }
+.thesis-text p { margin: 0 0 12px 0; color: var(--g-cf); font-family: 'Space Mono', monospace; }
 .thesis-image { flex: 0 0 48%; }
 .thesis-image img { width: 100%; height: 320px; object-fit: cover; border-radius: 12px; display: block; }
 
@@ -110,12 +110,12 @@
 .thesis-image { margin-left: auto; }
 
 .projects-invite { margin: 30px 0; }
-.invite-inner { display: flex; gap: 48px; align-items: center; justify-content: space-between; background: #0f0f10; padding: 28px; border-radius: 16px; }
+.invite-inner { display: flex; gap: 48px; align-items: center; justify-content: space-between; background: var(--g-0f); padding: 28px; border-radius: 16px; }
 .invite-media { flex: 0 0 48%; }
 .invite-media img { width: 100%; height: 320px; object-fit: cover; border-radius: 12px; opacity: 0.95; display: block; }
 .invite-cta { flex: 1 1 48%; }
-.invite-cta h3 { margin: 0 0 12px 0; font-size: 22px; color: #fff; font-family: 'League Spartan', sans-serif; }
-.invite-cta p { margin: 0 0 12px 0; color: #cfcfcf; font-family: 'Space Mono', monospace; }
+.invite-cta h3 { margin: 0 0 12px 0; font-size: 22px; color: var(--ink); font-family: 'League Spartan', sans-serif; }
+.invite-cta p { margin: 0 0 12px 0; color: var(--g-cf); font-family: 'Space Mono', monospace; }
 
 /* Make the "View PDF" button narrower (less horizontal width) */
 .invite-cta .btn {
@@ -156,8 +156,8 @@
   right: calc(50% - 50vw + 18px);
   top: -15px;
   height: 1px;
-  /* mimic index: white caps at ends and softer center */
-  background: linear-gradient(90deg, rgba(255,255,255,0.95) 0 6px, rgba(255,255,255,0.16) 6px calc(100% - 6px), rgba(255,255,255,0.95) calc(100% - 6px));
+  /* mimic index: var(--ink) caps at ends and softer center */
+  background: linear-gradient(90deg, rgba(var(--ink-rgb), 0.95) 0 6px, rgba(var(--ink-rgb), 0.16) 6px calc(100% - 6px), rgba(var(--ink-rgb), 0.95) calc(100% - 6px));
 }
 
 /* hide the very first top line above header (user requested) */
@@ -174,7 +174,7 @@
   position: absolute;
   width: 6px;
   height: 1px;
-  background: rgba(255,255,255,0.95);
+  background: rgba(var(--ink-rgb), 0.95);
   top: -15px;
 }
 .about-container > header::after { left: calc(50% - 50vw + 18px); }
@@ -239,9 +239,9 @@
 
 /* Decorative thin lines and plus symbols (inspired by reference) */
 .about-container { position: relative; }
-.decor-line { position: absolute; height: 1px; left: calc(50% - 50vw + 18px); right: calc(50% - 50vw + 18px); background: linear-gradient(90deg, rgba(255,255,255,0.95) 0 6px, rgba(255,255,255,0.16) 6px calc(100% - 6px), rgba(255,255,255,0.95) calc(100% - 6px)); }
+.decor-line { position: absolute; height: 1px; left: calc(50% - 50vw + 18px); right: calc(50% - 50vw + 18px); background: linear-gradient(90deg, rgba(var(--ink-rgb), 0.95) 0 6px, rgba(var(--ink-rgb), 0.16) 6px calc(100% - 6px), rgba(var(--ink-rgb), 0.95) calc(100% - 6px)); }
 .decor-line-top { top: 28px; transform-origin: left center; }
-.decor-line-thesis { top: auto; bottom: 36%; left: calc(50% - 50vw + 18px); width: calc(38% - 18px); height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.95) 0 6px, rgba(255,255,255,0.16) 6px calc(100% - 6px), rgba(255,255,255,0.95) calc(100% - 6px)); }
+.decor-line-thesis { top: auto; bottom: 36%; left: calc(50% - 50vw + 18px); width: calc(38% - 18px); height: 1px; background: linear-gradient(90deg, rgba(var(--ink-rgb), 0.95) 0 6px, rgba(var(--ink-rgb), 0.16) 6px calc(100% - 6px), rgba(var(--ink-rgb), 0.95) calc(100% - 6px)); }
 
 .decor-plus {
   position: absolute;
@@ -252,7 +252,7 @@
   height: 34px;
   border-radius: 50%;
   background: rgba(93,169,255,0.95); /* blue accent similar to reference */
-  color: #fff;
+  color: var(--ink);
   font-weight: 800;
   font-size: 18px;
   line-height: 1;
@@ -301,7 +301,7 @@
 
   /* Make the learn-more CTA match the other card styles */
   .learn-more-inner {
-    background: #0f0f10;
+    background: var(--g-0f);
     padding: 24px;
     border-radius: 16px;
     display: flex;

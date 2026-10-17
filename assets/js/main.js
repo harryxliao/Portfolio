@@ -77,6 +77,35 @@ function initEmbeddedMediaFallback(scope = document) {
       markFailed();
     };
 
+    if (media.tagName === 'IFRAME' && /player\.vimeo\.com/.test(media.src)) {
+      // Vimeo's iframe 'load' fires while its own gray loader is still on screen,
+      // so keep the fallback up until the player reports that playback started.
+      const subscribe = () => {
+        ['play', 'timeupdate'].forEach((value) => {
+          try { media.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value }), 'https://player.vimeo.com'); } catch (e) { }
+        });
+      };
+      const onMessage = (event) => {
+        if (event.source !== media.contentWindow || event.origin !== 'https://player.vimeo.com') return;
+        let data = event.data;
+        try { if (typeof data === 'string') data = JSON.parse(data); } catch (e) { return; }
+        if (!data) return;
+        if (data.event === 'ready') {
+          subscribe();
+        } else if (data.event === 'play' || data.event === 'timeupdate') {
+          window.removeEventListener('message', onMessage);
+          clearTimeout(failTimer);
+          settled = false; // playback can start after the fallback timeout fired
+          markReady();
+        }
+      };
+      window.addEventListener('message', onMessage);
+      media.addEventListener('load', subscribe, { once: true });
+      subscribe();
+      media.addEventListener('error', resolveFailed, { once: true });
+      return;
+    }
+
     if (media.tagName === 'IFRAME') {
       media.addEventListener('load', resolveReady, { once: true });
       media.addEventListener('error', resolveFailed, { once: true });

@@ -1,0 +1,32 @@
+---
+slug: "fragments/contact.html"
+layout: null
+eleventyExcludeFromCollections: true
+---
+<link rel="stylesheet" href="/assets/css/contact.css">
+<div class="contact-page">
+  <div class="contact-container">
+    <section class="contact-hero" aria-label="Contact introduction">
+      <div class="contact-copy">
+        <p class="contact-kicker">{% if zh %}開啟與廖先皓 Harry 的對話{% else %}LET'S TALK.{% endif %}</p>
+        <span class="contact-email">
+          HARRYXLIAO@GMAIL.COM
+        </span>
+        <!-- email_off --><a class="contact-send" href="mailto:harryxliao@gmail.com?subject=Hello%20Harry">{% if zh %}寄信{% else %}
+          SEND EMAIL
+        {% endif %}</a><!-- /email_off -->
+      </div>
+
+      <div class="contact-video-wrap media-fallback-host">
+        <video class="contact-video" data-fallback="/images/Work/For-U_cover.webp" autoplay="" muted="" loop="" playsinline="" loading="lazy" title="Reno Gordon - For-U" tabindex="-1" aria-hidden="true">
+          <source src="/videos/Reno_Gordon_For-U_S.mp4" type="video/mp4">
+        </video>
+        <div class="contact-overlay"></div>
+      </div>
+
+      <div class="contact-video-caption">
+        <span>{% if zh %}// 有合作、提案或想打聲招呼，歡迎聯絡。{% else %}// REACH OUT FOR PROJECTS, COLLABORATIONS, OR JUST TO SAY HI.{% endif %}</span>
+      </div>
+    </section>
+  </div>
+</div>
